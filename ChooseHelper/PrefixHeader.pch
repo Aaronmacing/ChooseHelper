@@ -1,0 +1,27 @@
+//
+//  PrefixHeader.pch
+//  ChooseHelper
+//
+//  Created by Apple on 2019/10/9.
+//  Copyright © 2019 apple. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import "Utils.h"
+#import "Constant.h"
+#import "UIColor+TT.h"
+#import <IQKeyboardManager/IQKeyboardManager.h>
+#import <Masonry.h>
+#import "MBProgressHUD+PD.h"
+#import "BaseViewController.h"
+#import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
+#import "YCAlertView.h"
+#import "ZHightView.h"
+#import "SingletonModel.h"
+
+#endif /* PrefixHeader_pch */

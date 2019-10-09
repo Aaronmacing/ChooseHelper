@@ -1,0 +1,12 @@
+platform:ios, '8.0'
+target 'ChooseHelper' do
+pod 'Masonry'
+pod 'IQKeyboardManager'
+pod 'MBProgressHUD'
+pod 'DZNEmptyDataSet'
+pod 'AFNetworking'
+pod 'YYModel'
+pod 'SDWebImage'
+pod 'MJRefresh'
+end
+
