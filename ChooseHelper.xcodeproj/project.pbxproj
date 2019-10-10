@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		18709FD2234F21A0006CD559 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18709FD1234F21A0006CD559 /* MainViewController.m */; };
-		18709FD5234F21B3006CD559 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18709FD4234F21B3006CD559 /* MyViewController.m */; };
-		18709FD8234F21EC006CD559 /* MarketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18709FD7234F21EC006CD559 /* MarketViewController.m */; };
-		18709FDB234F220A006CD559 /* TrainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18709FDA234F220A006CD559 /* TrainViewController.m */; };
+		18709FEA234F2672006CD559 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18709FDD234F2671006CD559 /* MainViewController.m */; };
+		18709FEB234F2672006CD559 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18709FE0234F2671006CD559 /* LoginViewController.m */; };
+		18709FEC234F2672006CD559 /* SignViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18709FE1234F2671006CD559 /* SignViewController.m */; };
+		18709FED234F2672006CD559 /* MarketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18709FE5234F2672006CD559 /* MarketViewController.m */; };
+		18709FEE234F2672006CD559 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18709FE9234F2672006CD559 /* MyViewController.m */; };
+		18709FF2234F2679006CD559 /* TrainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18709FF1234F2679006CD559 /* TrainViewController.m */; };
 		18A97B4A234DBB06006BDBBC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A97B49234DBB06006BDBBC /* AppDelegate.m */; };
 		18A97B4D234DBB06006BDBBC /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A97B4C234DBB06006BDBBC /* SceneDelegate.m */; };
 		18A97B50234DBB06006BDBBC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A97B4F234DBB06006BDBBC /* ViewController.m */; };
@@ -30,7 +32,6 @@
 		18A97B96234DBB76006BDBBC /* MainCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A97B92234DBB76006BDBBC /* MainCollectionViewCell.m */; };
 		18A97B97234DBB76006BDBBC /* ListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A97B93234DBB76006BDBBC /* ListTableViewCell.m */; };
 		18A97B99234DBB87006BDBBC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18A97B98234DBB87006BDBBC /* InfoPlist.strings */; };
-		18A97B9D234DBD2A006BDBBC /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A97B9C234DBD2A006BDBBC /* LoginViewController.m */; };
 		18A97BD1234DC356006BDBBC /* NSDictionary+NilSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A97BC1234DC356006BDBBC /* NSDictionary+NilSafe.m */; };
 		18A97BD2234DC356006BDBBC /* RequestResultVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A97BC6234DC356006BDBBC /* RequestResultVO.m */; };
 		18A97BD3234DC356006BDBBC /* NSString+StringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A97BC7234DC356006BDBBC /* NSString+StringUtil.m */; };
@@ -39,19 +40,22 @@
 		18A97BD6234DC356006BDBBC /* UIImage+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A97BCC234DC356006BDBBC /* UIImage+Utils.m */; };
 		18A97BD7234DC356006BDBBC /* UserRequestServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A97BCE234DC356006BDBBC /* UserRequestServer.m */; };
 		18A97BDB234DC729006BDBBC /* StockTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A97BD9234DC729006BDBBC /* StockTabbarController.m */; };
-		18A97BEF234DD20E006BDBBC /* SignViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A97BEE234DD20E006BDBBC /* SignViewController.m */; };
 		E2FF3E7F19CE10E29FED0769 /* libPods-ChooseHelper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 61B45CCC1180C42F9FAD4D97 /* libPods-ChooseHelper.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		18709FD0234F21A0006CD559 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		18709FD1234F21A0006CD559 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		18709FD3234F21B3006CD559 /* MyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
-		18709FD4234F21B3006CD559 /* MyViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
-		18709FD6234F21EC006CD559 /* MarketViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MarketViewController.h; sourceTree = "<group>"; };
-		18709FD7234F21EC006CD559 /* MarketViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MarketViewController.m; sourceTree = "<group>"; };
-		18709FD9234F220A006CD559 /* TrainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrainViewController.h; sourceTree = "<group>"; };
-		18709FDA234F220A006CD559 /* TrainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrainViewController.m; sourceTree = "<group>"; };
+		18709FDD234F2671006CD559 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		18709FDE234F2671006CD559 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		18709FE0234F2671006CD559 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		18709FE1234F2671006CD559 /* SignViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignViewController.m; sourceTree = "<group>"; };
+		18709FE2234F2671006CD559 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		18709FE3234F2671006CD559 /* SignViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignViewController.h; sourceTree = "<group>"; };
+		18709FE5234F2672006CD559 /* MarketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketViewController.m; sourceTree = "<group>"; };
+		18709FE6234F2672006CD559 /* MarketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarketViewController.h; sourceTree = "<group>"; };
+		18709FE8234F2672006CD559 /* MyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyViewController.h; sourceTree = "<group>"; };
+		18709FE9234F2672006CD559 /* MyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyViewController.m; sourceTree = "<group>"; };
+		18709FF0234F2679006CD559 /* TrainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrainViewController.h; sourceTree = "<group>"; };
+		18709FF1234F2679006CD559 /* TrainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrainViewController.m; sourceTree = "<group>"; };
 		18A97B45234DBB06006BDBBC /* ChooseHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChooseHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18A97B48234DBB06006BDBBC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		18A97B49234DBB06006BDBBC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -87,8 +91,6 @@
 		18A97B93234DBB76006BDBBC /* ListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListTableViewCell.m; sourceTree = "<group>"; };
 		18A97B98234DBB87006BDBBC /* InfoPlist.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		18A97B9A234DBB9E006BDBBC /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		18A97B9B234DBD2A006BDBBC /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		18A97B9C234DBD2A006BDBBC /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		18A97BC0234DC356006BDBBC /* UIImage+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Utils.h"; sourceTree = "<group>"; };
 		18A97BC1234DC356006BDBBC /* NSDictionary+NilSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+NilSafe.m"; sourceTree = "<group>"; };
 		18A97BC2234DC356006BDBBC /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
@@ -107,8 +109,6 @@
 		18A97BCF234DC356006BDBBC /* NSString+StringUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+StringUtil.h"; sourceTree = "<group>"; };
 		18A97BD9234DC729006BDBBC /* StockTabbarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockTabbarController.m; sourceTree = "<group>"; };
 		18A97BDA234DC729006BDBBC /* StockTabbarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockTabbarController.h; sourceTree = "<group>"; };
-		18A97BED234DD20E006BDBBC /* SignViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignViewController.h; sourceTree = "<group>"; };
-		18A97BEE234DD20E006BDBBC /* SignViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignViewController.m; sourceTree = "<group>"; };
 		3365420ECB57F74C43A0DF36 /* Pods-ChooseHelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChooseHelper.debug.xcconfig"; path = "Target Support Files/Pods-ChooseHelper/Pods-ChooseHelper.debug.xcconfig"; sourceTree = "<group>"; };
 		61B45CCC1180C42F9FAD4D97 /* libPods-ChooseHelper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ChooseHelper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		93E20321FA901A21388A6E34 /* Pods-ChooseHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChooseHelper.release.xcconfig"; path = "Target Support Files/Pods-ChooseHelper/Pods-ChooseHelper.release.xcconfig"; sourceTree = "<group>"; };
@@ -126,6 +126,53 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18709FDC234F2671006CD559 /* main */ = {
+			isa = PBXGroup;
+			children = (
+				18709FDD234F2671006CD559 /* MainViewController.m */,
+				18709FDE234F2671006CD559 /* MainViewController.h */,
+			);
+			path = main;
+			sourceTree = "<group>";
+		};
+		18709FDF234F2671006CD559 /* login */ = {
+			isa = PBXGroup;
+			children = (
+				18709FE0234F2671006CD559 /* LoginViewController.m */,
+				18709FE1234F2671006CD559 /* SignViewController.m */,
+				18709FE2234F2671006CD559 /* LoginViewController.h */,
+				18709FE3234F2671006CD559 /* SignViewController.h */,
+			);
+			path = login;
+			sourceTree = "<group>";
+		};
+		18709FE4234F2672006CD559 /* market */ = {
+			isa = PBXGroup;
+			children = (
+				18709FE5234F2672006CD559 /* MarketViewController.m */,
+				18709FE6234F2672006CD559 /* MarketViewController.h */,
+			);
+			path = market;
+			sourceTree = "<group>";
+		};
+		18709FE7234F2672006CD559 /* my */ = {
+			isa = PBXGroup;
+			children = (
+				18709FE8234F2672006CD559 /* MyViewController.h */,
+				18709FE9234F2672006CD559 /* MyViewController.m */,
+			);
+			path = my;
+			sourceTree = "<group>";
+		};
+		18709FEF234F2679006CD559 /* train */ = {
+			isa = PBXGroup;
+			children = (
+				18709FF0234F2679006CD559 /* TrainViewController.h */,
+				18709FF1234F2679006CD559 /* TrainViewController.m */,
+			);
+			path = train;
+			sourceTree = "<group>";
+		};
 		18A97B3C234DBB06006BDBBC = {
 			isa = PBXGroup;
 			children = (
@@ -155,10 +202,6 @@
 				18A97B49234DBB06006BDBBC /* AppDelegate.m */,
 				18A97B4B234DBB06006BDBBC /* SceneDelegate.h */,
 				18A97B4C234DBB06006BDBBC /* SceneDelegate.m */,
-				18A97B9B234DBD2A006BDBBC /* LoginViewController.h */,
-				18A97B9C234DBD2A006BDBBC /* LoginViewController.m */,
-				18A97BED234DD20E006BDBBC /* SignViewController.h */,
-				18A97BEE234DD20E006BDBBC /* SignViewController.m */,
 				18A97B4E234DBB06006BDBBC /* ViewController.h */,
 				18A97B4F234DBB06006BDBBC /* ViewController.m */,
 				18A97B51234DBB06006BDBBC /* Main.storyboard */,
@@ -233,16 +276,13 @@
 		18A97BD8234DC729006BDBBC /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				18709FEF234F2679006CD559 /* train */,
+				18709FDC234F2671006CD559 /* main */,
+				18709FE4234F2672006CD559 /* market */,
+				18709FE7234F2672006CD559 /* my */,
 				18A97BDA234DC729006BDBBC /* StockTabbarController.h */,
 				18A97BD9234DC729006BDBBC /* StockTabbarController.m */,
-				18709FD0234F21A0006CD559 /* MainViewController.h */,
-				18709FD1234F21A0006CD559 /* MainViewController.m */,
-				18709FD6234F21EC006CD559 /* MarketViewController.h */,
-				18709FD7234F21EC006CD559 /* MarketViewController.m */,
-				18709FD9234F220A006CD559 /* TrainViewController.h */,
-				18709FDA234F220A006CD559 /* TrainViewController.m */,
-				18709FD3234F21B3006CD559 /* MyViewController.h */,
-				18709FD4234F21B3006CD559 /* MyViewController.m */,
+				18709FDF234F2671006CD559 /* login */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -389,28 +429,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				18A97B8A234DBB6D006BDBBC /* SingletonModel.m in Sources */,
-				18A97BEF234DD20E006BDBBC /* SignViewController.m in Sources */,
+				18709FEB234F2672006CD559 /* LoginViewController.m in Sources */,
 				18A97B8C234DBB6D006BDBBC /* ZHightView.m in Sources */,
 				18A97B50234DBB06006BDBBC /* ViewController.m in Sources */,
 				18A97BD5234DC356006BDBBC /* Account.m in Sources */,
 				18A97B87234DBB6D006BDBBC /* BaseViewController.m in Sources */,
 				18A97BD7234DC356006BDBBC /* UserRequestServer.m in Sources */,
+				18709FEC234F2672006CD559 /* SignViewController.m in Sources */,
 				18A97BDB234DC729006BDBBC /* StockTabbarController.m in Sources */,
-				18A97B9D234DBD2A006BDBBC /* LoginViewController.m in Sources */,
 				18A97B8B234DBB6D006BDBBC /* UIColor+TT.m in Sources */,
-				18709FDB234F220A006CD559 /* TrainViewController.m in Sources */,
+				18709FF2234F2679006CD559 /* TrainViewController.m in Sources */,
 				18A97B4A234DBB06006BDBBC /* AppDelegate.m in Sources */,
 				18A97B89234DBB6D006BDBBC /* Utils.m in Sources */,
+				18709FEE234F2672006CD559 /* MyViewController.m in Sources */,
 				18A97B5B234DBB07006BDBBC /* main.m in Sources */,
+				18709FEA234F2672006CD559 /* MainViewController.m in Sources */,
 				18A97BD2234DC356006BDBBC /* RequestResultVO.m in Sources */,
 				18A97B86234DBB6D006BDBBC /* YCAlertView.m in Sources */,
-				18709FD2234F21A0006CD559 /* MainViewController.m in Sources */,
+				18709FED234F2672006CD559 /* MarketViewController.m in Sources */,
 				18A97B4D234DBB06006BDBBC /* SceneDelegate.m in Sources */,
 				18A97BD3234DC356006BDBBC /* NSString+StringUtil.m in Sources */,
 				18A97B97234DBB76006BDBBC /* ListTableViewCell.m in Sources */,
-				18709FD5234F21B3006CD559 /* MyViewController.m in Sources */,
 				18A97B88234DBB6D006BDBBC /* MBProgressHUD+PD.m in Sources */,
-				18709FD8234F21EC006CD559 /* MarketViewController.m in Sources */,
 				18A97BD4234DC356006BDBBC /* BaseRequestServer.m in Sources */,
 				18A97BD1234DC356006BDBBC /* NSDictionary+NilSafe.m in Sources */,
 				18A97B96234DBB76006BDBBC /* MainCollectionViewCell.m in Sources */,
