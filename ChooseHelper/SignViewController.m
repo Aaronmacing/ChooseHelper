@@ -80,8 +80,6 @@
                                                        NSFontAttributeName:[UIFont boldSystemFontOfSize:14]}];
         
         tf.attributedPlaceholder = placeholderStr;
-        
-        
         tf.font = [UIFont systemFontOfSize:14];
         tf.textColor = [UIColor darkTextColor];
         tf.textAlignment = NSTextAlignmentLeft;
@@ -142,6 +140,17 @@
 
 - (void)spBtnCliked:(UIButton *)sender
 {
+    UITextField *tf1 = [self.view viewWithTag:20];
+    UITextField *tf2 = [self.view viewWithTag:21];
+    UITextField *tf3 = [self.view viewWithTag:22];
+    
+    if (tf1.text.length >= 4 && tf1.text.length <= 16 && tf2.text.length >= 6 && tf2.text.length <= 16 && [tf2.text isEqualToString:tf3.text]) {
+        
+    }
+    else
+    {
+        [MBProgressHUD showError:@"数据不正确,请重新输入!"];
+    }
 }
 
 /*

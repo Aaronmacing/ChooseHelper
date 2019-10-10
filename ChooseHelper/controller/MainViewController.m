@@ -1,24 +1,22 @@
 //
-//  AViewController.m
+//  MainViewController.m
 //  ChooseHelper
 //
-//  Created by Apple on 2019/10/9.
+//  Created by Apple on 2019/10/10.
 //  Copyright © 2019 apple. All rights reserved.
 //
 
-#import "AViewController.h"
+#import "MainViewController.h"
 
-@interface AViewController ()
+@interface MainViewController ()
 
 @end
 
-@implementation AViewController
+@implementation MainViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    self.titleLabel.text = @"A";
 }
 
 /*

@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "StockTabbarController.h"
 #import "SignViewController.h"
+#import "StockTabbarController.h"
 
 @interface LoginViewController ()
 
@@ -179,6 +180,22 @@
 
 - (void)spBtnCliked:(UIButton *)sender
 {
+    UITextField *tf1 = [self.view viewWithTag:20];
+    UITextField *tf2 = [self.view viewWithTag:21];
+    
+    
+    if (tf1.text.length >= 4 && tf1.text.length <= 16 && tf2.text.length >= 6 && tf2.text.length <= 16) {
+        
+        StockTabbarController *vc = [[StockTabbarController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else
+    {
+        [MBProgressHUD showError:@"数据不正确,请重新输入!"];
+    }
+    
+    
+    
 }
 
 /*

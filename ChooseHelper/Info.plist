@@ -58,5 +58,14 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>App需要使用您的相机获取图片以编辑头像.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>App需要使用您的相册获取图片以编辑头像.</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

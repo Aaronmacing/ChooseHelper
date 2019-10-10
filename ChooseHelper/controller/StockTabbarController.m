@@ -8,8 +8,10 @@
 
 #import "StockTabbarController.h"
 #import "BaseViewController.h"
-#import "AViewController.h"
-#import "BViewController.h"
+#import "MainViewController.h"
+#import "MarketViewController.h"
+#import "TrainViewController.h"
+#import "MyViewController.h"
 @interface StockTabbarController ()<UITabBarControllerDelegate>
 
 @property (nonatomic,strong) UIImageView *bkIV;
@@ -23,10 +25,16 @@
     
 
     
-    AViewController *mainVC = [[AViewController alloc] init];
+    MainViewController *mainVC = [[MainViewController alloc] init];
     [self setChildVC:mainVC name:@"" image:@"" selectedImage:@""];
     
-    BViewController *followVC = [[BViewController alloc] init];
+    MarketViewController *mkVC = [[MarketViewController alloc] init];
+    [self setChildVC:mkVC name:@"" image:@"" selectedImage:@""];
+    
+    TrainViewController *trVC = [[TrainViewController alloc]init];
+    [self setChildVC:trVC name:@"" image:@"" selectedImage:@""];
+    
+    MyViewController *followVC = [[MyViewController alloc] init];
     [self setChildVC:followVC name:@"" image:@"" selectedImage:@""];
     
 

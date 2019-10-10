@@ -1,23 +1,22 @@
 //
-//  BViewController.m
+//  TrainViewController.m
 //  ChooseHelper
 //
-//  Created by Apple on 2019/10/9.
+//  Created by Apple on 2019/10/10.
 //  Copyright © 2019 apple. All rights reserved.
 //
 
-#import "BViewController.h"
+#import "TrainViewController.h"
 
-@interface BViewController ()
+@interface TrainViewController ()
 
 @end
 
-@implementation BViewController
+@implementation TrainViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-     self.titleLabel.text = @"B";
 }
 
 /*

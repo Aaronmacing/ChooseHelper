@@ -1,8 +1,8 @@
 //
-//  AViewController.h
+//  MainViewController.h
 //  ChooseHelper
 //
-//  Created by Apple on 2019/10/9.
+//  Created by Apple on 2019/10/10.
 //  Copyright © 2019 apple. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AViewController : BaseViewController
+@interface MainViewController : BaseViewController
 
 @end
 
