@@ -12,7 +12,7 @@
 #import "StockTabbarController.h"
 
 @interface LoginViewController ()
-
+@property(nonatomic,assign)BOOL save;
 @end
 
 @implementation LoginViewController
@@ -22,6 +22,19 @@
     // Do any additional setup after loading the view.
     
     self.backBtn.hidden = YES;
+    
+    self.backImageView.image = kGetImage(@"bg");
+    [self.backImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        
+        make.top.mas_equalTo(self.view.mas_top);
+        make.bottom.mas_equalTo(self.view.mas_bottom);
+        make.left.mas_equalTo(self.view.mas_left);
+        make.right.mas_equalTo(self.view.mas_right);
+        
+    }];
+    
+    
+    
     
     UIImageView *imageView = [UIImageView new];
     imageView.image = kGetImage(@"header");
@@ -34,7 +47,7 @@
         
     }];
     
-    UILabel *label = [Utils setLabelWithlines:0 textAlignment:NSTextAlignmentCenter font:[UIFont systemFontOfSize:17] text:@"选股大师" textColor:[UIColor whiteColor]];
+    UILabel *label = [Utils setLabelWithlines:0 textAlignment:NSTextAlignmentCenter font:[UIFont systemFontOfSize:17] text:@"股 参 谋" textColor:[UIColor whiteColor]];
     [self.view addSubview:label];
     [label mas_makeConstraints:^(MASConstraintMaker *make) {
         
@@ -83,7 +96,10 @@
                                                        NSFontAttributeName:[UIFont boldSystemFontOfSize:14]}];
         
         tf.attributedPlaceholder = placeholderStr;
-        
+        if (i != 0) {
+            
+            tf.secureTextEntry = YES;
+        }
         
         tf.font = [UIFont systemFontOfSize:14];
         tf.textColor = [UIColor darkTextColor];
@@ -133,6 +149,7 @@
     }];
     
     UIButton *opBtn = [UIButton new];
+    opBtn.selected = YES;
     [opBtn setImageEdgeInsets:UIEdgeInsetsMake(5.5, 5.5, 5.5, 5.5)];
     [opBtn setImage:kGetImage(@"select") forState:UIControlStateSelected];
     [opBtn setImage:kGetImage(@"un_selec") forState:UIControlStateNormal];
@@ -165,7 +182,22 @@
     [label2 addGestureRecognizer:tap];
     
     
+    self.save = YES;
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    NSString *a = [user stringForKey:@"account"];
+    NSString *b = [user stringForKey:@"secret"];
+    UITextField *tf1 = [self.view viewWithTag:20];
+    UITextField *tf2 = [self.view viewWithTag:21];
+    tf1.text = a;
+    tf2.text = b;
+    tf2.secureTextEntry = YES;
+}
+
 
 - (void)tap
 {
@@ -176,6 +208,7 @@
 - (void)opBtnCliked:(UIButton *)sender
 {
     sender.selected = !sender.selected;
+    self.save = !self.save;
 }
 
 - (void)spBtnCliked:(UIButton *)sender
@@ -188,6 +221,23 @@
         
         StockTabbarController *vc = [[StockTabbarController alloc]init];
         [self.navigationController pushViewController:vc animated:YES];
+        
+        
+        if (self.save == YES) {
+            NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+            [user setObject:tf1.text forKey:@"account"];
+            [user setObject:tf2.text forKey:@"secret"];
+            [user synchronize];
+        }
+        else
+        {
+            NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+            [user setObject:@"" forKey:@"account"];
+            [user setObject:@"" forKey:@"secret"];
+            [user synchronize];
+        }
+        
+        
     }
     else
     {

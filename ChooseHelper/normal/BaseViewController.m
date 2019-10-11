@@ -18,12 +18,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.view.backgroundColor = [UIColor whiteColor];
+    
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleDefault;
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     self.navigationController.navigationBar.topItem.title = @"";
     
     UIImageView *backgroundImage = [UIImageView new];
-    backgroundImage.image = kGetImage(@"bg");
+    backgroundImage.image = kGetImage(@"nav_bg");
     backgroundImage.backgroundColor = [UIColor whiteColor];
     backgroundImage.contentMode = UIViewContentModeScaleToFill;
     [self.view addSubview:backgroundImage];
@@ -33,7 +35,7 @@
     [backgroundImage mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.top.mas_equalTo(self.view.mas_top);
-        make.bottom.mas_equalTo(self.view.mas_bottom);
+        make.height.mas_equalTo(44 + HEIGHT_STATUSBAR);
         make.left.mas_equalTo(self.view.mas_left);
         make.right.mas_equalTo(self.view.mas_right);
         
@@ -45,7 +47,7 @@
     label.textAlignment = NSTextAlignmentCenter;
     label.font = [UIFont systemFontOfSize:16];
     label.text = @"";
-    label.textColor = [UIColor colorWithHexString:@"#333333" alpha:1];
+    label.textColor = [UIColor whiteColor];
     [self.view addSubview:label];
     
     [label mas_makeConstraints:^(MASConstraintMaker *make) {

@@ -20,6 +20,18 @@
     
     self.backBtn.hidden = YES;
     
+    self.backImageView.image = kGetImage(@"bg");
+    [self.backImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        
+        make.top.mas_equalTo(self.view.mas_top);
+        make.bottom.mas_equalTo(self.view.mas_bottom);
+        make.left.mas_equalTo(self.view.mas_left);
+        make.right.mas_equalTo(self.view.mas_right);
+        
+    }];
+    
+    
+    
     UIImageView *imageView = [UIImageView new];
     imageView.image = kGetImage(@"header");
     [self.view addSubview:imageView];
@@ -31,7 +43,7 @@
         
     }];
     
-    UILabel *label = [Utils setLabelWithlines:0 textAlignment:NSTextAlignmentCenter font:[UIFont systemFontOfSize:17] text:@"选股大师" textColor:[UIColor whiteColor]];
+    UILabel *label = [Utils setLabelWithlines:0 textAlignment:NSTextAlignmentCenter font:[UIFont systemFontOfSize:17] text:@"股 参 谋" textColor:[UIColor whiteColor]];
     [self.view addSubview:label];
     [label mas_makeConstraints:^(MASConstraintMaker *make) {
         
@@ -80,6 +92,11 @@
                                                        NSFontAttributeName:[UIFont boldSystemFontOfSize:14]}];
         
         tf.attributedPlaceholder = placeholderStr;
+        if (i != 0) {
+            
+            tf.secureTextEntry = YES;
+        }
+        
         tf.font = [UIFont systemFontOfSize:14];
         tf.textColor = [UIColor darkTextColor];
         tf.textAlignment = NSTextAlignmentLeft;

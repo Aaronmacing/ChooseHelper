@@ -39,37 +39,42 @@
     
 
     self.tabBar.translucent = NO;
-    self.bkIV = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"mainTab"]];
+    self.bkIV = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"btm_1"]];
     
     self.bkIV.frame = CGRectMake(0, 0, self.tabBar.frame.size.width, self.tabBar.frame.size.height);
     self.bkIV.contentMode = UIViewContentModeScaleToFill;
-    self.tabBar.barTintColor = [UIColor colorWithHexString:@"#FED6B5" alpha:1];
+//    self.tabBar.barTintColor = [UIColor colorWithHexString:@"#FED6B5" alpha:1];
     [[self tabBar] addSubview:self.bkIV];
     
     
-    [self addObserver:self forKeyPath:@"selectedIndex" options:NSKeyValueObservingOptionNew context:nil];
+//    [self addObserver:self forKeyPath:@"selectedIndex" options:NSKeyValueObservingOptionNew context:nil];
     self.delegate = self;
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goToOtherPage) name:@"jump3" object:nil];
     
 }
+
+- (void)goToOtherPage
+{
+    [self setSelectedIndex:1];
+    self.bkIV.image = [UIImage imageNamed:@"btm_2"];
+}
+
+
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
     
     if (self.selectedIndex == 0) {
         
-        self.bkIV.image = [UIImage imageNamed:@"mainTab"];
+        self.bkIV.image = [UIImage imageNamed:@"btm_1"];
     }else if(self.selectedIndex == 1){
         
-        self.bkIV.image = [UIImage imageNamed:@"followTab"];
+        self.bkIV.image = [UIImage imageNamed:@"btm_2"];
     }else if (self.selectedIndex == 2){
         
-        self.bkIV.image = [UIImage imageNamed:@"marketTab"];
+        self.bkIV.image = [UIImage imageNamed:@"btm_3"];
     }else if (self.selectedIndex == 3){
         
-        self.bkIV.image = [UIImage imageNamed:@"infoTab"];
-    }else if (self.selectedIndex == 4){
-        
-        self.bkIV.image = [UIImage imageNamed:@"meTab"];
-        
+        self.bkIV.image = [UIImage imageNamed:@"btm_4"];
     }
     
 }
