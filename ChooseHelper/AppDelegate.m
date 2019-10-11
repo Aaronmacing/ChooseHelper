@@ -20,6 +20,16 @@
     return YES;
 }
 
+- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
+    
+        if (!self.LearnInterFace) {
+            return UIInterfaceOrientationMaskPortrait;
+        }else{
+            return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskLandscape;
+        }
+    
+}
+
 
 #pragma mark - UISceneSession lifecycle
 

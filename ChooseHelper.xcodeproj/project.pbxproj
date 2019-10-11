@@ -23,7 +23,6 @@
 		1870A00F234F79C5006CD559 /* BuysellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1870A00E234F79C5006CD559 /* BuysellViewController.m */; };
 		18A97B4A234DBB06006BDBBC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A97B49234DBB06006BDBBC /* AppDelegate.m */; };
 		18A97B4D234DBB06006BDBBC /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A97B4C234DBB06006BDBBC /* SceneDelegate.m */; };
-		18A97B50234DBB06006BDBBC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A97B4F234DBB06006BDBBC /* ViewController.m */; };
 		18A97B53234DBB06006BDBBC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A97B51234DBB06006BDBBC /* Main.storyboard */; };
 		18A97B55234DBB07006BDBBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18A97B54234DBB07006BDBBC /* Assets.xcassets */; };
 		18A97B58234DBB07006BDBBC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A97B56234DBB07006BDBBC /* LaunchScreen.storyboard */; };
@@ -36,9 +35,7 @@
 		18A97B8B234DBB6D006BDBBC /* UIColor+TT.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A97B7A234DBB6D006BDBBC /* UIColor+TT.m */; };
 		18A97B8C234DBB6D006BDBBC /* ZHightView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A97B7B234DBB6D006BDBBC /* ZHightView.m */; };
 		18A97B94234DBB76006BDBBC /* MainCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A97B90234DBB76006BDBBC /* MainCollectionViewCell.xib */; };
-		18A97B95234DBB76006BDBBC /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A97B91234DBB76006BDBBC /* ListTableViewCell.xib */; };
 		18A97B96234DBB76006BDBBC /* MainCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A97B92234DBB76006BDBBC /* MainCollectionViewCell.m */; };
-		18A97B97234DBB76006BDBBC /* ListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A97B93234DBB76006BDBBC /* ListTableViewCell.m */; };
 		18A97B99234DBB87006BDBBC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18A97B98234DBB87006BDBBC /* InfoPlist.strings */; };
 		18A97BD1234DC356006BDBBC /* NSDictionary+NilSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A97BC1234DC356006BDBBC /* NSDictionary+NilSafe.m */; };
 		18A97BD2234DC356006BDBBC /* RequestResultVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A97BC6234DC356006BDBBC /* RequestResultVO.m */; };
@@ -52,6 +49,24 @@
 		18BD062123507E8B00F89CA0 /* TransactionRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BD062023507E8B00F89CA0 /* TransactionRecordViewController.m */; };
 		18BD062523507EBB00F89CA0 /* TransactionRecordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BD062323507EBB00F89CA0 /* TransactionRecordTableViewCell.m */; };
 		18BD062623507EBB00F89CA0 /* TransactionRecordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BD062423507EBB00F89CA0 /* TransactionRecordTableViewCell.xib */; };
+		18BD0629235086CF00F89CA0 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BD0628235086CF00F89CA0 /* SearchViewController.m */; };
+		18BD062D2350979A00F89CA0 /* MainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BD062B2350979A00F89CA0 /* MainTableViewCell.m */; };
+		18BD062E2350979A00F89CA0 /* MainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BD062C2350979A00F89CA0 /* MainTableViewCell.xib */; };
+		18BD06312350A65F00F89CA0 /* ClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BD06302350A65F00F89CA0 /* ClassViewController.m */; };
+		18BD06352350A8CE00F89CA0 /* ClassTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BD06332350A8CE00F89CA0 /* ClassTableViewCell.m */; };
+		18BD06362350A8CE00F89CA0 /* ClassTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BD06342350A8CE00F89CA0 /* ClassTableViewCell.xib */; };
+		18BD06392350AB4500F89CA0 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BD06382350AB4500F89CA0 /* MessageViewController.m */; };
+		18BD063C2350AC9100F89CA0 /* PlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BD063B2350AC9100F89CA0 /* PlayViewController.m */; };
+		18BD067B2350B62900F89CA0 /* ZQPlayerImage.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 18BD06742350B62900F89CA0 /* ZQPlayerImage.bundle */; };
+		18BD067C2350B62900F89CA0 /* ZQPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BD06782350B62900F89CA0 /* ZQPlayer.m */; };
+		18BD067D2350B62900F89CA0 /* ZQPlayerLandSpaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BD06792350B62900F89CA0 /* ZQPlayerLandSpaceViewController.m */; };
+		18BD067E2350B62900F89CA0 /* ZQPlayerMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BD067A2350B62900F89CA0 /* ZQPlayerMaskView.m */; };
+		18BD06812350C1B800F89CA0 /* InformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BD06802350C1B800F89CA0 /* InformationViewController.m */; };
+		18BD06842350C21700F89CA0 /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BD06832350C21700F89CA0 /* NewsViewController.m */; };
+		18BD06872350C22600F89CA0 /* ImportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BD06862350C22600F89CA0 /* ImportViewController.m */; };
+		18BD068A2350C23500F89CA0 /* NewgpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BD06892350C23500F89CA0 /* NewgpViewController.m */; };
+		18BD068E2350C8CC00F89CA0 /* NewgpTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BD068C2350C8CC00F89CA0 /* NewgpTableViewCell.m */; };
+		18BD068F2350C8CC00F89CA0 /* NewgpTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BD068D2350C8CC00F89CA0 /* NewgpTableViewCell.xib */; };
 		18CDB6BD23501F0C00E955D8 /* SystemTradTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CDB6BB23501F0C00E955D8 /* SystemTradTableViewCell.m */; };
 		18CDB6BE23501F0C00E955D8 /* SystemTradTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18CDB6BC23501F0C00E955D8 /* SystemTradTableViewCell.xib */; };
 		18CDB6C123502E7500E955D8 /* HQViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CDB6C023502E7500E955D8 /* HQViewController.m */; };
@@ -65,7 +80,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		18709FDD234F2671006CD559 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		18709FDD234F2671006CD559 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 3; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		18709FDE234F2671006CD559 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		18709FE0234F2671006CD559 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		18709FE1234F2671006CD559 /* SignViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignViewController.m; sourceTree = "<group>"; };
@@ -97,8 +112,6 @@
 		18A97B49234DBB06006BDBBC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		18A97B4B234DBB06006BDBBC /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		18A97B4C234DBB06006BDBBC /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		18A97B4E234DBB06006BDBBC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		18A97B4F234DBB06006BDBBC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		18A97B52234DBB06006BDBBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		18A97B54234DBB07006BDBBC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18A97B57234DBB07006BDBBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -120,11 +133,8 @@
 		18A97B7A234DBB6D006BDBBC /* UIColor+TT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+TT.m"; sourceTree = "<group>"; };
 		18A97B7B234DBB6D006BDBBC /* ZHightView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHightView.m; sourceTree = "<group>"; };
 		18A97B8E234DBB76006BDBBC /* MainCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainCollectionViewCell.h; sourceTree = "<group>"; };
-		18A97B8F234DBB76006BDBBC /* ListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListTableViewCell.h; sourceTree = "<group>"; };
 		18A97B90234DBB76006BDBBC /* MainCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainCollectionViewCell.xib; sourceTree = "<group>"; };
-		18A97B91234DBB76006BDBBC /* ListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
 		18A97B92234DBB76006BDBBC /* MainCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainCollectionViewCell.m; sourceTree = "<group>"; };
-		18A97B93234DBB76006BDBBC /* ListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListTableViewCell.m; sourceTree = "<group>"; };
 		18A97B98234DBB87006BDBBC /* InfoPlist.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		18A97B9A234DBB9E006BDBBC /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		18A97BC0234DC356006BDBBC /* UIImage+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Utils.h"; sourceTree = "<group>"; };
@@ -152,6 +162,38 @@
 		18BD062223507EBB00F89CA0 /* TransactionRecordTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransactionRecordTableViewCell.h; sourceTree = "<group>"; };
 		18BD062323507EBB00F89CA0 /* TransactionRecordTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransactionRecordTableViewCell.m; sourceTree = "<group>"; };
 		18BD062423507EBB00F89CA0 /* TransactionRecordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionRecordTableViewCell.xib; sourceTree = "<group>"; };
+		18BD0627235086CF00F89CA0 /* SearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		18BD0628235086CF00F89CA0 /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		18BD062A2350979A00F89CA0 /* MainTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainTableViewCell.h; sourceTree = "<group>"; };
+		18BD062B2350979A00F89CA0 /* MainTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainTableViewCell.m; sourceTree = "<group>"; };
+		18BD062C2350979A00F89CA0 /* MainTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainTableViewCell.xib; sourceTree = "<group>"; };
+		18BD062F2350A65F00F89CA0 /* ClassViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassViewController.h; sourceTree = "<group>"; };
+		18BD06302350A65F00F89CA0 /* ClassViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassViewController.m; sourceTree = "<group>"; };
+		18BD06322350A8CE00F89CA0 /* ClassTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassTableViewCell.h; sourceTree = "<group>"; };
+		18BD06332350A8CE00F89CA0 /* ClassTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassTableViewCell.m; sourceTree = "<group>"; };
+		18BD06342350A8CE00F89CA0 /* ClassTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClassTableViewCell.xib; sourceTree = "<group>"; };
+		18BD06372350AB4500F89CA0 /* MessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
+		18BD06382350AB4500F89CA0 /* MessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
+		18BD063A2350AC9100F89CA0 /* PlayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayViewController.h; sourceTree = "<group>"; };
+		18BD063B2350AC9100F89CA0 /* PlayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayViewController.m; sourceTree = "<group>"; };
+		18BD06742350B62900F89CA0 /* ZQPlayerImage.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ZQPlayerImage.bundle; sourceTree = "<group>"; };
+		18BD06752350B62900F89CA0 /* ZQPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQPlayer.h; sourceTree = "<group>"; };
+		18BD06762350B62900F89CA0 /* ZQPlayerLandSpaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQPlayerLandSpaceViewController.h; sourceTree = "<group>"; };
+		18BD06772350B62900F89CA0 /* ZQPlayerMaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQPlayerMaskView.h; sourceTree = "<group>"; };
+		18BD06782350B62900F89CA0 /* ZQPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQPlayer.m; sourceTree = "<group>"; };
+		18BD06792350B62900F89CA0 /* ZQPlayerLandSpaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQPlayerLandSpaceViewController.m; sourceTree = "<group>"; };
+		18BD067A2350B62900F89CA0 /* ZQPlayerMaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQPlayerMaskView.m; sourceTree = "<group>"; };
+		18BD067F2350C1B800F89CA0 /* InformationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InformationViewController.h; sourceTree = "<group>"; };
+		18BD06802350C1B800F89CA0 /* InformationViewController.m */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = sourcecode.c.objc; path = InformationViewController.m; sourceTree = "<group>"; };
+		18BD06822350C21700F89CA0 /* NewsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
+		18BD06832350C21700F89CA0 /* NewsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
+		18BD06852350C22600F89CA0 /* ImportViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImportViewController.h; sourceTree = "<group>"; };
+		18BD06862350C22600F89CA0 /* ImportViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImportViewController.m; sourceTree = "<group>"; };
+		18BD06882350C23500F89CA0 /* NewgpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewgpViewController.h; sourceTree = "<group>"; };
+		18BD06892350C23500F89CA0 /* NewgpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewgpViewController.m; sourceTree = "<group>"; };
+		18BD068B2350C8CC00F89CA0 /* NewgpTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewgpTableViewCell.h; sourceTree = "<group>"; };
+		18BD068C2350C8CC00F89CA0 /* NewgpTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewgpTableViewCell.m; sourceTree = "<group>"; };
+		18BD068D2350C8CC00F89CA0 /* NewgpTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewgpTableViewCell.xib; sourceTree = "<group>"; };
 		18CDB6BA23501F0C00E955D8 /* SystemTradTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SystemTradTableViewCell.h; sourceTree = "<group>"; };
 		18CDB6BB23501F0C00E955D8 /* SystemTradTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SystemTradTableViewCell.m; sourceTree = "<group>"; };
 		18CDB6BC23501F0C00E955D8 /* SystemTradTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SystemTradTableViewCell.xib; sourceTree = "<group>"; };
@@ -189,6 +231,20 @@
 			children = (
 				18709FDE234F2671006CD559 /* MainViewController.h */,
 				18709FDD234F2671006CD559 /* MainViewController.m */,
+				18BD062F2350A65F00F89CA0 /* ClassViewController.h */,
+				18BD06302350A65F00F89CA0 /* ClassViewController.m */,
+				18BD063A2350AC9100F89CA0 /* PlayViewController.h */,
+				18BD063B2350AC9100F89CA0 /* PlayViewController.m */,
+				18BD067F2350C1B800F89CA0 /* InformationViewController.h */,
+				18BD06802350C1B800F89CA0 /* InformationViewController.m */,
+				18BD06822350C21700F89CA0 /* NewsViewController.h */,
+				18BD06832350C21700F89CA0 /* NewsViewController.m */,
+				18BD06852350C22600F89CA0 /* ImportViewController.h */,
+				18BD06862350C22600F89CA0 /* ImportViewController.m */,
+				18BD06882350C23500F89CA0 /* NewgpViewController.h */,
+				18BD06892350C23500F89CA0 /* NewgpViewController.m */,
+				18BD06372350AB4500F89CA0 /* MessageViewController.h */,
+				18BD06382350AB4500F89CA0 /* MessageViewController.m */,
 			);
 			path = main;
 			sourceTree = "<group>";
@@ -217,6 +273,8 @@
 				18CDB6D32350698F00E955D8 /* ZFPMViewController.m */,
 				18BD061C23506CF400F89CA0 /* GPXQViewController.h */,
 				18BD061D23506CF400F89CA0 /* GPXQViewController.m */,
+				18BD0627235086CF00F89CA0 /* SearchViewController.h */,
+				18BD0628235086CF00F89CA0 /* SearchViewController.m */,
 			);
 			path = market;
 			sourceTree = "<group>";
@@ -282,8 +340,6 @@
 				18A97B49234DBB06006BDBBC /* AppDelegate.m */,
 				18A97B4B234DBB06006BDBBC /* SceneDelegate.h */,
 				18A97B4C234DBB06006BDBBC /* SceneDelegate.m */,
-				18A97B4E234DBB06006BDBBC /* ViewController.h */,
-				18A97B4F234DBB06006BDBBC /* ViewController.m */,
 				18A97B51234DBB06006BDBBC /* Main.storyboard */,
 				18A97B54234DBB07006BDBBC /* Assets.xcassets */,
 				18A97B56234DBB07006BDBBC /* LaunchScreen.storyboard */,
@@ -298,6 +354,7 @@
 		18A97B6C234DBB6D006BDBBC /* normal */ = {
 			isa = PBXGroup;
 			children = (
+				18BD06732350B62900F89CA0 /* ZQPlayer */,
 				18A97B71234DBB6D006BDBBC /* UIColor+TT.h */,
 				18A97B7A234DBB6D006BDBBC /* UIColor+TT.m */,
 				18A97B72234DBB6D006BDBBC /* BaseViewController.m */,
@@ -323,9 +380,6 @@
 				18A97B8E234DBB76006BDBBC /* MainCollectionViewCell.h */,
 				18A97B92234DBB76006BDBBC /* MainCollectionViewCell.m */,
 				18A97B90234DBB76006BDBBC /* MainCollectionViewCell.xib */,
-				18A97B8F234DBB76006BDBBC /* ListTableViewCell.h */,
-				18A97B93234DBB76006BDBBC /* ListTableViewCell.m */,
-				18A97B91234DBB76006BDBBC /* ListTableViewCell.xib */,
 				1870A008234F70C2006CD559 /* XLYTableViewCell.h */,
 				1870A009234F70C2006CD559 /* XLYTableViewCell.m */,
 				1870A00A234F70C2006CD559 /* XLYTableViewCell.xib */,
@@ -341,6 +395,15 @@
 				18CDB6CD2350616100E955D8 /* ZXTableViewCell.h */,
 				18CDB6CE2350616100E955D8 /* ZXTableViewCell.m */,
 				18CDB6CF2350616100E955D8 /* ZXTableViewCell.xib */,
+				18BD062A2350979A00F89CA0 /* MainTableViewCell.h */,
+				18BD062B2350979A00F89CA0 /* MainTableViewCell.m */,
+				18BD062C2350979A00F89CA0 /* MainTableViewCell.xib */,
+				18BD06322350A8CE00F89CA0 /* ClassTableViewCell.h */,
+				18BD06332350A8CE00F89CA0 /* ClassTableViewCell.m */,
+				18BD06342350A8CE00F89CA0 /* ClassTableViewCell.xib */,
+				18BD068B2350C8CC00F89CA0 /* NewgpTableViewCell.h */,
+				18BD068C2350C8CC00F89CA0 /* NewgpTableViewCell.m */,
+				18BD068D2350C8CC00F89CA0 /* NewgpTableViewCell.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -380,6 +443,20 @@
 				18709FDF234F2671006CD559 /* login */,
 			);
 			path = controller;
+			sourceTree = "<group>";
+		};
+		18BD06732350B62900F89CA0 /* ZQPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				18BD06742350B62900F89CA0 /* ZQPlayerImage.bundle */,
+				18BD06752350B62900F89CA0 /* ZQPlayer.h */,
+				18BD06762350B62900F89CA0 /* ZQPlayerLandSpaceViewController.h */,
+				18BD06772350B62900F89CA0 /* ZQPlayerMaskView.h */,
+				18BD06782350B62900F89CA0 /* ZQPlayer.m */,
+				18BD06792350B62900F89CA0 /* ZQPlayerLandSpaceViewController.m */,
+				18BD067A2350B62900F89CA0 /* ZQPlayerMaskView.m */,
+			);
+			path = ZQPlayer;
 			sourceTree = "<group>";
 		};
 		4600E0D7AF1FE08D101AEADA /* Frameworks */ = {
@@ -458,17 +535,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18BD06362350A8CE00F89CA0 /* ClassTableViewCell.xib in Resources */,
 				18A97B58234DBB07006BDBBC /* LaunchScreen.storyboard in Resources */,
+				18BD067B2350B62900F89CA0 /* ZQPlayerImage.bundle in Resources */,
 				18CDB6D12350616100E955D8 /* ZXTableViewCell.xib in Resources */,
 				18BD062623507EBB00F89CA0 /* TransactionRecordTableViewCell.xib in Resources */,
 				18CDB6CC235057A900E955D8 /* HQTableViewCell.xib in Resources */,
 				18A97B99234DBB87006BDBBC /* InfoPlist.strings in Resources */,
-				18A97B95234DBB76006BDBBC /* ListTableViewCell.xib in Resources */,
 				18A97B94234DBB76006BDBBC /* MainCollectionViewCell.xib in Resources */,
+				18BD062E2350979A00F89CA0 /* MainTableViewCell.xib in Resources */,
 				1870A00C234F70C2006CD559 /* XLYTableViewCell.xib in Resources */,
 				18A97B55234DBB07006BDBBC /* Assets.xcassets in Resources */,
 				18A97B53234DBB06006BDBBC /* Main.storyboard in Resources */,
 				18CDB6BE23501F0C00E955D8 /* SystemTradTableViewCell.xib in Resources */,
+				18BD068F2350C8CC00F89CA0 /* NewgpTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -529,12 +609,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				18CDB6CB235057A900E955D8 /* HQTableViewCell.m in Sources */,
+				18BD06312350A65F00F89CA0 /* ClassViewController.m in Sources */,
 				18A97B8A234DBB6D006BDBBC /* SingletonModel.m in Sources */,
 				18709FEB234F2672006CD559 /* LoginViewController.m in Sources */,
 				18CDB6D42350698F00E955D8 /* ZFPMViewController.m in Sources */,
 				18BD062523507EBB00F89CA0 /* TransactionRecordTableViewCell.m in Sources */,
+				18BD06872350C22600F89CA0 /* ImportViewController.m in Sources */,
 				18A97B8C234DBB6D006BDBBC /* ZHightView.m in Sources */,
-				18A97B50234DBB06006BDBBC /* ViewController.m in Sources */,
 				18CDB6D02350616100E955D8 /* ZXTableViewCell.m in Sources */,
 				18A97BD5234DC356006BDBBC /* Account.m in Sources */,
 				18A97B87234DBB6D006BDBBC /* BaseViewController.m in Sources */,
@@ -545,32 +626,43 @@
 				18709FF5234F4CBF006CD559 /* ChangeNameViewController.m in Sources */,
 				18BD062123507E8B00F89CA0 /* TransactionRecordViewController.m in Sources */,
 				18CDB6C423502E7F00E955D8 /* ZXViewController.m in Sources */,
+				18BD068A2350C23500F89CA0 /* NewgpViewController.m in Sources */,
 				18709FEC234F2672006CD559 /* SignViewController.m in Sources */,
+				18BD06812350C1B800F89CA0 /* InformationViewController.m in Sources */,
+				18BD06842350C21700F89CA0 /* NewsViewController.m in Sources */,
 				18A97BDB234DC729006BDBBC /* StockTabbarController.m in Sources */,
 				18A97B8B234DBB6D006BDBBC /* UIColor+TT.m in Sources */,
 				1870A007234F54EE006CD559 /* CZViewController.m in Sources */,
 				18709FF2234F2679006CD559 /* TrainViewController.m in Sources */,
+				18BD067E2350B62900F89CA0 /* ZQPlayerMaskView.m in Sources */,
 				18A97B4A234DBB06006BDBBC /* AppDelegate.m in Sources */,
 				18A97B89234DBB6D006BDBBC /* Utils.m in Sources */,
 				18709FEE234F2672006CD559 /* MyViewController.m in Sources */,
 				18A97B5B234DBB07006BDBBC /* main.m in Sources */,
+				18BD06352350A8CE00F89CA0 /* ClassTableViewCell.m in Sources */,
 				1870A00F234F79C5006CD559 /* BuysellViewController.m in Sources */,
+				18BD06392350AB4500F89CA0 /* MessageViewController.m in Sources */,
+				18BD067C2350B62900F89CA0 /* ZQPlayer.m in Sources */,
 				18709FEA234F2672006CD559 /* MainViewController.m in Sources */,
 				1870A00B234F70C2006CD559 /* XLYTableViewCell.m in Sources */,
 				18A97BD2234DC356006BDBBC /* RequestResultVO.m in Sources */,
+				18BD0629235086CF00F89CA0 /* SearchViewController.m in Sources */,
 				1870A004234F4D2B006CD559 /* VersionViewController.m in Sources */,
 				18A97B86234DBB6D006BDBBC /* YCAlertView.m in Sources */,
 				18709FED234F2672006CD559 /* MarketViewController.m in Sources */,
+				18BD062D2350979A00F89CA0 /* MainTableViewCell.m in Sources */,
 				18A97B4D234DBB06006BDBBC /* SceneDelegate.m in Sources */,
 				18A97BD3234DC356006BDBBC /* NSString+StringUtil.m in Sources */,
-				18A97B97234DBB76006BDBBC /* ListTableViewCell.m in Sources */,
 				18A97B88234DBB6D006BDBBC /* MBProgressHUD+PD.m in Sources */,
 				18CDB6BD23501F0C00E955D8 /* SystemTradTableViewCell.m in Sources */,
+				18BD068E2350C8CC00F89CA0 /* NewgpTableViewCell.m in Sources */,
 				18BD061E23506CF400F89CA0 /* GPXQViewController.m in Sources */,
 				18A97BD4234DC356006BDBBC /* BaseRequestServer.m in Sources */,
 				18A97BD1234DC356006BDBBC /* NSDictionary+NilSafe.m in Sources */,
+				18BD067D2350B62900F89CA0 /* ZQPlayerLandSpaceViewController.m in Sources */,
 				18A97B96234DBB76006BDBBC /* MainCollectionViewCell.m in Sources */,
 				18A97BD6234DC356006BDBBC /* UIImage+Utils.m in Sources */,
+				18BD063C2350AC9100F89CA0 /* PlayViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

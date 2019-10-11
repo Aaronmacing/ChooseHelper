@@ -331,7 +331,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row == 0) {
         
-        [[NSNotificationCenter defaultCenter]postNotificationName:@"jump3" object:nil userInfo:nil];
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"jump1" object:nil userInfo:nil];
     }
     else if (indexPath.row == 1) {
         

@@ -11,6 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MainCollectionViewCell : UICollectionViewCell
+@property (weak, nonatomic) IBOutlet UILabel *numLabel;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -9,12 +9,13 @@
 #import "MarketViewController.h"
 #import "HQViewController.h"
 #import "ZXViewController.h"
-
+#import "SearchViewController.h"
 @interface MarketViewController ()
 @property(nonatomic,strong)UIView *showView;
 @property(nonatomic,strong)HQViewController *leftVC;
 @property(nonatomic,strong)ZXViewController *rightVC;
 @property(nonatomic,strong)UIViewController *showVC;
+@property(nonatomic,strong)UIButton *topBtn;
 @end
 
 @implementation MarketViewController
@@ -22,8 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    self.backBtn.hidden = YES;
+
     
     UIButton *btn = [UIButton new];
     [btn setBackgroundImage:kGetImage(@"hqselect") forState:UIControlStateNormal];
@@ -36,13 +36,64 @@
         make.centerX.mas_equalTo(self.view.mas_centerX);
         make.centerY.mas_equalTo(self.titleLabel.mas_centerY);
     }];
+    self.topBtn = btn;
     
     // 初始化控制器
     [self controllersInit];
 
     // 初始化要展示的区域
     [self showViewInit];
+    
+    [self.backBtn setImage:kGetImage(@"search") forState:UIControlStateNormal];
+    [self.backBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
+        
+        make.top.mas_equalTo(self.view.mas_top).with.offset( HEIGHT_STATUSBAR);
+        make.width.mas_equalTo(44);
+        make.height.mas_equalTo(44);
+        make.right.mas_equalTo(self.view.mas_right);
+    }];
+    [self.view bringSubviewToFront:self.backBtn];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goToOtherPage1) name:@"jump1" object:nil];
+    
 }
+
+
+- (void)goToOtherPage1
+{
+    if (self.topBtn.selected == YES) {
+        
+    }
+    else
+    {
+        self.topBtn.selected = YES;
+
+        [self transitionFromViewController:self.showVC
+                   toViewController:self.rightVC
+                           duration:0.5
+                            options:UIViewAnimationOptionTransitionNone
+                         animations:^{
+
+
+
+                         }
+                         completion:^(BOOL finished) {
+                             self.showVC = self.rightVC;
+                         }];
+       
+    }
+    
+}
+
+
+
+- (void)backBtnCliked:(UIButton *)sender
+{
+    SearchViewController *vc = [[SearchViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+
 
 - (void)controllersInit
 {

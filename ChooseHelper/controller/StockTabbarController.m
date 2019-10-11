@@ -50,14 +50,21 @@
 //    [self addObserver:self forKeyPath:@"selectedIndex" options:NSKeyValueObservingOptionNew context:nil];
     self.delegate = self;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goToOtherPage) name:@"jump3" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goToOtherPage1) name:@"jump1" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goToOtherPage2) name:@"jump2" object:nil];
     
 }
 
-- (void)goToOtherPage
+- (void)goToOtherPage1
 {
     [self setSelectedIndex:1];
     self.bkIV.image = [UIImage imageNamed:@"btm_2"];
+}
+
+- (void)goToOtherPage2
+{
+    [self setSelectedIndex:2];
+    self.bkIV.image = [UIImage imageNamed:@"btm_3"];
 }
 
 

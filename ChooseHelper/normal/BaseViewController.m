@@ -20,9 +20,7 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    self.navigationController.navigationBar.barStyle = UIStatusBarStyleDefault;
-    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-    self.navigationController.navigationBar.topItem.title = @"";
+
     
     UIImageView *backgroundImage = [UIImageView new];
     backgroundImage.image = kGetImage(@"nav_bg");

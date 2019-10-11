@@ -1,8 +1,8 @@
 //
-//  ListTableViewCell.h
-//  MathGame
+//  ClassTableViewCell.h
+//  ChooseHelper
 //
-//  Created by apple on 2019/5/16.
+//  Created by Apple on 2019/10/11.
 //  Copyright © 2019 apple. All rights reserved.
 //
 
@@ -10,9 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ListTableViewCell : UITableViewCell
+@interface ClassTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *messageLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 
 @end
 

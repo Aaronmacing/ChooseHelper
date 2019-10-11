@@ -1,20 +1,20 @@
 //
-//  ListTableViewCell.m
-//  MathGame
+//  NewgpTableViewCell.m
+//  ChooseHelper
 //
-//  Created by apple on 2019/5/16.
+//  Created by Apple on 2019/10/11.
 //  Copyright © 2019 apple. All rights reserved.
 //
 
-#import "ListTableViewCell.h"
+#import "NewgpTableViewCell.h"
 
-@implementation ListTableViewCell
+@implementation NewgpTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    self.backgroundColor = [UIColor clearColor];
 }
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

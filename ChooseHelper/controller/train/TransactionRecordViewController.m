@@ -66,6 +66,19 @@
     }
     //设置cell没有选中效果
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    if (indexPath.row % 2 == 0) {
+        
+        cell.flagImage.image = kGetImage(@"cell_flag_buy");
+        cell.flagName.text = @"买入";
+        cell.flagName.textColor = [UIColor colorWithHexString:@"#FF4242" alpha:1];
+    }
+    else
+    {
+        cell.flagImage.image = kGetImage(@"cell_flag_sell");
+        cell.flagName.text = @"卖出";
+        cell.flagName.textColor = [UIColor colorWithHexString:@"#0000FF" alpha:1];
+    }
 
    
     return cell;

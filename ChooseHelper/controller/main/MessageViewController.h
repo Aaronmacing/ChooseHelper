@@ -1,8 +1,8 @@
 //
-//  MainViewController.h
+//  MessageViewController.h
 //  ChooseHelper
 //
-//  Created by Apple on 2019/10/10.
+//  Created by Apple on 2019/10/11.
 //  Copyright © 2019 apple. All rights reserved.
 //
 
@@ -10,8 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MainViewController : UIViewController
-@property(nonatomic,strong)UILabel *titleLabel;
+@interface MessageViewController : BaseViewController
+
 @end
 
 NS_ASSUME_NONNULL_END
