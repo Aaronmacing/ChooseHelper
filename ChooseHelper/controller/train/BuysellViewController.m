@@ -22,7 +22,7 @@
 @property(nonatomic,copy)NSArray *array6;
 @property(nonatomic,assign)NSInteger nowNum;
 @property(nonatomic,strong)NSMutableDictionary *nowData;
-
+@property(nonatomic,strong)UILabel *btmLabel;
 @property(nonatomic,strong)NSMutableArray *dataSource;
 
 @end
@@ -47,6 +47,7 @@
          
          self.yuer = 10000;
      }
+     self.btmLabel.text = [NSString stringWithFormat:@"账户余额:%0.2f",self.yuer];
 }
 
 
@@ -242,6 +243,7 @@
          make.width.mas_equalTo(290);
          
      }];
+     self.btmLabel = mLabel;
      
      UIButton *czBtn = [UIButton new];
      [czBtn setTitle:@"去充值>>" forState:UIControlStateNormal];

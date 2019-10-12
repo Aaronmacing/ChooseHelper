@@ -36,6 +36,7 @@
         if (canUse == 0) {
             
             canUse = 10000;
+            [user setDouble:10000 forKey:@"canUse"];
         }
     
     self.nowLabel.text = [NSString stringWithFormat:@"%0.2f",canUse];
