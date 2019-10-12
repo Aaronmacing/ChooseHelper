@@ -52,7 +52,7 @@
         
     }];
     
-    UILabel *label = [Utils setLabelWithlines:0 textAlignment:NSTextAlignmentCenter font:[UIFont systemFontOfSize:17] text:@"股 参 谋" textColor:[UIColor whiteColor]];
+    UILabel *label = [Utils setLabelWithlines:0 textAlignment:NSTextAlignmentCenter font:[UIFont systemFontOfSize:17] text:@"金牛配资" textColor:[UIColor whiteColor]];
     [self.view addSubview:label];
     [label mas_makeConstraints:^(MASConstraintMaker *make) {
         
@@ -149,14 +149,14 @@
 //    UILabel *label1 = [Utils setLabelWithlines:0 textAlignment:NSTextAlignmentLeft font:[UIFont systemFontOfSize:12] text:@"记住密码" textColor:[UIColor whiteColor]];
 //    [self.view addSubview:label1];
 //    [label1 mas_makeConstraints:^(MASConstraintMaker *make) {
-//        
+//
 //        make.left.mas_equalTo(spBtn.mas_right).with.offset(6);
 //        make.width.mas_equalTo(50);
 //        make.height.mas_equalTo(12);
 //        make.top.mas_equalTo(spBtn.mas_top).with.offset(-39);
-//        
+//
 //    }];
-//    
+//
 //    UIButton *opBtn = [UIButton new];
 //    opBtn.selected = YES;
 //    [opBtn setImageEdgeInsets:UIEdgeInsetsMake(5.5, 5.5, 5.5, 5.5)];
@@ -169,7 +169,7 @@
 //        make.height.mas_equalTo(22);
 //        make.width.mas_equalTo(22);
 //        make.right.mas_equalTo(label1.mas_left);
-//        
+//
 //    }];
     
     

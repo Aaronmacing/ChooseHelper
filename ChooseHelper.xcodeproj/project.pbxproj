@@ -147,7 +147,7 @@
 		1870A00A234F70C2006CD559 /* XLYTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = XLYTableViewCell.xib; sourceTree = "<group>"; };
 		1870A00D234F79C5006CD559 /* BuysellViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BuysellViewController.h; sourceTree = "<group>"; };
 		1870A00E234F79C5006CD559 /* BuysellViewController.m */ = {isa = PBXFileReference; indentWidth = 5; lastKnownFileType = sourcecode.c.objc; path = BuysellViewController.m; sourceTree = "<group>"; };
-		18A97B45234DBB06006BDBBC /* ChooseHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChooseHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		18A97B45234DBB06006BDBBC /* 金牛配资.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "金牛配资.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		18A97B48234DBB06006BDBBC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		18A97B49234DBB06006BDBBC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		18A97B54234DBB07006BDBBC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -423,7 +423,7 @@
 		18A97B46234DBB06006BDBBC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				18A97B45234DBB06006BDBBC /* ChooseHelper.app */,
+				18A97B45234DBB06006BDBBC /* 金牛配资.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -745,7 +745,7 @@
 			);
 			name = ChooseHelper;
 			productName = ChooseHelper;
-			productReference = 18A97B45234DBB06006BDBBC /* ChooseHelper.app */;
+			productReference = 18A97B45234DBB06006BDBBC /* 金牛配资.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1079,7 +1079,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhizhang.stockhelper;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "金牛配资";
 				PROVISIONING_PROFILE_SPECIFIER = stockhelperDevP;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1101,7 +1101,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhizhang.stockhelper;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "金牛配资";
 				PROVISIONING_PROFILE_SPECIFIER = stockhelperStoreP;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
