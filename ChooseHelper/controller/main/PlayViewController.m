@@ -69,8 +69,8 @@
     // 网络视频
 //    NSString *videoUrl = @"http://static.tripbe.com/videofiles/20121214/9533522808.f4v.mp4";
     // 本地视频
-    // NSString *videoUrl = [[NSBundle mainBundle] pathForResource:@"video" ofType:@"mp4"];
-    [_playerMaskView playWithVideoUrl:_vidModel.video];
+    NSString *videoUrl = [[NSBundle mainBundle] pathForResource:self.vidModel.video ofType:@"mp4"];
+    [_playerMaskView playWithVideoUrl:videoUrl];
     
     [_playerMaskView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.view.mas_centerX);
@@ -181,7 +181,8 @@
     
     KsModel * model = _rArr[indexPath.row];
     self.title = model.title;
-    [_playerMaskView playWithVideoUrl:model.video];
+    NSString *videoUrl = [[NSBundle mainBundle] pathForResource:model.video ofType:@"mp4"];
+    [_playerMaskView playWithVideoUrl:videoUrl];
 }
 
 #pragma mark - 屏幕旋转

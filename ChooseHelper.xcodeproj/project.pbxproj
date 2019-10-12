@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1836FF212352164A00512469 /* 003-3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 1836FF1D2352164A00512469 /* 003-3.mp4 */; };
+		1836FF222352164A00512469 /* 001-1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 1836FF1E2352164A00512469 /* 001-1.mp4 */; };
+		1836FF232352164A00512469 /* 004-4.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 1836FF1F2352164A00512469 /* 004-4.mp4 */; };
+		1836FF242352164A00512469 /* 002-2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 1836FF202352164A00512469 /* 002-2.mp4 */; };
 		1860370D2351B4DB00565B03 /* MBProgressHUD+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = 186037092351B4DB00565B03 /* MBProgressHUD+Add.m */; };
 		1860370E2351B4DB00565B03 /* MBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1860370A2351B4DB00565B03 /* MBManager.m */; };
 		186037132351B96B00565B03 /* KsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 186037122351B96B00565B03 /* KsModel.m */; };
@@ -110,6 +114,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1836FF1D2352164A00512469 /* 003-3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "003-3.mp4"; sourceTree = "<group>"; };
+		1836FF1E2352164A00512469 /* 001-1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "001-1.mp4"; sourceTree = "<group>"; };
+		1836FF1F2352164A00512469 /* 004-4.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "004-4.mp4"; sourceTree = "<group>"; };
+		1836FF202352164A00512469 /* 002-2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "002-2.mp4"; sourceTree = "<group>"; };
 		186037092351B4DB00565B03 /* MBProgressHUD+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Add.m"; sourceTree = "<group>"; };
 		1860370A2351B4DB00565B03 /* MBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBManager.m; sourceTree = "<group>"; };
 		1860370B2351B4DB00565B03 /* MBProgressHUD+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Add.h"; sourceTree = "<group>"; };
@@ -314,6 +322,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1836FF1C2352164A00512469 /* resoure */ = {
+			isa = PBXGroup;
+			children = (
+				1836FF1D2352164A00512469 /* 003-3.mp4 */,
+				1836FF1E2352164A00512469 /* 001-1.mp4 */,
+				1836FF1F2352164A00512469 /* 004-4.mp4 */,
+				1836FF202352164A00512469 /* 002-2.mp4 */,
+			);
+			path = resoure;
+			sourceTree = "<group>";
+		};
 		186037082351B4DB00565B03 /* MBProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -560,6 +579,7 @@
 		68429139235172BA009341A3 /* DataBase */ = {
 			isa = PBXGroup;
 			children = (
+				1836FF1C2352164A00512469 /* resoure */,
 				1860371C2351DA5F00565B03 /* jzsp0.json */,
 				1860371D2351DA5F00565B03 /* jzsp1.json */,
 				1860371B2351DA5E00565B03 /* jzsp2.json */,
@@ -791,14 +811,18 @@
 				18CDB6D12350616100E955D8 /* ZXTableViewCell.xib in Resources */,
 				18BD062623507EBB00F89CA0 /* TransactionRecordTableViewCell.xib in Resources */,
 				18CDB6CC235057A900E955D8 /* HQTableViewCell.xib in Resources */,
+				1836FF212352164A00512469 /* 003-3.mp4 in Resources */,
 				18A97B99234DBB87006BDBBC /* InfoPlist.strings in Resources */,
 				186037202351DA5F00565B03 /* jzsp0.json in Resources */,
+				1836FF232352164A00512469 /* 004-4.mp4 in Resources */,
 				18A97B94234DBB76006BDBBC /* MainCollectionViewCell.xib in Resources */,
 				18BD062E2350979A00F89CA0 /* MainTableViewCell.xib in Resources */,
 				186037222351DA5F00565B03 /* jzsp3.json in Resources */,
 				186037212351DA5F00565B03 /* jzsp1.json in Resources */,
 				1870A00C234F70C2006CD559 /* XLYTableViewCell.xib in Resources */,
+				1836FF242352164A00512469 /* 002-2.mp4 in Resources */,
 				18A97B55234DBB07006BDBBC /* Assets.xcassets in Resources */,
+				1836FF222352164A00512469 /* 001-1.mp4 in Resources */,
 				1860371F2351DA5F00565B03 /* jzsp2.json in Resources */,
 				18CDB6BE23501F0C00E955D8 /* SystemTradTableViewCell.xib in Resources */,
 				685DF1282351D1CE00EA2C9B /* data2.plist in Resources */,
