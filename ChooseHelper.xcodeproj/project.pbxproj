@@ -22,8 +22,6 @@
 		1870A00C234F70C2006CD559 /* XLYTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1870A00A234F70C2006CD559 /* XLYTableViewCell.xib */; };
 		1870A00F234F79C5006CD559 /* BuysellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1870A00E234F79C5006CD559 /* BuysellViewController.m */; };
 		18A97B4A234DBB06006BDBBC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A97B49234DBB06006BDBBC /* AppDelegate.m */; };
-		18A97B4D234DBB06006BDBBC /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A97B4C234DBB06006BDBBC /* SceneDelegate.m */; };
-		18A97B53234DBB06006BDBBC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A97B51234DBB06006BDBBC /* Main.storyboard */; };
 		18A97B55234DBB07006BDBBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18A97B54234DBB07006BDBBC /* Assets.xcassets */; };
 		18A97B58234DBB07006BDBBC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A97B56234DBB07006BDBBC /* LaunchScreen.storyboard */; };
 		18A97B5B234DBB07006BDBBC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A97B5A234DBB07006BDBBC /* main.m */; };
@@ -110,9 +108,6 @@
 		18A97B45234DBB06006BDBBC /* ChooseHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChooseHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18A97B48234DBB06006BDBBC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		18A97B49234DBB06006BDBBC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		18A97B4B234DBB06006BDBBC /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		18A97B4C234DBB06006BDBBC /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		18A97B52234DBB06006BDBBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		18A97B54234DBB07006BDBBC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18A97B57234DBB07006BDBBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18A97B59234DBB07006BDBBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -338,9 +333,6 @@
 				18A97B6C234DBB6D006BDBBC /* normal */,
 				18A97B48234DBB06006BDBBC /* AppDelegate.h */,
 				18A97B49234DBB06006BDBBC /* AppDelegate.m */,
-				18A97B4B234DBB06006BDBBC /* SceneDelegate.h */,
-				18A97B4C234DBB06006BDBBC /* SceneDelegate.m */,
-				18A97B51234DBB06006BDBBC /* Main.storyboard */,
 				18A97B54234DBB07006BDBBC /* Assets.xcassets */,
 				18A97B56234DBB07006BDBBC /* LaunchScreen.storyboard */,
 				18A97B59234DBB07006BDBBC /* Info.plist */,
@@ -546,7 +538,6 @@
 				18BD062E2350979A00F89CA0 /* MainTableViewCell.xib in Resources */,
 				1870A00C234F70C2006CD559 /* XLYTableViewCell.xib in Resources */,
 				18A97B55234DBB07006BDBBC /* Assets.xcassets in Resources */,
-				18A97B53234DBB06006BDBBC /* Main.storyboard in Resources */,
 				18CDB6BE23501F0C00E955D8 /* SystemTradTableViewCell.xib in Resources */,
 				18BD068F2350C8CC00F89CA0 /* NewgpTableViewCell.xib in Resources */,
 			);
@@ -651,7 +642,6 @@
 				18A97B86234DBB6D006BDBBC /* YCAlertView.m in Sources */,
 				18709FED234F2672006CD559 /* MarketViewController.m in Sources */,
 				18BD062D2350979A00F89CA0 /* MainTableViewCell.m in Sources */,
-				18A97B4D234DBB06006BDBBC /* SceneDelegate.m in Sources */,
 				18A97BD3234DC356006BDBBC /* NSString+StringUtil.m in Sources */,
 				18A97B88234DBB6D006BDBBC /* MBProgressHUD+PD.m in Sources */,
 				18CDB6BD23501F0C00E955D8 /* SystemTradTableViewCell.m in Sources */,
@@ -669,14 +659,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		18A97B51234DBB06006BDBBC /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				18A97B52234DBB06006BDBBC /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		18A97B56234DBB07006BDBBC /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
