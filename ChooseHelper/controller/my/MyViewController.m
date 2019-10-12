@@ -28,19 +28,7 @@
 
 @implementation MyViewController
 
-- (void)viewWillAppear:(BOOL)animated
-{
-     [super viewWillAppear:animated];
-      NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
-        double canUse = [user doubleForKey:@"canUse"];
-        if (canUse == 0) {
-            
-            canUse = 10000;
-            [user setDouble:10000 forKey:@"canUse"];
-        }
-    
-    self.nowLabel.text = [NSString stringWithFormat:@"%0.2f",canUse];
-}
+
 
 
 
@@ -180,20 +168,36 @@
         make.top.mas_equalTo(self.tableView.mas_bottom).with.offset(46);
         
     }];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+ 
+    [super viewWillAppear:animated];
+    
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+           double canUse = [user doubleForKey:@"canUse"];
+           if (canUse == 0) {
+               
+               canUse = 10000;
+               [user setDouble:10000 forKey:@"canUse"];
+           }
+       
+       self.nowLabel.text = [NSString stringWithFormat:@"%0.2f",canUse];
     
     self.account = [[AccountDao sharedAccountDao] queryLoginUser];
+       
+   if ([[SDImageCache sharedImageCache] imageFromCacheForKey:self.account.account]) {
+          
+          UIImage *image = [[SDImageCache sharedImageCache] imageFromCacheForKey:self.account.account];
+          [self.headerBtn setBackgroundImage:image forState:UIControlStateNormal];
+          
+   }
+       
+   if ([NSString isNotBlankString:self.account.name]) {
+          
+       self.nameLb.text = self.account.name;
+   }
     
-    if ([[SDImageCache sharedImageCache] imageFromCacheForKey:self.account.account]) {
-           
-           UIImage *image = [[SDImageCache sharedImageCache] imageFromCacheForKey:self.account.account];
-           [self.headerBtn setBackgroundImage:image forState:UIControlStateNormal];
-           
-    }
-    
-    if ([NSString isNotBlankString:self.account.name]) {
-           
-        self.nameLb.text = self.account.name;
-    }
 }
 
 - (void)goToCZ

@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1860370D2351B4DB00565B03 /* MBProgressHUD+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = 186037092351B4DB00565B03 /* MBProgressHUD+Add.m */; };
+		1860370E2351B4DB00565B03 /* MBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1860370A2351B4DB00565B03 /* MBManager.m */; };
+		186037132351B96B00565B03 /* KsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 186037122351B96B00565B03 /* KsModel.m */; };
+		1860371F2351DA5F00565B03 /* jzsp2.json in Resources */ = {isa = PBXBuildFile; fileRef = 1860371B2351DA5E00565B03 /* jzsp2.json */; };
+		186037202351DA5F00565B03 /* jzsp0.json in Resources */ = {isa = PBXBuildFile; fileRef = 1860371C2351DA5F00565B03 /* jzsp0.json */; };
+		186037212351DA5F00565B03 /* jzsp1.json in Resources */ = {isa = PBXBuildFile; fileRef = 1860371D2351DA5F00565B03 /* jzsp1.json */; };
+		186037222351DA5F00565B03 /* jzsp3.json in Resources */ = {isa = PBXBuildFile; fileRef = 1860371E2351DA5F00565B03 /* jzsp3.json */; };
 		18709FEA234F2672006CD559 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18709FDD234F2671006CD559 /* MainViewController.m */; };
 		18709FEB234F2672006CD559 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18709FE0234F2671006CD559 /* LoginViewController.m */; };
 		18709FEC234F2672006CD559 /* SignViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18709FE1234F2671006CD559 /* SignViewController.m */; };
@@ -98,10 +105,21 @@
 		685DF1252351D1C500EA2C9B /* YKLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 685DF1182351D1C500EA2C9B /* YKLineChartView.m */; };
 		685DF1262351D1C500EA2C9B /* YKLineEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 685DF11F2351D1C500EA2C9B /* YKLineEntity.m */; };
 		685DF1282351D1CE00EA2C9B /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 685DF1272351D1CE00EA2C9B /* data.plist */; };
+		685DF3012351FD9100EA2C9B /* NormalStockVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 685DF3002351FD9100EA2C9B /* NormalStockVO.m */; };
 		E2FF3E7F19CE10E29FED0769 /* libPods-ChooseHelper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 61B45CCC1180C42F9FAD4D97 /* libPods-ChooseHelper.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		186037092351B4DB00565B03 /* MBProgressHUD+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Add.m"; sourceTree = "<group>"; };
+		1860370A2351B4DB00565B03 /* MBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBManager.m; sourceTree = "<group>"; };
+		1860370B2351B4DB00565B03 /* MBProgressHUD+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Add.h"; sourceTree = "<group>"; };
+		1860370C2351B4DB00565B03 /* MBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBManager.h; sourceTree = "<group>"; };
+		186037112351B96B00565B03 /* KsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KsModel.h; sourceTree = "<group>"; };
+		186037122351B96B00565B03 /* KsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KsModel.m; sourceTree = "<group>"; };
+		1860371B2351DA5E00565B03 /* jzsp2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = jzsp2.json; sourceTree = "<group>"; };
+		1860371C2351DA5F00565B03 /* jzsp0.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = jzsp0.json; sourceTree = "<group>"; };
+		1860371D2351DA5F00565B03 /* jzsp1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = jzsp1.json; sourceTree = "<group>"; };
+		1860371E2351DA5F00565B03 /* jzsp3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = jzsp3.json; sourceTree = "<group>"; };
 		18709FDD234F2671006CD559 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 3; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		18709FDE234F2671006CD559 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		18709FE0234F2671006CD559 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -279,6 +297,8 @@
 		685DF11F2351D1C500EA2C9B /* YKLineEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKLineEntity.m; sourceTree = "<group>"; };
 		685DF1202351D1C500EA2C9B /* YKLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKLineChartView.h; sourceTree = "<group>"; };
 		685DF1272351D1CE00EA2C9B /* data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = data.plist; sourceTree = "<group>"; };
+		685DF2FF2351FD9100EA2C9B /* NormalStockVO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NormalStockVO.h; sourceTree = "<group>"; };
+		685DF3002351FD9100EA2C9B /* NormalStockVO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NormalStockVO.m; sourceTree = "<group>"; };
 		93E20321FA901A21388A6E34 /* Pods-ChooseHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChooseHelper.release.xcconfig"; path = "Target Support Files/Pods-ChooseHelper/Pods-ChooseHelper.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -294,6 +314,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		186037082351B4DB00565B03 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				1860370C2351B4DB00565B03 /* MBManager.h */,
+				1860370A2351B4DB00565B03 /* MBManager.m */,
+				186037092351B4DB00565B03 /* MBProgressHUD+Add.m */,
+				1860370B2351B4DB00565B03 /* MBProgressHUD+Add.h */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
 		18709FDC234F2671006CD559 /* main */ = {
 			isa = PBXGroup;
 			children = (
@@ -418,6 +449,7 @@
 				6842913823517242009341A3 /* ReqServer */,
 				6842917323517687009341A3 /* Utils */,
 				18A97B8D234DBB76006BDBBC /* view */,
+				186037082351B4DB00565B03 /* MBProgressHUD */,
 			);
 			path = ChooseHelper;
 			sourceTree = "<group>";
@@ -528,6 +560,12 @@
 		68429139235172BA009341A3 /* DataBase */ = {
 			isa = PBXGroup;
 			children = (
+				1860371C2351DA5F00565B03 /* jzsp0.json */,
+				1860371D2351DA5F00565B03 /* jzsp1.json */,
+				1860371B2351DA5E00565B03 /* jzsp2.json */,
+				1860371E2351DA5F00565B03 /* jzsp3.json */,
+				186037112351B96B00565B03 /* KsModel.h */,
+				186037122351B96B00565B03 /* KsModel.m */,
 				6842915523517581009341A3 /* Dao */,
 				6842915423517579009341A3 /* Bean */,
 			);
@@ -549,6 +587,8 @@
 				68429166235175BA009341A3 /* StockRequestResultVO.m */,
 				6842916B235175BA009341A3 /* StockSingleResultVO.h */,
 				6842916C235175BA009341A3 /* StockSingleResultVO.m */,
+				685DF2FF2351FD9100EA2C9B /* NormalStockVO.h */,
+				685DF3002351FD9100EA2C9B /* NormalStockVO.m */,
 			);
 			path = VO;
 			sourceTree = "<group>";
@@ -752,10 +792,14 @@
 				18BD062623507EBB00F89CA0 /* TransactionRecordTableViewCell.xib in Resources */,
 				18CDB6CC235057A900E955D8 /* HQTableViewCell.xib in Resources */,
 				18A97B99234DBB87006BDBBC /* InfoPlist.strings in Resources */,
+				186037202351DA5F00565B03 /* jzsp0.json in Resources */,
 				18A97B94234DBB76006BDBBC /* MainCollectionViewCell.xib in Resources */,
 				18BD062E2350979A00F89CA0 /* MainTableViewCell.xib in Resources */,
+				186037222351DA5F00565B03 /* jzsp3.json in Resources */,
+				186037212351DA5F00565B03 /* jzsp1.json in Resources */,
 				1870A00C234F70C2006CD559 /* XLYTableViewCell.xib in Resources */,
 				18A97B55234DBB07006BDBBC /* Assets.xcassets in Resources */,
+				1860371F2351DA5F00565B03 /* jzsp2.json in Resources */,
 				18CDB6BE23501F0C00E955D8 /* SystemTradTableViewCell.xib in Resources */,
 				685DF1282351D1CE00EA2C9B /* data.plist in Resources */,
 				18BD068F2350C8CC00F89CA0 /* NewgpTableViewCell.xib in Resources */,
@@ -827,6 +871,7 @@
 				68429190235185A7009341A3 /* UITextView+ZWPlaceHolder.m in Sources */,
 				18CDB6D02350616100E955D8 /* ZXTableViewCell.m in Sources */,
 				18A97B87234DBB6D006BDBBC /* BaseViewController.m in Sources */,
+				1860370E2351B4DB00565B03 /* MBManager.m in Sources */,
 				68429191235185A7009341A3 /* UIImage+Additions.m in Sources */,
 				18709FFB234F4CE7006CD559 /* AboutViewController.m in Sources */,
 				685DF1252351D1C500EA2C9B /* YKLineChartView.m in Sources */,
@@ -845,12 +890,15 @@
 				18BD06812350C1B800F89CA0 /* InformationViewController.m in Sources */,
 				18BD06842350C21700F89CA0 /* NewsViewController.m in Sources */,
 				18A97BDB234DC729006BDBBC /* StockTabbarController.m in Sources */,
+				1860370D2351B4DB00565B03 /* MBProgressHUD+Add.m in Sources */,
 				6842916123517596009341A3 /* RootDao.m in Sources */,
 				18A97B8B234DBB6D006BDBBC /* UIColor+TT.m in Sources */,
 				1870A007234F54EE006CD559 /* CZViewController.m in Sources */,
 				18709FF2234F2679006CD559 /* TrainViewController.m in Sources */,
 				18BD067E2350B62900F89CA0 /* ZQPlayerMaskView.m in Sources */,
 				18A97B4A234DBB06006BDBBC /* AppDelegate.m in Sources */,
+				685DF3012351FD9100EA2C9B /* NormalStockVO.m in Sources */,
+				186037132351B96B00565B03 /* KsModel.m in Sources */,
 				685DF1242351D1C500EA2C9B /* YKViewBase.m in Sources */,
 				18A97B89234DBB6D006BDBBC /* Utils.m in Sources */,
 				68429164235175A5009341A3 /* Account.m in Sources */,

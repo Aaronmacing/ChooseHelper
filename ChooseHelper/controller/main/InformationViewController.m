@@ -11,6 +11,7 @@
 #import "ImportViewController.h"
 #import "NewgpViewController.h"
 
+
 @interface InformationViewController ()
 @property(nonatomic,strong)UIView *showView;
 @property(nonatomic,strong)NewsViewController *leftVC;
@@ -126,7 +127,8 @@
       if (sender.tag == 10) {
          
          if (self.showVC == self.leftVC) {
-             
+            
+            
          }
          else
          {

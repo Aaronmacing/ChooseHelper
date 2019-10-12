@@ -9,8 +9,6 @@
 #import "CZViewController.h"
 #import <StoreKit/StoreKit.h>
 
-
-
 @interface CZViewController ()<SKProductsRequestDelegate,SKPaymentTransactionObserver>
 @property(nonatomic,assign)NSInteger selectTag;
 @property(nonatomic,strong)UILabel *numLabel;
@@ -279,6 +277,7 @@
  *
  */
 -(void)verifyPurchaseWithPaymentTransaction{
+    
     //从沙盒中获取交易凭证并且拼接成请求体数据
     NSURL *receiptUrl=[[NSBundle mainBundle] appStoreReceiptURL];
     NSData *receiptData=[NSData dataWithContentsOfURL:receiptUrl];

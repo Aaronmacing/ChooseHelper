@@ -9,10 +9,25 @@
 #import "ZXViewController.h"
 #import "ZXTableViewCell.h"
 #import "ZFPMViewController.h"
-
-@interface ZXViewController ()<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
+#import "StockRequetServer.h"
+#import "StockListResultVO.h"
+#import "NormalStockVO.h"
+@interface ZXViewController ()<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>{
+    NSArray * _lisArr;
+    UILabel *_nd;
+}
 @property(nonatomic,assign)NSInteger leftSelect;
 @property(nonatomic,strong)UITableView *tableView;
+
+@property (nonatomic,strong) NSArray *dataList;
+
+@property (nonatomic,assign) StockMarket market;
+
+@property (nonatomic,strong) Account *account;
+
+@property (nonatomic,strong) NSMutableArray *allDataSouce;
+
+@property (nonatomic,strong) NSMutableArray *subDataSource;
 
 @end
 
@@ -34,6 +49,27 @@
     }];
     
     
+    self.account = [[AccountDao sharedAccountDao] queryLoginUser];
+    self.allDataSouce = @[].mutableCopy;
+    self.subDataSource = @[].mutableCopy;
+    NSArray <NSString *>*favStocks = [self.account.stockComps componentsSeparatedByString:@","];
+    
+    
+    for (NSString * str in favStocks) {
+        
+        NSArray *codeMarket = [str componentsSeparatedByString:@"-"];
+        
+        NormalStockVO *vo = [[NormalStockVO alloc] init];
+        
+        vo.code = codeMarket[0];
+        vo.market = codeMarket[1];
+        
+        if (vo.market.integerValue == Shanghai || vo.market.integerValue == Shenzhen) {
+            
+            
+            
+        }
+    }
     
     NSArray *array = @[@"全部",@"沪深",@"港股",@"美股"];
     for (int i = 0; i < 4; i++) {
@@ -67,6 +103,7 @@
                 make.bottom.mas_equalTo(btn.mas_bottom).with.offset(-6);
             }];
             
+            [self leftBtnCliked:btn];
         }
     }
     
@@ -91,6 +128,23 @@
        
    }];
     
+    
+    _nd = [[UILabel alloc] init];
+    _nd.text = @"暂无数据";
+    _nd.textColor = Uni_RGB(36, 46, 73);
+    _nd.font = [UIFont systemFontOfSize:22];
+    [self.tableView addSubview:_nd];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getData:) name:@"data" object:nil];
+}
+
+- (void)getData:(NSNotification *)notif{
+    
+    
+    self.dataList = (NSArray *)notif.object;
+    
+    
+    
 }
 
 - (void)leftBtnCliked:(UIButton *)sender
@@ -113,6 +167,40 @@
             make.bottom.mas_equalTo(sender.mas_bottom).with.offset(-6);
         }];
     }
+    
+    NSInteger reqTag;
+    if (sender.tag - 10 == 0) {
+        reqTag = 3;
+        self.market = Shanghai;
+    }else if (sender.tag - 10 == 1){
+        reqTag = 0;
+        self.market = Shenzhen;
+    }else if (sender.tag - 10 == 2){
+        reqTag = 2;
+        self.market = HongKong;
+    }else {
+        reqTag = 1;
+        self.market = USA;
+    }
+    
+    
+    
+    [MBManager showWaitingWithTitle:@"加载中"];
+    [[StockRequetServer sharedStockRequetServer] getStockListByPage:1 type:2 stockMarket:reqTag success:^(NSArray<StockListResultVO *> * _Nonnull stockList) {
+        self->_lisArr = stockList;
+        [self.tableView reloadData];
+        
+        if (self->_lisArr.count > 0) {
+            self->_nd.hidden = YES;
+        }else{
+            self->_nd.hidden = NO;
+        }
+        [MBManager hideAlert];
+    } failure:^(NSString * _Nonnull msg) {
+        [MBManager hideAlert];
+        [MBManager showBriefAlert:msg inView:self.view];
+    }];
+    
 }
 
 - (void)czBtnCliked:(UIButton *)sender
@@ -173,13 +261,26 @@
 - (void)addBtnCliked:(UIButton *)sender
 {
     ZFPMViewController *vc = [[ZFPMViewController alloc]init];
+    vc.dataSource = self.dataList;
+    StockMarket market = self.market;
+      if (self.leftSelect == 0) {
+          
+          market = Shanghai;
+      }else if (self.leftSelect == 1){
+       
+          market = HongKong;
+      }else{
+       
+          market = USA;
+      }
+    vc.market = market;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 5;
+    return _lisArr.count;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -197,7 +298,9 @@
     }
     //设置cell没有选中效果
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
+    
+    DataList * model = _lisArr[indexPath.row];
+    [cell setDataVO:model];
    
     return cell;
 }
