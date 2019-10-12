@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -36,12 +36,8 @@
 		18A97B96234DBB76006BDBBC /* MainCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A97B92234DBB76006BDBBC /* MainCollectionViewCell.m */; };
 		18A97B99234DBB87006BDBBC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18A97B98234DBB87006BDBBC /* InfoPlist.strings */; };
 		18A97BD1234DC356006BDBBC /* NSDictionary+NilSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A97BC1234DC356006BDBBC /* NSDictionary+NilSafe.m */; };
-		18A97BD2234DC356006BDBBC /* RequestResultVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A97BC6234DC356006BDBBC /* RequestResultVO.m */; };
 		18A97BD3234DC356006BDBBC /* NSString+StringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A97BC7234DC356006BDBBC /* NSString+StringUtil.m */; };
-		18A97BD4234DC356006BDBBC /* BaseRequestServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A97BC9234DC356006BDBBC /* BaseRequestServer.m */; };
-		18A97BD5234DC356006BDBBC /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A97BCA234DC356006BDBBC /* Account.m */; };
 		18A97BD6234DC356006BDBBC /* UIImage+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A97BCC234DC356006BDBBC /* UIImage+Utils.m */; };
-		18A97BD7234DC356006BDBBC /* UserRequestServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A97BCE234DC356006BDBBC /* UserRequestServer.m */; };
 		18A97BDB234DC729006BDBBC /* StockTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A97BD9234DC729006BDBBC /* StockTabbarController.m */; };
 		18BD061E23506CF400F89CA0 /* GPXQViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BD061D23506CF400F89CA0 /* GPXQViewController.m */; };
 		18BD062123507E8B00F89CA0 /* TransactionRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BD062023507E8B00F89CA0 /* TransactionRecordViewController.m */; };
@@ -74,6 +70,27 @@
 		18CDB6D02350616100E955D8 /* ZXTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CDB6CE2350616100E955D8 /* ZXTableViewCell.m */; };
 		18CDB6D12350616100E955D8 /* ZXTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18CDB6CF2350616100E955D8 /* ZXTableViewCell.xib */; };
 		18CDB6D42350698F00E955D8 /* ZFPMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CDB6D32350698F00E955D8 /* ZFPMViewController.m */; };
+		6842915023517513009341A3 /* UserRequestServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6842914B23517512009341A3 /* UserRequestServer.m */; };
+		6842915123517513009341A3 /* BaseRequestServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6842914D23517513009341A3 /* BaseRequestServer.m */; };
+		6842915223517513009341A3 /* StockBaseRequestServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6842914E23517513009341A3 /* StockBaseRequestServer.m */; };
+		6842915323517513009341A3 /* StockRequetServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6842914F23517513009341A3 /* StockRequetServer.m */; };
+		6842915E23517596009341A3 /* CommonDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 6842915623517595009341A3 /* CommonDao.m */; };
+		6842915F23517596009341A3 /* BaseDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 6842915723517595009341A3 /* BaseDao.m */; };
+		6842916023517596009341A3 /* AccountDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 6842915823517596009341A3 /* AccountDao.m */; };
+		6842916123517596009341A3 /* RootDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 6842915C23517596009341A3 /* RootDao.m */; };
+		68429164235175A5009341A3 /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 68429162235175A5009341A3 /* Account.m */; };
+		6842916D235175BA009341A3 /* RequestResultVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 68429165235175BA009341A3 /* RequestResultVO.m */; };
+		6842916E235175BA009341A3 /* StockRequestResultVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 68429166235175BA009341A3 /* StockRequestResultVO.m */; };
+		6842916F235175BA009341A3 /* StockListResultVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 6842916A235175BA009341A3 /* StockListResultVO.m */; };
+		68429170235175BA009341A3 /* StockSingleResultVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 6842916C235175BA009341A3 /* StockSingleResultVO.m */; };
+		6842917823517813009341A3 /* IndexVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 6842917623517812009341A3 /* IndexVO.m */; };
+		6842917B2351785D009341A3 /* StockNewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6842917A2351785D009341A3 /* StockNewsModel.m */; };
+		6842918023518569009341A3 /* CHBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6842917F23518569009341A3 /* CHBaseViewController.m */; };
+		6842918D235185A7009341A3 /* UIView+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 68429182235185A6009341A3 /* UIView+Util.m */; };
+		6842918E235185A7009341A3 /* UITapGestureRecognizer+Property.m in Sources */ = {isa = PBXBuildFile; fileRef = 68429183235185A6009341A3 /* UITapGestureRecognizer+Property.m */; };
+		6842918F235185A7009341A3 /* UIColor+AppColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 68429184235185A6009341A3 /* UIColor+AppColor.m */; };
+		68429190235185A7009341A3 /* UITextView+ZWPlaceHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 68429185235185A6009341A3 /* UITextView+ZWPlaceHolder.m */; };
+		68429191235185A7009341A3 /* UIImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 68429188235185A7009341A3 /* UIImage+Additions.m */; };
 		E2FF3E7F19CE10E29FED0769 /* libPods-ChooseHelper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 61B45CCC1180C42F9FAD4D97 /* libPods-ChooseHelper.a */; };
 /* End PBXBuildFile section */
 
@@ -134,19 +151,10 @@
 		18A97B9A234DBB9E006BDBBC /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		18A97BC0234DC356006BDBBC /* UIImage+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Utils.h"; sourceTree = "<group>"; };
 		18A97BC1234DC356006BDBBC /* NSDictionary+NilSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+NilSafe.m"; sourceTree = "<group>"; };
-		18A97BC2234DC356006BDBBC /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
-		18A97BC3234DC356006BDBBC /* BaseRequestServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseRequestServer.h; sourceTree = "<group>"; };
 		18A97BC4234DC356006BDBBC /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
-		18A97BC5234DC356006BDBBC /* UrlConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UrlConst.h; sourceTree = "<group>"; };
-		18A97BC6234DC356006BDBBC /* RequestResultVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestResultVO.m; sourceTree = "<group>"; };
 		18A97BC7234DC356006BDBBC /* NSString+StringUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+StringUtil.m"; sourceTree = "<group>"; };
-		18A97BC8234DC356006BDBBC /* UserRequestServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRequestServer.h; sourceTree = "<group>"; };
-		18A97BC9234DC356006BDBBC /* BaseRequestServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseRequestServer.m; sourceTree = "<group>"; };
-		18A97BCA234DC356006BDBBC /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
 		18A97BCB234DC356006BDBBC /* NSDictionary+NilSafe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+NilSafe.h"; sourceTree = "<group>"; };
 		18A97BCC234DC356006BDBBC /* UIImage+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Utils.m"; sourceTree = "<group>"; };
-		18A97BCD234DC356006BDBBC /* RequestResultVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestResultVO.h; sourceTree = "<group>"; };
-		18A97BCE234DC356006BDBBC /* UserRequestServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserRequestServer.m; sourceTree = "<group>"; };
 		18A97BCF234DC356006BDBBC /* NSString+StringUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+StringUtil.h"; sourceTree = "<group>"; };
 		18A97BD9234DC729006BDBBC /* StockTabbarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockTabbarController.m; sourceTree = "<group>"; };
 		18A97BDA234DC729006BDBBC /* StockTabbarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockTabbarController.h; sourceTree = "<group>"; };
@@ -206,6 +214,50 @@
 		18CDB6D32350698F00E955D8 /* ZFPMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZFPMViewController.m; sourceTree = "<group>"; };
 		3365420ECB57F74C43A0DF36 /* Pods-ChooseHelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChooseHelper.debug.xcconfig"; path = "Target Support Files/Pods-ChooseHelper/Pods-ChooseHelper.debug.xcconfig"; sourceTree = "<group>"; };
 		61B45CCC1180C42F9FAD4D97 /* libPods-ChooseHelper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ChooseHelper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6842914823517512009341A3 /* StockRequetServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockRequetServer.h; sourceTree = "<group>"; };
+		6842914923517512009341A3 /* StockBaseRequestServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockBaseRequestServer.h; sourceTree = "<group>"; };
+		6842914A23517512009341A3 /* UserRequestServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRequestServer.h; sourceTree = "<group>"; };
+		6842914B23517512009341A3 /* UserRequestServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserRequestServer.m; sourceTree = "<group>"; };
+		6842914C23517513009341A3 /* BaseRequestServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseRequestServer.h; sourceTree = "<group>"; };
+		6842914D23517513009341A3 /* BaseRequestServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseRequestServer.m; sourceTree = "<group>"; };
+		6842914E23517513009341A3 /* StockBaseRequestServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockBaseRequestServer.m; sourceTree = "<group>"; };
+		6842914F23517513009341A3 /* StockRequetServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockRequetServer.m; sourceTree = "<group>"; };
+		6842915623517595009341A3 /* CommonDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonDao.m; sourceTree = "<group>"; };
+		6842915723517595009341A3 /* BaseDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseDao.m; sourceTree = "<group>"; };
+		6842915823517596009341A3 /* AccountDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountDao.m; sourceTree = "<group>"; };
+		6842915923517596009341A3 /* RootDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootDao.h; sourceTree = "<group>"; };
+		6842915A23517596009341A3 /* CommonDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonDao.h; sourceTree = "<group>"; };
+		6842915B23517596009341A3 /* BaseDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseDao.h; sourceTree = "<group>"; };
+		6842915C23517596009341A3 /* RootDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootDao.m; sourceTree = "<group>"; };
+		6842915D23517596009341A3 /* AccountDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountDao.h; sourceTree = "<group>"; };
+		68429162235175A5009341A3 /* Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
+		68429163235175A5009341A3 /* Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
+		68429165235175BA009341A3 /* RequestResultVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestResultVO.m; sourceTree = "<group>"; };
+		68429166235175BA009341A3 /* StockRequestResultVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockRequestResultVO.m; sourceTree = "<group>"; };
+		68429167235175BA009341A3 /* RequestResultVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestResultVO.h; sourceTree = "<group>"; };
+		68429168235175BA009341A3 /* StockRequestResultVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockRequestResultVO.h; sourceTree = "<group>"; };
+		68429169235175BA009341A3 /* StockListResultVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockListResultVO.h; sourceTree = "<group>"; };
+		6842916A235175BA009341A3 /* StockListResultVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockListResultVO.m; sourceTree = "<group>"; };
+		6842916B235175BA009341A3 /* StockSingleResultVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockSingleResultVO.h; sourceTree = "<group>"; };
+		6842916C235175BA009341A3 /* StockSingleResultVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockSingleResultVO.m; sourceTree = "<group>"; };
+		68429175235177E4009341A3 /* AppMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppMacro.h; sourceTree = "<group>"; };
+		6842917623517812009341A3 /* IndexVO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexVO.m; sourceTree = "<group>"; };
+		6842917723517813009341A3 /* IndexVO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexVO.h; sourceTree = "<group>"; };
+		684291792351785D009341A3 /* StockNewsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockNewsModel.h; sourceTree = "<group>"; };
+		6842917A2351785D009341A3 /* StockNewsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockNewsModel.m; sourceTree = "<group>"; };
+		6842917C2351787E009341A3 /* UrlConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UrlConst.h; sourceTree = "<group>"; };
+		6842917E23518569009341A3 /* CHBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHBaseViewController.h; sourceTree = "<group>"; };
+		6842917F23518569009341A3 /* CHBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHBaseViewController.m; sourceTree = "<group>"; };
+		68429181235185A5009341A3 /* UITapGestureRecognizer+Property.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITapGestureRecognizer+Property.h"; sourceTree = "<group>"; };
+		68429182235185A6009341A3 /* UIView+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Util.m"; sourceTree = "<group>"; };
+		68429183235185A6009341A3 /* UITapGestureRecognizer+Property.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITapGestureRecognizer+Property.m"; sourceTree = "<group>"; };
+		68429184235185A6009341A3 /* UIColor+AppColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AppColor.m"; sourceTree = "<group>"; };
+		68429185235185A6009341A3 /* UITextView+ZWPlaceHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+ZWPlaceHolder.m"; sourceTree = "<group>"; };
+		68429186235185A6009341A3 /* UIImage+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Additions.h"; sourceTree = "<group>"; };
+		68429187235185A7009341A3 /* UIColor+AppColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+AppColor.h"; sourceTree = "<group>"; };
+		68429188235185A7009341A3 /* UIImage+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Additions.m"; sourceTree = "<group>"; };
+		6842918A235185A7009341A3 /* UITextView+ZWPlaceHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+ZWPlaceHolder.h"; sourceTree = "<group>"; };
+		6842918B235185A7009341A3 /* UIView+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Util.h"; sourceTree = "<group>"; };
 		93E20321FA901A21388A6E34 /* Pods-ChooseHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChooseHelper.release.xcconfig"; path = "Target Support Files/Pods-ChooseHelper/Pods-ChooseHelper.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -327,18 +379,24 @@
 		18A97B47234DBB06006BDBBC /* ChooseHelper */ = {
 			isa = PBXGroup;
 			children = (
-				18A97BD8234DC729006BDBBC /* controller */,
-				18A97BBF234DC356006BDBBC /* 登录注册 */,
-				18A97B8D234DBB76006BDBBC /* view */,
-				18A97B6C234DBB6D006BDBBC /* normal */,
 				18A97B48234DBB06006BDBBC /* AppDelegate.h */,
 				18A97B49234DBB06006BDBBC /* AppDelegate.m */,
 				18A97B54234DBB07006BDBBC /* Assets.xcassets */,
-				18A97B56234DBB07006BDBBC /* LaunchScreen.storyboard */,
 				18A97B59234DBB07006BDBBC /* Info.plist */,
 				18A97B98234DBB87006BDBBC /* InfoPlist.strings */,
-				18A97B9A234DBB9E006BDBBC /* PrefixHeader.pch */,
+				18A97B56234DBB07006BDBBC /* LaunchScreen.storyboard */,
 				18A97B5A234DBB07006BDBBC /* main.m */,
+				18A97B9A234DBB9E006BDBBC /* PrefixHeader.pch */,
+				18A97BBF234DC356006BDBBC /* 登录注册 */,
+				6842917123517634009341A3 /* Category */,
+				684291722351767D009341A3 /* Const */,
+				18A97BD8234DC729006BDBBC /* controller */,
+				68429139235172BA009341A3 /* DataBase */,
+				68429174235177C6009341A3 /* Macro */,
+				18A97B6C234DBB6D006BDBBC /* normal */,
+				6842913823517242009341A3 /* ReqServer */,
+				6842917323517687009341A3 /* Utils */,
+				18A97B8D234DBB76006BDBBC /* view */,
 			);
 			path = ChooseHelper;
 			sourceTree = "<group>";
@@ -403,22 +461,6 @@
 		18A97BBF234DC356006BDBBC /* 登录注册 */ = {
 			isa = PBXGroup;
 			children = (
-				18A97BCB234DC356006BDBBC /* NSDictionary+NilSafe.h */,
-				18A97BC1234DC356006BDBBC /* NSDictionary+NilSafe.m */,
-				18A97BC2234DC356006BDBBC /* Account.h */,
-				18A97BCA234DC356006BDBBC /* Account.m */,
-				18A97BC3234DC356006BDBBC /* BaseRequestServer.h */,
-				18A97BC9234DC356006BDBBC /* BaseRequestServer.m */,
-				18A97BC4234DC356006BDBBC /* Singleton.h */,
-				18A97BC5234DC356006BDBBC /* UrlConst.h */,
-				18A97BCD234DC356006BDBBC /* RequestResultVO.h */,
-				18A97BC6234DC356006BDBBC /* RequestResultVO.m */,
-				18A97BC8234DC356006BDBBC /* UserRequestServer.h */,
-				18A97BCE234DC356006BDBBC /* UserRequestServer.m */,
-				18A97BC0234DC356006BDBBC /* UIImage+Utils.h */,
-				18A97BCC234DC356006BDBBC /* UIImage+Utils.m */,
-				18A97BCF234DC356006BDBBC /* NSString+StringUtil.h */,
-				18A97BC7234DC356006BDBBC /* NSString+StringUtil.m */,
 			);
 			path = "登录注册";
 			sourceTree = "<group>";
@@ -426,6 +468,7 @@
 		18A97BD8234DC729006BDBBC /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				6842917D23518560009341A3 /* BaseVC */,
 				18709FDC234F2671006CD559 /* main */,
 				18709FE4234F2672006CD559 /* market */,
 				18709FEF234F2679006CD559 /* train */,
@@ -457,6 +500,138 @@
 				61B45CCC1180C42F9FAD4D97 /* libPods-ChooseHelper.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6842913823517242009341A3 /* ReqServer */ = {
+			isa = PBXGroup;
+			children = (
+				6842913B235174E0009341A3 /* Req */,
+				6842913A235172CA009341A3 /* VO */,
+			);
+			path = ReqServer;
+			sourceTree = "<group>";
+		};
+		68429139235172BA009341A3 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				6842915523517581009341A3 /* Dao */,
+				6842915423517579009341A3 /* Bean */,
+			);
+			path = DataBase;
+			sourceTree = "<group>";
+		};
+		6842913A235172CA009341A3 /* VO */ = {
+			isa = PBXGroup;
+			children = (
+				684291792351785D009341A3 /* StockNewsModel.h */,
+				6842917A2351785D009341A3 /* StockNewsModel.m */,
+				6842917723517813009341A3 /* IndexVO.h */,
+				6842917623517812009341A3 /* IndexVO.m */,
+				68429167235175BA009341A3 /* RequestResultVO.h */,
+				68429165235175BA009341A3 /* RequestResultVO.m */,
+				68429169235175BA009341A3 /* StockListResultVO.h */,
+				6842916A235175BA009341A3 /* StockListResultVO.m */,
+				68429168235175BA009341A3 /* StockRequestResultVO.h */,
+				68429166235175BA009341A3 /* StockRequestResultVO.m */,
+				6842916B235175BA009341A3 /* StockSingleResultVO.h */,
+				6842916C235175BA009341A3 /* StockSingleResultVO.m */,
+			);
+			path = VO;
+			sourceTree = "<group>";
+		};
+		6842913B235174E0009341A3 /* Req */ = {
+			isa = PBXGroup;
+			children = (
+				6842914C23517513009341A3 /* BaseRequestServer.h */,
+				6842914D23517513009341A3 /* BaseRequestServer.m */,
+				6842914923517512009341A3 /* StockBaseRequestServer.h */,
+				6842914E23517513009341A3 /* StockBaseRequestServer.m */,
+				6842914823517512009341A3 /* StockRequetServer.h */,
+				6842914F23517513009341A3 /* StockRequetServer.m */,
+				6842914A23517512009341A3 /* UserRequestServer.h */,
+				6842914B23517512009341A3 /* UserRequestServer.m */,
+			);
+			path = Req;
+			sourceTree = "<group>";
+		};
+		6842915423517579009341A3 /* Bean */ = {
+			isa = PBXGroup;
+			children = (
+				68429163235175A5009341A3 /* Account.h */,
+				68429162235175A5009341A3 /* Account.m */,
+			);
+			path = Bean;
+			sourceTree = "<group>";
+		};
+		6842915523517581009341A3 /* Dao */ = {
+			isa = PBXGroup;
+			children = (
+				6842915D23517596009341A3 /* AccountDao.h */,
+				6842915823517596009341A3 /* AccountDao.m */,
+				6842915B23517596009341A3 /* BaseDao.h */,
+				6842915723517595009341A3 /* BaseDao.m */,
+				6842915A23517596009341A3 /* CommonDao.h */,
+				6842915623517595009341A3 /* CommonDao.m */,
+				6842915923517596009341A3 /* RootDao.h */,
+				6842915C23517596009341A3 /* RootDao.m */,
+			);
+			path = Dao;
+			sourceTree = "<group>";
+		};
+		6842917123517634009341A3 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				18A97BCB234DC356006BDBBC /* NSDictionary+NilSafe.h */,
+				18A97BC1234DC356006BDBBC /* NSDictionary+NilSafe.m */,
+				18A97BCF234DC356006BDBBC /* NSString+StringUtil.h */,
+				18A97BC7234DC356006BDBBC /* NSString+StringUtil.m */,
+				68429187235185A7009341A3 /* UIColor+AppColor.h */,
+				68429184235185A6009341A3 /* UIColor+AppColor.m */,
+				68429186235185A6009341A3 /* UIImage+Additions.h */,
+				68429188235185A7009341A3 /* UIImage+Additions.m */,
+				18A97BC0234DC356006BDBBC /* UIImage+Utils.h */,
+				18A97BCC234DC356006BDBBC /* UIImage+Utils.m */,
+				68429181235185A5009341A3 /* UITapGestureRecognizer+Property.h */,
+				68429183235185A6009341A3 /* UITapGestureRecognizer+Property.m */,
+				6842918A235185A7009341A3 /* UITextView+ZWPlaceHolder.h */,
+				68429185235185A6009341A3 /* UITextView+ZWPlaceHolder.m */,
+				6842918B235185A7009341A3 /* UIView+Util.h */,
+				68429182235185A6009341A3 /* UIView+Util.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		684291722351767D009341A3 /* Const */ = {
+			isa = PBXGroup;
+			children = (
+				6842917C2351787E009341A3 /* UrlConst.h */,
+			);
+			path = Const;
+			sourceTree = "<group>";
+		};
+		6842917323517687009341A3 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				18A97BC4234DC356006BDBBC /* Singleton.h */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		68429174235177C6009341A3 /* Macro */ = {
+			isa = PBXGroup;
+			children = (
+				68429175235177E4009341A3 /* AppMacro.h */,
+			);
+			path = Macro;
+			sourceTree = "<group>";
+		};
+		6842917D23518560009341A3 /* BaseVC */ = {
+			isa = PBXGroup;
+			children = (
+				6842917E23518569009341A3 /* CHBaseViewController.h */,
+				6842917F23518569009341A3 /* CHBaseViewController.m */,
+			);
+			path = BaseVC;
 			sourceTree = "<group>";
 		};
 		FBED688F0463C357A53479AB /* Pods */ = {
@@ -552,18 +727,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ChooseHelper/Pods-ChooseHelper-resources.sh",
-				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
-				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+				"${PODS_ROOT}/Target Support Files/Pods-ChooseHelper/Pods-ChooseHelper-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
+				"${PODS_ROOT}/Target Support Files/Pods-ChooseHelper/Pods-ChooseHelper-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -600,57 +768,74 @@
 			buildActionMask = 2147483647;
 			files = (
 				18CDB6CB235057A900E955D8 /* HQTableViewCell.m in Sources */,
+				6842917823517813009341A3 /* IndexVO.m in Sources */,
 				18BD06312350A65F00F89CA0 /* ClassViewController.m in Sources */,
 				18A97B8A234DBB6D006BDBBC /* SingletonModel.m in Sources */,
+				6842915323517513009341A3 /* StockRequetServer.m in Sources */,
+				6842918D235185A7009341A3 /* UIView+Util.m in Sources */,
 				18709FEB234F2672006CD559 /* LoginViewController.m in Sources */,
 				18CDB6D42350698F00E955D8 /* ZFPMViewController.m in Sources */,
+				6842915123517513009341A3 /* BaseRequestServer.m in Sources */,
 				18BD062523507EBB00F89CA0 /* TransactionRecordTableViewCell.m in Sources */,
 				18BD06872350C22600F89CA0 /* ImportViewController.m in Sources */,
 				18A97B8C234DBB6D006BDBBC /* ZHightView.m in Sources */,
+				68429190235185A7009341A3 /* UITextView+ZWPlaceHolder.m in Sources */,
 				18CDB6D02350616100E955D8 /* ZXTableViewCell.m in Sources */,
-				18A97BD5234DC356006BDBBC /* Account.m in Sources */,
 				18A97B87234DBB6D006BDBBC /* BaseViewController.m in Sources */,
+				68429191235185A7009341A3 /* UIImage+Additions.m in Sources */,
 				18709FFB234F4CE7006CD559 /* AboutViewController.m in Sources */,
-				18A97BD7234DC356006BDBBC /* UserRequestServer.m in Sources */,
 				18709FF8234F4CD1006CD559 /* ChangesecretViewController.m in Sources */,
 				18CDB6C123502E7500E955D8 /* HQViewController.m in Sources */,
+				6842916D235175BA009341A3 /* RequestResultVO.m in Sources */,
+				6842918E235185A7009341A3 /* UITapGestureRecognizer+Property.m in Sources */,
+				6842916023517596009341A3 /* AccountDao.m in Sources */,
 				18709FF5234F4CBF006CD559 /* ChangeNameViewController.m in Sources */,
 				18BD062123507E8B00F89CA0 /* TransactionRecordViewController.m in Sources */,
 				18CDB6C423502E7F00E955D8 /* ZXViewController.m in Sources */,
+				6842915F23517596009341A3 /* BaseDao.m in Sources */,
 				18BD068A2350C23500F89CA0 /* NewgpViewController.m in Sources */,
 				18709FEC234F2672006CD559 /* SignViewController.m in Sources */,
 				18BD06812350C1B800F89CA0 /* InformationViewController.m in Sources */,
 				18BD06842350C21700F89CA0 /* NewsViewController.m in Sources */,
 				18A97BDB234DC729006BDBBC /* StockTabbarController.m in Sources */,
+				6842916123517596009341A3 /* RootDao.m in Sources */,
 				18A97B8B234DBB6D006BDBBC /* UIColor+TT.m in Sources */,
 				1870A007234F54EE006CD559 /* CZViewController.m in Sources */,
 				18709FF2234F2679006CD559 /* TrainViewController.m in Sources */,
 				18BD067E2350B62900F89CA0 /* ZQPlayerMaskView.m in Sources */,
 				18A97B4A234DBB06006BDBBC /* AppDelegate.m in Sources */,
 				18A97B89234DBB6D006BDBBC /* Utils.m in Sources */,
+				68429164235175A5009341A3 /* Account.m in Sources */,
 				18709FEE234F2672006CD559 /* MyViewController.m in Sources */,
+				6842917B2351785D009341A3 /* StockNewsModel.m in Sources */,
+				6842916E235175BA009341A3 /* StockRequestResultVO.m in Sources */,
 				18A97B5B234DBB07006BDBBC /* main.m in Sources */,
 				18BD06352350A8CE00F89CA0 /* ClassTableViewCell.m in Sources */,
 				1870A00F234F79C5006CD559 /* BuysellViewController.m in Sources */,
+				6842918023518569009341A3 /* CHBaseViewController.m in Sources */,
 				18BD06392350AB4500F89CA0 /* MessageViewController.m in Sources */,
 				18BD067C2350B62900F89CA0 /* ZQPlayer.m in Sources */,
 				18709FEA234F2672006CD559 /* MainViewController.m in Sources */,
 				1870A00B234F70C2006CD559 /* XLYTableViewCell.m in Sources */,
-				18A97BD2234DC356006BDBBC /* RequestResultVO.m in Sources */,
 				18BD0629235086CF00F89CA0 /* SearchViewController.m in Sources */,
+				6842916F235175BA009341A3 /* StockListResultVO.m in Sources */,
 				1870A004234F4D2B006CD559 /* VersionViewController.m in Sources */,
 				18A97B86234DBB6D006BDBBC /* YCAlertView.m in Sources */,
 				18709FED234F2672006CD559 /* MarketViewController.m in Sources */,
 				18BD062D2350979A00F89CA0 /* MainTableViewCell.m in Sources */,
+				6842915E23517596009341A3 /* CommonDao.m in Sources */,
 				18A97BD3234DC356006BDBBC /* NSString+StringUtil.m in Sources */,
 				18A97B88234DBB6D006BDBBC /* MBProgressHUD+PD.m in Sources */,
 				18CDB6BD23501F0C00E955D8 /* SystemTradTableViewCell.m in Sources */,
 				18BD068E2350C8CC00F89CA0 /* NewgpTableViewCell.m in Sources */,
 				18BD061E23506CF400F89CA0 /* GPXQViewController.m in Sources */,
-				18A97BD4234DC356006BDBBC /* BaseRequestServer.m in Sources */,
 				18A97BD1234DC356006BDBBC /* NSDictionary+NilSafe.m in Sources */,
+				6842918F235185A7009341A3 /* UIColor+AppColor.m in Sources */,
 				18BD067D2350B62900F89CA0 /* ZQPlayerLandSpaceViewController.m in Sources */,
+				68429170235175BA009341A3 /* StockSingleResultVO.m in Sources */,
 				18A97B96234DBB76006BDBBC /* MainCollectionViewCell.m in Sources */,
+				6842915223517513009341A3 /* StockBaseRequestServer.m in Sources */,
+				6842915023517513009341A3 /* UserRequestServer.m in Sources */,
 				18A97BD6234DC356006BDBBC /* UIImage+Utils.m in Sources */,
 				18BD063C2350AC9100F89CA0 /* PlayViewController.m in Sources */,
 			);

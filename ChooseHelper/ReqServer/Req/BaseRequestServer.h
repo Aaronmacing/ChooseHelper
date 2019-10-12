@@ -1,12 +1,17 @@
-
-
+//
+//  BaseRequestServer.h
+//  Exam
+//
+//  Created by WeiLin on 16/11/10.
+//  Copyright © 2016年 WeiLin. All rights reserved.
+//
 
 #import <Foundation/Foundation.h>
 #import "Singleton.h"
 #import "AFHTTPSessionManager.h"
 #import <YYModel.h>
 #import "UrlConst.h"
-//#import "AppMacro.h"
+#import "AppMacro.h"
 #import "NSString+StringUtil.h"
 #import "RequestResultVO.h"
 #define DEFAULT_ERROR_MSG @"Please Check Network"

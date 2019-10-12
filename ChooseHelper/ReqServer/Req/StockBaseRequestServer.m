@@ -1,9 +1,17 @@
-#import "BaseRequestServer.h"
+//
+//  StockBaseRequestServer.m
+//  stockHelper
+//
+//  Created by Apple on 2019/8/7.
+//  Copyright © 2019 Apple. All rights reserved.
+//
+
+#import "StockBaseRequestServer.h"
 #import "NSString+StringUtil.h"
-static NSString *TOKEN;
-static NSString * const app_key = @"EA88B0819381CF2E9477731FDB6F267A";
-static NSString * const app_secret = @"eHK1DuIi6AxRrgtTo4Rgo1h3dKGMMDOQy1HMaFnUN0z6nbz31bnvLoC9XPm44afk";
-@implementation BaseRequestServer
+static NSString * const app_key = @"e8adfff2a29a969487712f63c63d1d46";
+static NSString * const app_news_key = @"245dfc05504debd38afed834d735b57d";
+static NSString * const app_exchange_key = @"9095c859aaa51743c12161ec9bf0ad66";
+@implementation StockBaseRequestServer
 
 - (instancetype)init{
     self = [super init];
@@ -38,23 +46,39 @@ static NSString * const app_secret = @"eHK1DuIi6AxRrgtTo4Rgo1h3dKGMMDOQy1HMaFnUN
  *  @param failure   失败返回错误信息
  */
 -(void)excuteWithUrl:(NSString *)url andParameter:(id)parameter
-          andSuccess:(void(^)(Data *returnData))success
+          andSuccess:(void(^)(id returnData))success
           andFailure:(void(^)(NSString *msg))failure{
     
     if ([parameter isKindOfClass:[NSMutableDictionary class]]) {
         
         parameter = (NSMutableDictionary *)parameter;
-      
-        if (![url isEqualToString:URL_USER_LOGIN] && ![url isEqualToString:URL_USER_SIGN_UP]) {
-            
-             [parameter setObject:TOKEN?TOKEN:@"" forKey:@"token"];
-        }
-        [parameter setObject:app_key forKey:@"app_key"];
-        NSMutableDictionary *temDic = [[NSMutableDictionary alloc] initWithDictionary:parameter];
-        [temDic setObject:url forKey:@"s"];
-        [parameter setObject:[self signStrByDic:temDic] forKey:@"sign"];
+        
+        [parameter setObject:app_key forKey:@"key"];
     }
     [_requestManager POST:[self requestURL:url] parameters:parameter
+                 progress:^(NSProgress * _Nonnull uploadProgress) {
+                     
+                 } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                     [self parserResponseData:responseObject andUrl:(NSString *)url andSuccess:success andFailure:failure];
+                 } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                     failure(DEFAULT_ERROR_MSG);
+                     NSLog(@"\n%@:----------->\nError----------->:\n%@", url, error);
+                 }];
+}
+
+
+-(void)excuteNewsWithUrl:(NSString *)url andParameter:(id)parameter
+          andSuccess:(void(^)(id returnData))success
+          andFailure:(void(^)(NSString *msg))failure{
+    
+    if ([parameter isKindOfClass:[NSMutableDictionary class]]) {
+        
+        parameter = (NSMutableDictionary *)parameter;
+        
+        [parameter setObject:app_news_key forKey:@"key"];
+    }
+
+    [_requestManager GET:[NSString stringWithFormat:@"%@%@%@",PROTOCOL,STOCK_SERVER_IP2,url] parameters:parameter
                  progress:^(NSProgress * _Nonnull uploadProgress) {
                      
                  } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -77,21 +101,13 @@ static NSString * const app_secret = @"eHK1DuIi6AxRrgtTo4Rgo1h3dKGMMDOQy1HMaFnUN
 -(void)excuteWithUrl:(NSString *)url
         andParameter:(id)parameter
              andFile:(NSArray *)fileArray
-          andSuccess:(void(^)(Data *returnData))success
+          andSuccess:(void(^)(id returnData))success
           andFailure:(void(^)(NSString *msg))failure{
-   
+    
     if ([parameter isKindOfClass:[NSMutableDictionary class]]) {
         
         parameter = (NSMutableDictionary *)parameter;
-        
-        if (![url isEqualToString:URL_USER_LOGIN] && ![url isEqualToString:URL_USER_SIGN_UP]) {
-            
-            [parameter setObject:TOKEN?TOKEN:@"" forKey:@"token"];
-        }
-        [parameter setObject:app_key forKey:@"app_key"];
-        NSMutableDictionary *temDic = [[NSMutableDictionary alloc] initWithDictionary:parameter];
-        [temDic setObject:url forKey:@"s"];
-        [parameter setObject:[self signStrByDic:temDic] forKey:@"sign"];
+        [parameter setObject:app_key forKey:@"key"];
     }
     
     [_requestManager POST:[self requestURL:url] parameters:parameter constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
@@ -124,7 +140,7 @@ static NSString * const app_secret = @"eHK1DuIi6AxRrgtTo4Rgo1h3dKGMMDOQy1HMaFnUN
     NSString *requestUrl;
     if (!requestUrl) {
         
-        requestUrl = [NSString stringWithFormat:@"%@%@%@",PROTOCOL,SERVER_IP,url];
+        requestUrl = [NSString stringWithFormat:@"%@%@%@",PROTOCOL,STOCK_SERVER_IP,url];
     }
     NSLog(@"requestUrl=%@",requestUrl);
     return requestUrl;
@@ -139,28 +155,26 @@ static NSString * const app_secret = @"eHK1DuIi6AxRrgtTo4Rgo1h3dKGMMDOQy1HMaFnUN
  @param failure 失败返回
  */
 - (void)excuteWithGetUrl:(NSString *)url andParameter:(id)parameter
-              andSuccess:(void(^)(Data *returnData))success
+              andSuccess:(void(^)(id returnData))success
               andFailure:(void(^)(NSString *msg))failure{
     
     if ([parameter isKindOfClass:[NSMutableDictionary class]]) {
         
         parameter = (NSMutableDictionary *)parameter;
-       
-        if (![url isEqualToString:URL_USER_LOGIN] && ![url isEqualToString:URL_USER_SIGN_UP]) {
-            
-            [parameter setObject:TOKEN?TOKEN:@"" forKey:@"token"];
-        }
-        [parameter setObject:app_key forKey:@"app_key"];
         
-        NSMutableDictionary *temDic = [[NSMutableDictionary alloc] initWithDictionary:parameter];
-        [temDic setObject:url forKey:@"s"];
-        [parameter setObject:[self signStrByDic:temDic] forKey:@"sign"];
+        if ([url containsString:URL_EXCHANGE_CURRENCY] || [url containsString:URL_EXCHANGE_COMMON_LIST] || [url containsString:URL_EXCHANGE_CURRENCY_LIST]) {
+            
+            [parameter setObject:app_exchange_key forKey:@"key"];
+        }else{
+            
+            [parameter setObject:app_key forKey:@"key"];
+        }
     }
     [_requestManager GET:[self requestURL:url] parameters:parameter
                 progress:^(NSProgress * _Nonnull uploadProgress) {
                     
                 } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                 
+                    
                     [self parserResponseData:responseObject andUrl:url andSuccess:success andFailure:failure];
                 } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                     failure(DEFAULT_ERROR_MSG);
@@ -178,64 +192,24 @@ static NSString * const app_secret = @"eHK1DuIi6AxRrgtTo4Rgo1h3dKGMMDOQy1HMaFnUN
  */
 -(void)parserResponseData:(id)responseObject
                    andUrl:(NSString *)url
-               andSuccess:(void(^)(Data *returnData))success
+               andSuccess:(void(^)(id))success
                andFailure:(void(^)(NSString *msg))failure{
     if (responseObject) {
         NSString *result = [[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
         NSLog(@"JSON----------->:\n%@",result);
-        RequestResultVO *returnData = [RequestResultVO yy_modelWithJSON:result];
-        if (returnData.ret == 200) {
+        StockRequestResultVO *returnData = [StockRequestResultVO yy_modelWithJSON:result];
+        if (returnData.error_code == 0) {
             
-            if (returnData.data.err_code == 0) {
-             
-                success(returnData.data);
-                if ([NSString isNotBlankString:returnData.data.token]) {
-                    
-                    TOKEN = returnData.data.token;
-                }
                 
-            }else{
-                
-                failure(returnData.data.err_msg);
-            }
+            success(returnData.result);
+        
         }else{
             
-            failure(returnData.msg);
-            
+            failure(returnData.reason);
         }
     }else{
         failure(DEFAULT_ERROR_MSG);
     }
-}
-
-- (NSString *)signStrByDic:(NSDictionary *)dict{
-    
-    //将所有的key放进数组
-    NSArray *allKeyArray = [dict allKeys];
-    
-    //序列化器对数组进行排序的block 返回值为排序后的数组
-    NSArray *afterSortKeyArray = [allKeyArray sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id _Nonnull obj2) {
-       
-        NSComparisonResult resuest = [obj1 compare:obj2];
-        return resuest;
-    }];
-    NSLog(@"afterSortKeyArray:%@",afterSortKeyArray);
-    
-    //通过排列的key值获取value
-    NSMutableArray *valueArray = [NSMutableArray array];
-    for (NSString *sortsing in afterSortKeyArray) {
-        NSString *valueString = [dict objectForKey:sortsing];
-        [valueArray addObject:valueString];
-    }
-    
-    NSMutableString *mutableString = [[NSMutableString alloc] initWithString:[valueArray componentsJoinedByString:@""]];
-    [mutableString appendString:app_secret];
-    
-    NSString *md5Str = [mutableString stringToMD5];
-    
-    md5Str = md5Str.uppercaseString;
-    
-    return md5Str;
 }
 
 @end

@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "StockTabbarController.h"
+#import "LoginViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -16,9 +17,11 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
-    
+#if 1
+    LoginViewController *mainVC = [[LoginViewController alloc] init];
+#else
     StockTabbarController *mainVC = [[StockTabbarController alloc] init];
+#endif
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:mainVC];
     nav.navigationBar.hidden = YES;
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];

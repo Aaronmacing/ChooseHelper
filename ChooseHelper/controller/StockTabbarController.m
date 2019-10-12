@@ -12,6 +12,7 @@
 #import "MarketViewController.h"
 #import "TrainViewController.h"
 #import "MyViewController.h"
+#import "RootDao.h"
 @interface StockTabbarController ()<UITabBarControllerDelegate>
 
 @property (nonatomic,strong) UIImageView *bkIV;
@@ -23,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-
+    [[[RootDao alloc] init] createOrUpdateTable];
     
     MainViewController *mainVC = [[MainViewController alloc] init];
     [self setChildVC:mainVC name:@"" image:@"" selectedImage:@""];
@@ -87,15 +88,14 @@
 }
 
 
-- (void)setChildVC:(BaseViewController *)childVC name:(NSString *)name image:(NSString *)image selectedImage:(NSString *)selectedImage{
+- (void)setChildVC:(UIViewController *)childVC name:(NSString *)name image:(NSString *)image selectedImage:(NSString *)selectedImage{
     
     
     childVC.tabBarItem.imageInsets = UIEdgeInsetsMake(0, 0, 0, 0);
     childVC.tabBarItem.image = [[UIImage imageNamed:image] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     childVC.tabBarItem.selectedImage = [[UIImage imageNamed:selectedImage] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     childVC.tabBarItem.title = name;
-    
-    childVC.titleLabel.text = name;
+    childVC.title = name;
     [self addChildViewController:childVC];
 }
 

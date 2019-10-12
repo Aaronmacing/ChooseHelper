@@ -8,5 +8,6 @@ pod 'AFNetworking'
 pod 'YYModel'
 pod 'SDWebImage'
 pod 'MJRefresh'
+pod 'FMDB'
 end
 

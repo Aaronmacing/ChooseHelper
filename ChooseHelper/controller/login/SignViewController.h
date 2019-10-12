@@ -6,11 +6,13 @@
 //  Copyright © 2019 apple. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "CHBaseViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SignViewController : BaseViewController
+@interface SignViewController : CHBaseViewController
+
+@property (nonatomic, copy) void(^SucBack)(NSString *account,NSString *pwd);
 
 @end
 

@@ -10,9 +10,16 @@
 #import "StockTabbarController.h"
 #import "SignViewController.h"
 #import "StockTabbarController.h"
-
+#import "UserRequestServer.h"
+#import "AccountDao.h"
 @interface LoginViewController ()
 @property(nonatomic,assign)BOOL save;
+
+@property (nonatomic,strong) UIImageView *autoLoginIV;
+
+@property (nonatomic,strong) UITextField *accountTF;
+
+@property (nonatomic,strong) UITextField *passwordTF;
 @end
 
 @implementation LoginViewController
@@ -21,23 +28,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.backBtn.hidden = YES;
-    
-    self.backImageView.image = kGetImage(@"bg");
-    [self.backImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        
-        make.top.mas_equalTo(self.view.mas_top);
-        make.bottom.mas_equalTo(self.view.mas_bottom);
-        make.left.mas_equalTo(self.view.mas_left);
-        make.right.mas_equalTo(self.view.mas_right);
-        
-    }];
-    
-    
-    
-    
+    [self.view sendSubviewToBack:self.bkIV];
+
     UIImageView *imageView = [UIImageView new];
-    imageView.image = kGetImage(@"header");
+    imageView.image =
+    kGetImage(@"header");
     [self.view addSubview:imageView];
     [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         
@@ -84,10 +79,7 @@
             make.top.mas_equalTo(label.mas_bottom).with.offset(50 + 62 * i);
             
         }];
-        
-        
-        
-        
+
         UITextField *tf = [UITextField new];
         tf.tag = 20 + i;
         tf.background = kGetImage(@"tf_bg");
@@ -121,6 +113,13 @@
         tf.leftViewMode = UITextFieldViewModeAlways;
         tf.rightViewMode = UITextFieldViewModeAlways;
         
+        if (i == 0) {
+            
+            self.accountTF = tf;
+        }else{
+            
+            self.passwordTF = tf;
+        }
     }
     
     
@@ -183,11 +182,44 @@
     
     
     self.save = YES;
+    
+    
+    
+    self.autoLoginIV = [[UIImageView alloc] init];
+       self.autoLoginIV.image = [self getLaunchImage];
+       self.autoLoginIV.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    self.account = [[AccountDao sharedAccountDao] queryLoginUser];
+    
+    if (self.account) {
+           
+           [self.view addSubview:self.autoLoginIV];
+           [self.view bringSubviewToFront:self.autoLoginIV];
+          
+            [self showWaiting];
+           [[UserRequestServer sharedUserRequestServer] loginWithAccount:self.account.account password:self.account.password success:^(Account * _Nonnull account) {
+               
+            [self dismissWaiting];
+            [self.autoLoginIV removeFromSuperview];
+            StockTabbarController *vc =  [[StockTabbarController alloc] init];
+            vc.modalPresentationStyle = 0;
+          
+            [self presentViewController:vc animated:NO completion:nil];
+
+           } failure:^(NSString * _Nonnull msg) {
+               [self.autoLoginIV removeFromSuperview];
+               [self dismissWaitingWithShowToast:msg];
+           }];
+       }
+    
+    
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    self.navigationController.navigationBarHidden = YES;
     NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
     NSString *a = [user stringForKey:@"account"];
     NSString *b = [user stringForKey:@"secret"];
@@ -202,6 +234,27 @@
 - (void)tap
 {
     SignViewController *vc = [[SignViewController alloc]init];
+    
+    
+    vc.SucBack = ^(NSString * _Nonnull account, NSString * _Nonnull pwd) {
+      
+         [self showWaiting];
+         [[UserRequestServer sharedUserRequestServer] loginWithAccount:account password:pwd success:^(Account * _Nonnull account) {
+             
+          [self dismissWaiting];
+          [self.autoLoginIV removeFromSuperview];
+          StockTabbarController *vc =  [[StockTabbarController alloc] init];
+          vc.modalPresentationStyle = 0;
+        
+          [self presentViewController:vc animated:NO completion:nil];
+
+         } failure:^(NSString * _Nonnull msg) {
+             [self.autoLoginIV removeFromSuperview];
+             [self dismissWaitingWithShowToast:msg];
+         }];
+    };
+    
+    
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -217,35 +270,60 @@
     UITextField *tf2 = [self.view viewWithTag:21];
     
     
-    if (tf1.text.length >= 4 && tf1.text.length <= 16 && tf2.text.length >= 6 && tf2.text.length <= 16) {
+    //if (tf1.text.length >= 4 && tf1.text.length <= 16 && tf2.text.length >= 6 && tf2.text.length <= 16) {
         
-        StockTabbarController *vc = [[StockTabbarController alloc]init];
-        [self.navigationController pushViewController:vc animated:YES];
+    if ([NSString isBlankString:tf1.text]) {
+              
+        [self showToast:@"请输入用户名"];
         
+    }else if ([NSString isBlankString:tf2.text]) {
+               
+        [self showToast:@"请输入密码"];
+           
+    }else{
+       
+        [self showWaiting];
         
-        if (self.save == YES) {
-            NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
-            [user setObject:tf1.text forKey:@"account"];
-            [user setObject:tf2.text forKey:@"secret"];
-            [user synchronize];
+        [[UserRequestServer sharedUserRequestServer] loginWithAccount:tf1.text password:tf2.text success:^(Account * _Nonnull account) {
+            
+            [self dismissWaiting];
+        
+            StockTabbarController *vc =  [[StockTabbarController alloc] init];
+            vc.modalPresentationStyle = 0;
+       
+            [self presentViewController:vc animated:NO completion:nil];
+
+        } failure:^(NSString * _Nonnull msg) {
+          
+            [self dismissWaitingWithShowToast:msg];
+        }];
+      }
+        
+//    }
+//    else
+//    {
+//        [MBProgressHUD showError:@"数据不正确,请重新输入!"];
+//
+//    }
+    
+}
+
+
+- (UIImage *)getLaunchImage{
+    
+    CGSize viewSize = [UIScreen mainScreen].bounds.size;
+    NSString *viewOr = @"Portrait";
+    NSString *launchImage = nil;
+    NSArray *launchImages =  [[[NSBundle mainBundle] infoDictionary] valueForKey:@"UILaunchImages"];
+    
+    for (NSDictionary *dict in launchImages) {
+        CGSize imageSize = CGSizeFromString(dict[@"UILaunchImageSize"]);
+        
+        if (CGSizeEqualToSize(viewSize, imageSize) && [viewOr isEqualToString:dict[@"UILaunchImageOrientation"]]) {
+            launchImage = dict[@"UILaunchImageName"];
         }
-        else
-        {
-            NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
-            [user setObject:@"" forKey:@"account"];
-            [user setObject:@"" forKey:@"secret"];
-            [user synchronize];
-        }
-        
-        
     }
-    else
-    {
-        [MBProgressHUD showError:@"数据不正确,请重新输入!"];
-    }
-    
-    
-    
+    return [UIImage imageNamed:launchImage];
 }
 
 /*

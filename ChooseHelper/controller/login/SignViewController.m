@@ -7,7 +7,7 @@
 //
 
 #import "SignViewController.h"
-
+#import "UserRequestServer.h"
 @interface SignViewController ()
 
 @end
@@ -18,17 +18,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.backBtn.hidden = YES;
-    
-    self.backImageView.image = kGetImage(@"bg");
-    [self.backImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        
-        make.top.mas_equalTo(self.view.mas_top);
-        make.bottom.mas_equalTo(self.view.mas_bottom);
-        make.left.mas_equalTo(self.view.mas_left);
-        make.right.mas_equalTo(self.view.mas_right);
-        
-    }];
+   
+    [self.view sendSubviewToBack:self.bkIV];
     
     
     
@@ -161,13 +152,43 @@
     UITextField *tf2 = [self.view viewWithTag:21];
     UITextField *tf3 = [self.view viewWithTag:22];
     
-    if (tf1.text.length >= 4 && tf1.text.length <= 16 && tf2.text.length >= 6 && tf2.text.length <= 16 && [tf2.text isEqualToString:tf3.text]) {
+    //if (tf1.text.length >= 4 && tf1.text.length <= 16 && tf2.text.length >= 6 && tf2.text.length <= 16 && [tf2.text isEqualToString:tf3.text]) {
         
-    }
-    else
-    {
-        [MBProgressHUD showError:@"数据不正确,请重新输入!"];
-    }
+        if ([NSString isBlankString:tf1.text]) {
+               [self showToast:@"请输入用户名"];
+           }else if ([NSString isBlankString:tf2.text]) {
+               [self showToast:@"请输入密码"];
+           }else if ([NSString isBlankString:tf3.text]) {
+                [self showToast:@"请输入确认密码"];
+           }else if (![tf2.text isEqualToString:tf3.text]){
+              [self showToast:@"两次输入的密码不一致"];
+           }else{
+               
+               [self showWaiting];
+               [[UserRequestServer sharedUserRequestServer] singUpWithAccount:tf1.text password:tf2.text success:^{
+                   
+                   [self dismissWaitingWithShowToast:@"注册成功"];
+                  
+                   dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                       [self dismissViewControllerAnimated:YES completion:^{
+                           if (self.SucBack) {
+                
+                               self.SucBack(tf1.text, tf2.text);
+                           }
+                       }];
+                   });
+                   
+               } failure:^(NSString * _Nonnull msg) {
+                   [self dismissWaitingWithShowToast:msg];
+               }];
+           }
+        
+        
+//    }
+//    else
+//    {
+//        [MBProgressHUD showError:@"数据不正确,请重新输入!"];
+//    }
 }
 
 /*

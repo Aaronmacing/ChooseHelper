@@ -7,7 +7,6 @@
 //
 
 #import "UserRequestServer.h"
-#import "NSDictionary+NilSafe.h"
 #import "UIImage+Utils.h"
 @implementation UserRequestServer
 
@@ -26,15 +25,15 @@ SingletonM(UserRequestServer)
         Account *currentAC = [[Account alloc] init];
         currentAC.account = account;
         currentAC.name = currentAC.account;
-        currentAC.isReadMsg = @0;
-////        if ([[AccountDao sharedAccountDao] queryAccountByAccount:account]) {
-////
-////            currentAC = [[AccountDao sharedAccountDao] queryAccountByAccount:account];
-////
-////        }
-//        currentAC.uuid = returnData.uuid;
-//        currentAC.password = password;
-//        //[[AccountDao sharedAccountDao] insertOrUpdateData:currentAC];
+       
+        if ([[AccountDao sharedAccountDao] queryAccountByAccount:account]) {
+
+            currentAC = [[AccountDao sharedAccountDao] queryAccountByAccount:account];
+           
+        }
+        currentAC.uuid = returnData.uuid;
+        currentAC.password = password;
+        [[AccountDao sharedAccountDao] insertOrUpdateData:currentAC];
         
         success(currentAC);
     } andFailure:^(NSString *msg) {
@@ -103,8 +102,14 @@ SingletonM(UserRequestServer)
                      success:(void (^)(void))success
                      failure:(void (^)(NSString * _Nonnull))failure{
     
-    
-    NSDictionary *extDic = @{@"nickName":name,@"avatar":[avatar ImageToBase64String]};
+    NSDictionary *extDic;
+    if (avatar) {
+        
+        extDic = @{@"nickName":name,@"avatar":[avatar ImageToBase64String]};
+    }else{
+        
+        extDic = @{@"nickName":name};
+    }
     
     NSMutableDictionary *parm = [[NSMutableDictionary alloc] initWithDictionary:@{@"uuid":uuid,@"ext_info":[extDic yy_modelToJSONString]}];
     
