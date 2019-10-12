@@ -6,11 +6,11 @@
 //  Copyright © 2019 apple. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "CHBaseViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface LoginViewController : BaseViewController
+@interface LoginViewController : CHBaseViewController
 
 @end
 

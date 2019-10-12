@@ -7,7 +7,7 @@
 //
 
 #import "BaseRequestServer.h"
-#import "Account.h"
+#import "AccountDao.h"
 #import <YYModel.h>
 NS_ASSUME_NONNULL_BEGIN
 

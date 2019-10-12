@@ -22,7 +22,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic,copy) NSString *uuid;
 
-@property (nonatomic,strong) NSNumber *isReadMsg;
+@property (nonatomic,copy) NSString *stockNums;
+
+@property (nonatomic,copy) NSString *stockComps;
 
 @end
 

@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+
 @class Data,Info,Ext_Info;
+
 @interface RequestResultVO : NSObject
 
 @property (nonatomic, assign) NSInteger ret;
@@ -17,6 +19,7 @@
 @property (nonatomic, copy) NSString *msg;
 
 @end
+
 @interface Data : NSObject
 
 @property (nonatomic, assign) NSInteger err_code;
