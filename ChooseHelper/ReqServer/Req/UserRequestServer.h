@@ -9,7 +9,7 @@
 #import "BaseRequestServer.h"
 #import "AccountDao.h"
 #import <YYModel.h>
-NS_ASSUME_NONNULL_BEGIN
+
 
 @interface UserRequestServer : BaseRequestServer
 
@@ -48,4 +48,4 @@ SingletonH(UserRequestServer)
 
 @end
 
-NS_ASSUME_NONNULL_END
+

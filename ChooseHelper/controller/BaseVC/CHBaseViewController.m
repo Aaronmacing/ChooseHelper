@@ -101,7 +101,7 @@
     [self.rightView addSubview:self.rightIV];
     [self.rightView addSubview:self.rightLabel];
   
-    self.navigationView.backgroundColor = [UIColor clearColor];
+    self.navigationView.backgroundColor = [UIColor colorFromRGBAHexCode:@"#1974F0"];
     
     NSDictionary *infoDic = [[NSBundle mainBundle] infoDictionary];
     self.titleLabel.text = [infoDic objectForKey:@"CFBundleDisplayName"];

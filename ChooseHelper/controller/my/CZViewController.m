@@ -9,10 +9,7 @@
 #import "CZViewController.h"
 #import <StoreKit/StoreKit.h>
 
-//沙盒测试环境验证
-#define SANDBOX @"https://sandbox.itunes.apple.com/verifyReceipt"
-//正式环境验证
-#define AppStore @"https://buy.itunes.apple.com/verifyReceipt"
+
 
 @interface CZViewController ()<SKProductsRequestDelegate,SKPaymentTransactionObserver>
 @property(nonatomic,assign)NSInteger selectTag;
@@ -182,7 +179,7 @@
 {
     if ([SKPaymentQueue canMakePayments]) {
         
-        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [self requestProducts];
         
     }
@@ -257,11 +254,13 @@
                 
             case SKPaymentTransactionStateFailed:
                 NSLog(@"购买失败");
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
                 [queue finishTransaction:transaction];
                 break;
                 
             case SKPaymentTransactionStateRestored:
                 NSLog(@"恢复购买");
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
                 [queue finishTransaction:transaction];
                 break;
                 

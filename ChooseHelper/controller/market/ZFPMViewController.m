@@ -9,10 +9,13 @@
 #import "ZFPMViewController.h"
 #import "ZXTableViewCell.h"
 #import "GPXQViewController.h"
-
 @interface ZFPMViewController ()<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
 @property(nonatomic,assign)NSInteger leftSelect;
 @property(nonatomic,strong)UITableView *tableView;
+
+@property (nonatomic,strong) UILabel *noDataLb;
+
+@property (nonatomic,assign) BOOL isSelected;
 
 @end
 
@@ -28,7 +31,7 @@
         
         
     
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+       self.tableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
        self.tableView.backgroundColor = [UIColor whiteColor];
        self.tableView.delegate = self;
        self.tableView.dataSource = self;
@@ -46,9 +49,32 @@
            
        }];
     
+      self.noDataLb = [[UILabel alloc] init];
+      self.noDataLb.font = [UIFont systemFontOfSize:20];
+      self.noDataLb.text = @"暂无数据";
+      self.noDataLb.textAlignment = NSTextAlignmentCenter;
+      [self.tableView addSubview:self.noDataLb];
+      
+      [self.noDataLb mas_makeConstraints:^(MASConstraintMaker *make) {
+         
+          make.center.mas_equalTo(self.tableView);
+          make.height.mas_equalTo(22);
+          make.width.mas_equalTo(250);
+      }];
+    
+        if (self.dataSource && self.dataSource.count > 0) {
+            
+            self.noDataLb.hidden = YES;
+        }else{
+         
+            self.noDataLb.hidden = NO;
+        }
+    
+    self.isSelected = NO;
+    [self.tableView reloadData];
+    
 }
 
-    
 
 
 
@@ -82,6 +108,7 @@
             [addBtn addTarget:self action:@selector(pxBtnCliked:) forControlEvents:UIControlEventTouchUpInside];
             addBtn.frame = CGRectMake(Uni_kMainScreenWidth - 20, 6 + 5, 15, 15);
             [view addSubview:addBtn];
+            addBtn.selected = self.isSelected;
         }
         
     }
@@ -91,14 +118,17 @@
 
 - (void)pxBtnCliked:(UIButton *)sender
 {
-    sender.selected = !sender.selected;
+    self.isSelected = !self.isSelected;
+    
+    self.dataSource = [[self.dataSource reverseObjectEnumerator] allObjects];
+    [self.tableView reloadData];
 }
 
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 5;
+    return self.dataSource.count;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -117,15 +147,23 @@
     //设置cell没有选中效果
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
-   
+    if (self.dataSource && self.dataSource.count > 0) {
+        
+        cell.dataVO = self.dataSource[indexPath.row];
+    }
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    DataList *dataList = self.dataSource[indexPath.row];
+    
     GPXQViewController *vc = [[GPXQViewController alloc]init];
     vc.type = 0;
+    vc.code = dataList.symbol;
+    vc.market = self.market;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

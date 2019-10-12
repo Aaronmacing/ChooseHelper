@@ -13,12 +13,17 @@
 #import "AboutViewController.h"
 #import "VersionViewController.h"
 #import "CZViewController.h"
-
+#import "UserRequestServer.h"
+#import "AccountDao.h"
 @interface MyViewController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate,UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UIButton *headerBtn;
 @property(nonatomic,strong)UITableView *tableView;
 @property(nonatomic,copy) NSArray *names;
 @property(nonatomic,copy) NSArray *images;
+
+
+
+@property (nonatomic,strong)  UILabel *nameLb;
 @end
 
 @implementation MyViewController
@@ -52,8 +57,6 @@
         
     }];
     
-    
-    
     UIButton *headerBtn = [UIButton new];
     [headerBtn setBackgroundImage:kGetImage(@"header") forState:UIControlStateNormal];
     [headerBtn addTarget:self action:@selector(showOkayCancelActionSheet) forControlEvents:UIControlEventTouchUpInside];
@@ -79,9 +82,9 @@
     }
     
     
-    UILabel *label = [Utils setLabelWithlines:0 textAlignment:NSTextAlignmentCenter font:[UIFont systemFontOfSize:16] text:@"张三" textColor:[UIColor whiteColor]];
-    [self.view addSubview:label];
-    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+    self.nameLb = [Utils setLabelWithlines:0 textAlignment:NSTextAlignmentCenter font:[UIFont systemFontOfSize:16] text:@"张三" textColor:[UIColor whiteColor]];
+    [self.view addSubview:self.nameLb];
+    [self.nameLb mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.centerX.mas_equalTo(self.view.mas_centerX);
         make.width.mas_equalTo(300);
@@ -98,7 +101,7 @@
         make.right.mas_equalTo(headerBtn.mas_left).with.offset(-24);
         make.width.mas_equalTo(100);
         make.height.mas_equalTo(15);
-        make.top.mas_equalTo(label.mas_bottom).with.offset(11);
+        make.top.mas_equalTo(self.nameLb.mas_bottom).with.offset(11);
         
     }];
     
@@ -109,7 +112,7 @@
         make.left.mas_equalTo(headerBtn.mas_right).with.offset(24);
         make.width.mas_equalTo(100);
         make.height.mas_equalTo(15);
-        make.top.mas_equalTo(label.mas_bottom).with.offset(11);
+        make.top.mas_equalTo(self.nameLb.mas_bottom).with.offset(11);
         
     }];
     
@@ -122,15 +125,12 @@
         make.width.mas_equalTo(133);
         make.height.mas_offset(40);
         make.centerX.mas_equalTo(self.view.mas_centerX);
-        make.top.mas_equalTo(label.mas_bottom).with.offset(36);
+        make.top.mas_equalTo(self.nameLb.mas_bottom).with.offset(36);
         
     }];
     
-    
     self.names = @[@"我的自选",@"修改用户名",@"修改密码",@"联系我们",@"版本信息"];
     self.images = @[@"m_1",@"m_3",@"m_4",@"m_5",@"m_6"];
-    
-    
     
     self.tableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
         //设置delegate和DataSouce
@@ -163,6 +163,20 @@
         make.top.mas_equalTo(self.tableView.mas_bottom).with.offset(46);
         
     }];
+    
+    self.account = [[AccountDao sharedAccountDao] queryLoginUser];
+    
+    if ([[SDImageCache sharedImageCache] imageFromCacheForKey:self.account.account]) {
+           
+           UIImage *image = [[SDImageCache sharedImageCache] imageFromCacheForKey:self.account.account];
+           [self.headerBtn setBackgroundImage:image forState:UIControlStateNormal];
+           
+    }
+    
+    if ([NSString isNotBlankString:self.account.name]) {
+           
+        self.nameLb.text = self.account.name;
+    }
 }
 
 - (void)goToCZ
@@ -172,7 +186,20 @@
 }
 - (void)logOutBtn
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    
+       Account *account = [[AccountDao sharedAccountDao] queryLoginUser];
+      [[UserRequestServer sharedUserRequestServer] loginOutWithUUID:account.uuid success:^{
+                 
+             account.password = @"";
+             [[AccountDao sharedAccountDao] insertOrUpdateData:account];
+             //[TextFavDao sharedTextFavDao].dbQueue = nil;
+             [self.tabBarController dismissViewControllerAnimated:YES completion:nil];
+                 
+        } failure:^(NSString * _Nonnull msg) {
+                 
+            [MBProgressHUD showMessage:msg];
+                 
+      }];
 }
 
 - (void)showOkayCancelActionSheet {
@@ -271,14 +298,7 @@
     
     [self.headerBtn setBackgroundImage:resultImage forState:UIControlStateNormal];
     
-    
-    
-    NSString *path_document = NSHomeDirectory();
-    NSString *imagePath1 = [path_document stringByAppendingString:[NSString stringWithFormat:@"/Documents/header.png"]];
-    //把图片直接保存到指定的路径（同时应该把图片的路径imagePath存起来，下次就可以直接用来取）
-    [UIImagePNGRepresentation(resultImage) writeToFile:imagePath1 atomically:YES];
-    
-    
+    [[SDImageCache sharedImageCache] storeImage:resultImage forKey:self.account.uuid completion:nil];
     
     
     
@@ -336,6 +356,12 @@
     else if (indexPath.row == 1) {
         
         ChangeNameViewController *vc = [[ChangeNameViewController alloc]init];
+        
+        __weak typeof(self)weakSelf = self;
+        vc.changeName = ^(NSString * _Nonnull name) {
+          
+            weakSelf.nameLb.text = name;
+        };
         [self.navigationController pushViewController:vc animated:YES];
     }
     else if (indexPath.row == 2) {

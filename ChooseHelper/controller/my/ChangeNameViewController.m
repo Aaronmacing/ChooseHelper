@@ -7,9 +7,13 @@
 //
 
 #import "ChangeNameViewController.h"
-
+#import "AccountDao.h"
+#import "UserRequestServer.h"
+#import "NSString+StringUtil.h"
 @interface ChangeNameViewController ()
 @property(nonatomic,strong)UITextField *textField;
+
+
 @end
 
 @implementation ChangeNameViewController
@@ -19,7 +23,6 @@
     // Do any additional setup after loading the view.
     self.backBtn.hidden = NO;
     self.titleLabel.text = @"修改用户名";
-    
     
     UIImageView *imageView = [UIImageView new];
     imageView.image = kGetImage(@"fgx");
@@ -57,7 +60,6 @@
         make.top.mas_equalTo(self.titleLabel.mas_bottom).with.offset(19);
 
     }];
-    
     
     
     UITextField *tf = [UITextField new];
@@ -99,18 +101,57 @@
 
     }];
     
+    self.account = [[AccountDao sharedAccountDao] queryLoginUser];
     
+    if ([NSString isNotBlankString:self.account.name]) {
+        
+        self.textField.text = self.account.name;
+    }
 }
 
 
-- (void)cancelBtnCliked:(UIButton *)sender
-{
+- (void)cancelBtnCliked:(UIButton *)sender{
     self.textField.text = @"";
 }
 
 
-- (void)sureBtnCliked:(UIButton *)sender
-{
+- (void)sureBtnCliked:(UIButton *)sender{
+    
+
+    if ([NSString isBlankString:self.textField.text]) {
+         
+         [self showToast:@"请输入昵称"];
+         return;
+     }
+    
+    if ([self.textField.text isEqualToString:self.account.name]) {
+        
+        [self showToast:@"用户名已存在"];
+        return;
+    }
+    
+    self.account.name = self.textField.text;
+    [[AccountDao sharedAccountDao] insertOrUpdateData:self.account];
+    
+    [[UserRequestServer sharedUserRequestServer] changeUserInfoByUUID:self.account.uuid avatar:nil name:self.account.name success:^{
+        
+        [self dismissWaitingWithShowToast:@"修改个人信息成功"];
+        
+        if (self.changeName) {
+            
+            self.changeName(self.account.name);
+        }
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"changeInfo" object:nil];
+        [self.navigationController popViewControllerAnimated:YES];
+        
+    } failure:^(NSString * _Nonnull msg) {
+        
+        [self dismissWaitingWithShowToast:msg];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"changeInfo" object:nil];
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+    
+    
 }
 
 /*
