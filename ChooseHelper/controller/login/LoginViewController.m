@@ -52,7 +52,7 @@
         
     }];
     
-    UILabel *label = [Utils setLabelWithlines:0 textAlignment:NSTextAlignmentCenter font:[UIFont systemFontOfSize:17] text:@"股 参 谋" textColor:[UIColor whiteColor]];
+    UILabel *label = [Utils setLabelWithlines:0 textAlignment:NSTextAlignmentCenter font:[UIFont systemFontOfSize:17] text:@"金牛配资" textColor:[UIColor whiteColor]];
     [self.view addSubview:label];
     [label mas_makeConstraints:^(MASConstraintMaker *make) {
         
@@ -146,31 +146,31 @@
     }];
     
     
-    UILabel *label1 = [Utils setLabelWithlines:0 textAlignment:NSTextAlignmentLeft font:[UIFont systemFontOfSize:12] text:@"记住密码" textColor:[UIColor whiteColor]];
-    [self.view addSubview:label1];
-    [label1 mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        make.left.mas_equalTo(spBtn.mas_right).with.offset(6);
-        make.width.mas_equalTo(50);
-        make.height.mas_equalTo(12);
-        make.top.mas_equalTo(spBtn.mas_top).with.offset(-39);
-        
-    }];
-    
-    UIButton *opBtn = [UIButton new];
-    opBtn.selected = YES;
-    [opBtn setImageEdgeInsets:UIEdgeInsetsMake(5.5, 5.5, 5.5, 5.5)];
-    [opBtn setImage:kGetImage(@"select") forState:UIControlStateSelected];
-    [opBtn setImage:kGetImage(@"un_selec") forState:UIControlStateNormal];
-    [opBtn addTarget:self action:@selector(opBtnCliked:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:opBtn];
-    [opBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.mas_equalTo(label1.mas_centerY);
-        make.height.mas_equalTo(22);
-        make.width.mas_equalTo(22);
-        make.right.mas_equalTo(label1.mas_left);
-        
-    }];
+//    UILabel *label1 = [Utils setLabelWithlines:0 textAlignment:NSTextAlignmentLeft font:[UIFont systemFontOfSize:12] text:@"记住密码" textColor:[UIColor whiteColor]];
+//    [self.view addSubview:label1];
+//    [label1 mas_makeConstraints:^(MASConstraintMaker *make) {
+//
+//        make.left.mas_equalTo(spBtn.mas_right).with.offset(6);
+//        make.width.mas_equalTo(50);
+//        make.height.mas_equalTo(12);
+//        make.top.mas_equalTo(spBtn.mas_top).with.offset(-39);
+//
+//    }];
+//
+//    UIButton *opBtn = [UIButton new];
+//    opBtn.selected = YES;
+//    [opBtn setImageEdgeInsets:UIEdgeInsetsMake(5.5, 5.5, 5.5, 5.5)];
+//    [opBtn setImage:kGetImage(@"select") forState:UIControlStateSelected];
+//    [opBtn setImage:kGetImage(@"un_selec") forState:UIControlStateNormal];
+//    [opBtn addTarget:self action:@selector(opBtnCliked:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:opBtn];
+//    [opBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.centerY.mas_equalTo(label1.mas_centerY);
+//        make.height.mas_equalTo(22);
+//        make.width.mas_equalTo(22);
+//        make.right.mas_equalTo(label1.mas_left);
+//
+//    }];
     
     
     
@@ -196,8 +196,8 @@
     
     
     self.autoLoginIV = [[UIImageView alloc] init];
-       self.autoLoginIV.image = [self getLaunchImage];
-       self.autoLoginIV.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    self.autoLoginIV.image = [self getLaunchImage];
+    self.autoLoginIV.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     self.account = [[AccountDao sharedAccountDao] queryLoginUser];
     
     if (self.account) {
@@ -209,14 +209,13 @@
            [[UserRequestServer sharedUserRequestServer] loginWithAccount:self.account.account password:self.account.password success:^(Account * _Nonnull account) {
                
             [self dismissWaiting];
-            [self.autoLoginIV removeFromSuperview];
             StockTabbarController *vc =  [[StockTabbarController alloc] init];
             vc.modalPresentationStyle = 0;
           
             [self presentViewController:vc animated:NO completion:nil];
 
            } failure:^(NSString * _Nonnull msg) {
-               [self.autoLoginIV removeFromSuperview];
+              
                [self dismissWaitingWithShowToast:msg];
            }];
        }
@@ -228,17 +227,17 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
     self.navigationController.navigationBarHidden = YES;
-    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
-    NSString *a = @"aaaa";//[user stringForKey:@"account"];
-    NSString *b = @"111111";//[user stringForKey:@"secret"];
-    UITextField *tf1 = [self.view viewWithTag:20];
-    UITextField *tf2 = [self.view viewWithTag:21];
-    tf1.text = a;
-    tf2.text = b;
-    tf2.secureTextEntry = YES;
+    
 }
+
+- (void)viewDidDisappear:(BOOL)animated{
+ 
+    [super viewDidDisappear:animated];
+    [self.autoLoginIV removeFromSuperview];
+
+}
+    
 
 
 - (void)tap
@@ -252,7 +251,6 @@
          [[UserRequestServer sharedUserRequestServer] loginWithAccount:account password:pwd success:^(Account * _Nonnull account) {
              
           [self dismissWaiting];
-          [self.autoLoginIV removeFromSuperview];
           StockTabbarController *vc =  [[StockTabbarController alloc] init];
           vc.modalPresentationStyle = 0;
         
@@ -280,7 +278,7 @@
     UITextField *tf2 = [self.view viewWithTag:21];
     
     
-    //if (tf1.text.length >= 4 && tf1.text.length <= 16 && tf2.text.length >= 6 && tf2.text.length <= 16) {
+    if (tf1.text.length >= 4 && tf1.text.length <= 16 && tf2.text.length >= 6 && tf2.text.length <= 16) {
         
     if ([NSString isBlankString:tf1.text]) {
               
@@ -309,12 +307,12 @@
         }];
       }
         
-//    }
-//    else
-//    {
-//        [MBProgressHUD showError:@"数据不正确,请重新输入!"];
-//
-//    }
+    }
+    else
+    {
+        [MBProgressHUD showError:@"数据不正确,请重新输入!"];
+
+    }
     
 }
 

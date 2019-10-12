@@ -26,8 +26,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+<<<<<<< HEAD
 
     
+=======
+        
+>>>>>>> bcd86a20cb7cfa93a290dbd341a1f7ce9eb79b87
     self.account = [[AccountDao sharedAccountDao] queryLoginUser];
     
     [[UserRequestServer sharedUserRequestServer] getUserInfoByAccount:self.account success:^(Account *account) {
@@ -48,7 +52,7 @@
 
 - (void)configUI{
     
-     MainViewController *mainVC = [[MainViewController alloc] init];
+        MainViewController *mainVC = [[MainViewController alloc] init];
         [self setChildVC:mainVC name:@"" image:@"" selectedImage:@"" navVc:[UINavigationController class]];
         
         MarketViewController *mkVC = [[MarketViewController alloc] init];

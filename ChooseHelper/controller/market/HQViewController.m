@@ -10,7 +10,6 @@
 #import "HQTableViewCell.h"
 #import "ZFPMViewController.h"
 #import "StockRequetServer.h"
-//#import "MacVC.h"
 #import <MJRefresh.h>
 @interface HQViewController ()<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
 @property(nonatomic,assign)NSInteger leftSelect;
@@ -434,13 +433,6 @@
     [self setFooterRefresh];
     
     
-//    
-//    MacVC *vc2 = [[MacVC alloc] initWithHeight:(self.bottomLineIV.maxY - self.topLineIV.y)];
-//    [self addChildViewController:vc2];
-//      
-//    vc2.view.frame = CGRectMake(0, 0, SCREEN_WIDTH,(self.bottomLineIV.maxY - self.topLineIV.y));
-//    [self.view addSubview:vc2.view];
-    
     [self getIndex];
 }
 
@@ -514,7 +506,15 @@
           market = USA;
       }
     vc.market = market;
+    self.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    
+    [super viewWillDisappear:animated];
+    self.hidesBottomBarWhenPushed = YES;
+    
 }
 
 

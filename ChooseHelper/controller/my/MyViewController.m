@@ -20,13 +20,17 @@
 @property(nonatomic,strong)UITableView *tableView;
 @property(nonatomic,copy) NSArray *names;
 @property(nonatomic,copy) NSArray *images;
-
+@property(nonatomic,strong)UILabel *nowLabel;
 
 
 @property (nonatomic,strong)  UILabel *nameLb;
 @end
 
 @implementation MyViewController
+
+
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -115,6 +119,7 @@
         make.top.mas_equalTo(self.nameLb.mas_bottom).with.offset(11);
         
     }];
+    self.nowLabel = label2;
     
     UIButton *czBtn = [UIButton new];
     [czBtn setBackgroundImage:kGetImage(@"to_cz") forState:UIControlStateNormal];
@@ -169,6 +174,16 @@
  
     [super viewWillAppear:animated];
     
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+           double canUse = [user doubleForKey:@"canUse"];
+           if (canUse == 0) {
+               
+               canUse = 10000;
+               [user setDouble:10000 forKey:@"canUse"];
+           }
+       
+       self.nowLabel.text = [NSString stringWithFormat:@"%0.2f",canUse];
+    
     self.account = [[AccountDao sharedAccountDao] queryLoginUser];
        
    if ([[SDImageCache sharedImageCache] imageFromCacheForKey:self.account.account]) {
@@ -188,14 +203,17 @@
 - (void)goToCZ
 {
     CZViewController *vc = [[CZViewController alloc]init];
+    self.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }
 - (void)logOutBtn
 {
     
-       Account *account = [[AccountDao sharedAccountDao] queryLoginUser];
+       [self showWaiting];
+      Account *account = [[AccountDao sharedAccountDao] queryLoginUser];
       [[UserRequestServer sharedUserRequestServer] loginOutWithUUID:account.uuid success:^{
-                 
+                
+              [self dismissWaiting];
              account.password = @"";
              [[AccountDao sharedAccountDao] insertOrUpdateData:account];
              //[TextFavDao sharedTextFavDao].dbQueue = nil;
@@ -203,7 +221,7 @@
                  
         } failure:^(NSString * _Nonnull msg) {
                  
-            [MBProgressHUD showMessage:msg];
+            [self dismissWaitingWithShowToast:msg];
                  
       }];
 }
@@ -368,25 +386,33 @@
           
             weakSelf.nameLb.text = name;
         };
+        self.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
     else if (indexPath.row == 2) {
         
         ChangesecretViewController *vc = [[ChangesecretViewController alloc]init];
+         self.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
     else if (indexPath.row == 3) {
         
         AboutViewController *vc = [[AboutViewController alloc]init];
+         self.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
     else if(indexPath.row == 4)
     {
         VersionViewController *vc = [[VersionViewController alloc]init];
+         self.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
-    
-    
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+ 
+    [super viewWillDisappear:animated];
+    self.hidesBottomBarWhenPushed = NO;
     
 }
 

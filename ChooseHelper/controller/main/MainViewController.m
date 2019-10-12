@@ -179,19 +179,14 @@
            
        }];
 
-//   [[StockRequetServer sharedStockRequetServer] getNewsByType:@"caijing" success:^(NSArray * _Nonnull newsList) {
-//      self->_rArr = newsList;
-//
-//      if (self->_rArr.count > 0) {
-//         self->_nd.hidden = YES;
-//      }else{
-//         self->_nd.hidden = NO;
-//      }
-//      [self.tableView reloadData];
-//
-//   } failure:^(NSString * _Nonnull msg) {
-//      [MBManager showBriefAlert:msg inView:self.view];
-//   }];
+   [[StockRequetServer sharedStockRequetServer] getNewsByType:@"caijing" success:^(NSArray * _Nonnull newsList) {
+      self->_rArr = newsList;
+
+      [self.tableView reloadData];
+
+   } failure:^(NSString * _Nonnull msg) {
+      [MBManager showBriefAlert:msg inView:self.view];
+   }];
    
 }
 
@@ -203,14 +198,23 @@
 - (void)rightUpBtnCliked:(UIButton *)sender
 {
    ClassViewController *vc = [[ClassViewController alloc]init];
+   self.hidesBottomBarWhenPushed = YES;
    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)rightDownBtnCliked:(UIButton *)sender
 {
    InformationViewController *vc = [[InformationViewController alloc]init];
+   self.hidesBottomBarWhenPushed = YES;
    [self.navigationController pushViewController:vc animated:YES];
-    
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+   
+   [super viewWillDisappear:animated];
+   
+   self.hidesBottomBarWhenPushed = NO;
+   
 }
 
 
@@ -256,6 +260,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
    
    MessageViewController *vc = [[MessageViewController alloc]init];
+   self.hidesBottomBarWhenPushed = YES;
    [self.navigationController pushViewController:vc animated:YES];
 }
 

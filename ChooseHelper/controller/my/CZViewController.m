@@ -32,9 +32,9 @@
     [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewDidDisappear:(BOOL)animated
 {
-    [super viewDidAppear:animated];
+    [super viewDidDisappear:animated];
     [[SKPaymentQueue defaultQueue] removeTransactionObserver:self];
 }
 
@@ -44,9 +44,9 @@
     
     self.backBtn.hidden = NO;
     self.titleLabel.text = @"账户充值";
-    NSArray *array = @[@"￥68",@"￥108",@"￥158",@"￥198",@"￥258",@"￥308",@"￥388",@"￥488",@"￥588"];
-    NSArray *array2 = @[@"送500金币",@"送1000金币",@"送2000金币"];
-    for (int i = 0; i < 9; i++) {
+    NSArray *array = @[@"￥108",@"￥158",@"￥198",@"￥258",@"￥308",@"￥388"];
+    NSArray *array2 = @[@"送500金币",@"送1000金币"];
+    for (int i = 0; i < 6; i++) {
         
         UIButton *czBtn = [UIButton new];
         czBtn.tag = 20 + i;
@@ -104,7 +104,7 @@
         
     }];
     
-    UILabel *label2 = [Utils setLabelWithlines:0 textAlignment:NSTextAlignmentRight font:[UIFont systemFontOfSize:13] text:@"6800" textColor:[UIColor colorWithHexString:@"#041833" alpha:1]];
+    UILabel *label2 = [Utils setLabelWithlines:0 textAlignment:NSTextAlignmentRight font:[UIFont systemFontOfSize:13] text:@"10800" textColor:[UIColor colorWithHexString:@"#041833" alpha:1]];
     [self.view addSubview:label2];
     [label2 mas_makeConstraints:^(MASConstraintMaker *make) {
         
@@ -148,7 +148,7 @@
         btn.selected = NO;
         self.selectTag = sender.tag - 20;
         
-        NSArray *array = @[@"6800",@"10800",@"16300",@"19800",@"25800",@"31800",@"38800",@"48800",@"60300"];
+        NSArray *array = @[@"10800",@"16300",@"19800",@"25800",@"31800",@"38800"];
         
         self.numLabel.text = array[self.selectTag];
         
@@ -159,7 +159,7 @@
 
 - (void)requestProducts
 {
-    NSArray *productIDs = @[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9"];
+    NSArray *productIDs = @[@"buycoin108",@"buycoin158",@"buycoin198",@"buycoin258",@"buycoin308",@"buycoin388",@"buycoin488",@"buycoin588"];
     
     // 2.向苹果发送请求，请求所有可买的商品
     //   2.1.创建请求对象
@@ -336,6 +336,15 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         
         //写入数据库
+        
+        NSArray *array = @[@"10800",@"16300",@"19800",@"25800",@"31800",@"38800"];
+        NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+        double now = [user doubleForKey:@"canUse"];
+        
+        now = now + [array[self.selectTag] doubleValue];
+        [user setDouble:now forKey:@"canUse"];
+        [user synchronize];
+        [self.navigationController popViewControllerAnimated:YES];
         
         
     });

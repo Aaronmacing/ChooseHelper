@@ -19,12 +19,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+<<<<<<< HEAD
+=======
+    
+>>>>>>> bcd86a20cb7cfa93a290dbd341a1f7ce9eb79b87
     [[[RootDao alloc] init] createOrUpdateTable];
 #if 1
     LoginViewController *mainVC = [[LoginViewController alloc] init];
 #else
     StockTabbarController *mainVC = [[StockTabbarController alloc] init];
 #endif
+    
+    
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:mainVC];
     nav.navigationBar.hidden = YES;
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
