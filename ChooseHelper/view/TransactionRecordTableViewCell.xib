@@ -47,9 +47,9 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cat-Po-5xb">
-                        <rect key="frame" x="97" y="65.5" width="100" height="52.5"/>
+                        <rect key="frame" x="97" y="65.5" width="200" height="52.5"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="100" id="taw-y2-cPl"/>
+                            <constraint firstAttribute="width" constant="200" id="taw-y2-cPl"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                         <color key="textColor" red="0.043137254901960784" green="0.4392156862745098" blue="0.95686274509803915" alpha="0.5" colorSpace="calibratedRGB"/>
@@ -62,7 +62,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Si9-di-EJ0">
-                        <rect key="frame" x="197" y="65.5" width="207" height="52.5"/>
+                        <rect key="frame" x="297" y="65.5" width="107" height="52.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="1" green="0.0" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>

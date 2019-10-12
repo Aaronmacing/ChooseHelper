@@ -7,11 +7,13 @@
 //
 
 #import "BaseViewController.h"
+#import "StockSingleResultVO.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface GPXQViewController : BaseViewController
 @property(nonatomic,assign)NSInteger type;
+@property(nonatomic,strong)StockSingleResultVO *model;
 @end
 
 NS_ASSUME_NONNULL_END

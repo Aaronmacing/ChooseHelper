@@ -16,12 +16,33 @@
 @interface TrainViewController ()<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
 
 @property(nonatomic,strong)NSMutableArray *dataSource;
+@property(nonatomic,strong)NSMutableArray *localData;
 @property(nonatomic,strong)UITableView *tableView;
 @property(nonatomic,assign)NSInteger total;
+@property(nonatomic,assign)double canUse;
 @property(nonatomic,copy)NSArray *idArray;
+@property(nonatomic,assign)NSInteger number;
+@property(nonatomic,strong)NSString *filePatch;
+@property(nonatomic,assign)BOOL reload;
+@property(nonatomic,strong)UILabel *cwLabel;
+
+
 @end
 
 @implementation TrainViewController
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if (_reload == YES) {
+        
+        self.reload = NO;
+        [self readData];
+    }
+    
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,7 +50,7 @@
     
     self.titleLabel.text = @"模拟交易中心";
     
-    self.total = 100000;
+    
     self.idArray = @[@"sh600000",@"sh600004",@"sh600006",@"sh600007",@"sh600008"];
     
     [self.backBtn setImage:kGetImage(@"jy_btn") forState:UIControlStateNormal];
@@ -54,7 +75,7 @@
     }];
     
     NSArray *array1 = @[@"昨日盈亏",@"持仓盈亏",@"累计收益"];
-    NSArray *array2 = @[@"+1012.56",@"+1516.24",@"+3614.28"];
+    NSArray *array2 = @[@"+0.00",@"+0.00",@"+0.00"];
     
     for (int i = 0; i < 3; i++) {
         
@@ -70,6 +91,7 @@
         }];
         
         UILabel *label2 = [Utils setLabelWithlines:0 textAlignment:NSTextAlignmentCenter font:[UIFont systemFontOfSize:14] text:array2[i] textColor:[UIColor colorWithHexString:@"#FF0000" alpha:1]];
+        label2.tag = 10 + i;
         [self.view addSubview:label2];
         [label2 mas_makeConstraints:^(MASConstraintMaker *make) {
             
@@ -82,7 +104,7 @@
     }
     
     NSArray *array3 = @[@"总市值",@"可用资金"];
-    NSArray *array4 = @[@"3,000.00",@"3,000.00"];
+    NSArray *array4 = @[@"0.00",@"0.00"];
     
     for (int i = 0; i < 2; i++) {
         
@@ -98,6 +120,7 @@
         }];
         
         UILabel *label2 = [Utils setLabelWithlines:0 textAlignment:NSTextAlignmentCenter font:[UIFont systemFontOfSize:14] text:array4[i] textColor:[UIColor colorWithHexString:@"#FFFFFF" alpha:1]];
+        label2.tag = 20 + i;
         [self.view addSubview:label2];
         [label2 mas_makeConstraints:^(MASConstraintMaker *make) {
             
@@ -120,7 +143,7 @@
         
     }];
     
-    UILabel *label2 = [Utils setLabelWithlines:0 textAlignment:NSTextAlignmentRight font:[UIFont systemFontOfSize:14] text:@"仓位：30.00%" textColor:[UIColor colorWithHexString:@"#0B70F4" alpha:1]];
+    UILabel *label2 = [Utils setLabelWithlines:0 textAlignment:NSTextAlignmentRight font:[UIFont systemFontOfSize:14] text:@"仓位：0.00%" textColor:[UIColor colorWithHexString:@"#0B70F4" alpha:1]];
     [self.view addSubview:label2];
     [label2 mas_makeConstraints:^(MASConstraintMaker *make) {
         
@@ -130,6 +153,8 @@
         make.top.mas_equalTo(label1.mas_top);
         
     }];
+    
+    self.cwLabel = label2;
     
     
     self.tableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
@@ -152,23 +177,125 @@
     
     [self.view bringSubviewToFront:self.backBtn];
     
+    self.dataSource = [[NSMutableArray alloc]init];
+    self.localData = [[NSMutableArray alloc]init];
+    self.number = 0;
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    NSArray *pathArray = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path = [pathArray objectAtIndex:0];
+    //获取文件的完整路径
+    self.filePatch = [path stringByAppendingPathComponent:@"info.plist"];//没有会自动创建
+    
     [self initDataSource];
+    
+    
     
 }
 
 - (void)initDataSource
+
 {
     
-    
-    [[StockRequetServer sharedStockRequetServer] getStockSingleByCode:@"sh600000" type:@(0) stockMarket:Shanghai success:^(id stockSingle) {
+    [[StockRequetServer sharedStockRequetServer] getStockSingleByCode:self.idArray[self.number] type:nil stockMarket:Shanghai success:^(id stockSingle) {
         
-        NSLog(@"%@",stockSingle);
+        [self.dataSource addObject:stockSingle];
+        
+        if (self.number < 4) {
+            
+            self.number ++;
+            [self initDataSource];
+            
+        }
+        else
+        {
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            [self readData];
+            
+        }
         
     } failure:^(NSString *msg) {
         
     }];
     
 }
+
+- (void)readData
+{
+    
+    NSMutableArray *sandBoxDataArray = [[NSMutableArray alloc]initWithContentsOfFile:self.filePatch];
+    if (sandBoxDataArray == nil) {
+        
+        sandBoxDataArray = [[NSMutableArray alloc]init];
+        for (int i = 0; i < 5; i++) {
+            
+            StockSingleResultVO *model0 = self.dataSource[i];
+            DataSingle *model = model0.data;
+            
+            NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+            [dic setObject:model.gid forKey:@"id"];
+            [dic setObject:@"0.00" forKey:@"price"];
+            [dic setObject:@"0" forKey:@"num"];
+            [dic setObject:@"0.00" forKey:@"percent"];
+         
+            [sandBoxDataArray addObject:dic];
+        }
+        
+        [sandBoxDataArray writeToFile:self.filePatch atomically:YES];
+        
+    }
+    [self.localData removeAllObjects];
+    [self.localData addObjectsFromArray:sandBoxDataArray];
+    
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    self.canUse = [user doubleForKey:@"canUse"];
+    if (self.canUse == 0) {
+        
+        self.canUse = 10000;
+    }
+    
+    double totalSZ = 0;
+    double oldTotalSZ = 0;
+    double totalCanuse = self.canUse;
+    double total = 0;
+    for (int i = 0; i < 5; i++) {
+        
+        StockSingleResultVO *model0 = self.dataSource[i];
+        DataSingle *model = model0.data;
+        NSMutableDictionary *dic = self.localData[i];
+        
+        totalSZ = [dic[@"num"] intValue] * [model.nowPri doubleValue] + totalSZ;
+        oldTotalSZ = [dic[@"num"] intValue] * [dic[@"price"] intValue] + oldTotalSZ;
+        
+    }
+    
+    total = totalSZ + totalCanuse;
+    
+    
+    UILabel *label1 = [self.view viewWithTag:10];
+    label1.text = [NSString stringWithFormat:@"%+0.2f",totalSZ - oldTotalSZ];
+    
+    UILabel *label2 = [self.view viewWithTag:11];
+    label2.text = [NSString stringWithFormat:@"%+0.2f",totalSZ - oldTotalSZ];
+    
+    UILabel *label3 = [self.view viewWithTag:12];
+    label3.text = [NSString stringWithFormat:@"%+0.2f",total - 10000];
+    
+    
+    UILabel *label4 = [self.view viewWithTag:20];
+    label4.text = [NSString stringWithFormat:@"%0.2f",totalSZ];
+    
+    UILabel *label5 = [self.view viewWithTag:21];
+    label5.text = [NSString stringWithFormat:@"%0.2f",totalCanuse];
+    
+    
+    self.cwLabel.text = [NSString stringWithFormat:@"仓位：%0.2f%%",totalSZ / total * 100];
+    
+    
+    
+    [self.tableView reloadData];
+}
+    
 
 
 
@@ -204,7 +331,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 8;
+    return self.dataSource.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -224,6 +351,19 @@
     [cell.butBtn addTarget:self action:@selector(buyBtnCliked:) forControlEvents:UIControlEventTouchUpInside];
     [cell.sellBtn addTarget:self action:@selector(sellBtnCliked:) forControlEvents:UIControlEventTouchUpInside];
     [cell.hqBtn addTarget:self action:@selector(hqBtnCliked:) forControlEvents:UIControlEventTouchUpInside];
+    
+    StockSingleResultVO *model0 = self.dataSource[indexPath.section];
+    DataSingle *model = model0.data;
+    
+    
+    cell.nameLabel.text = [NSString stringWithFormat:@"%@-%@",model.name,[model.gid uppercaseString]];
+    cell.changeLabel.text = [NSString stringWithFormat:@"%@%%  %@",model.increPer,model.increase];
+    cell.nowLabel.text = [NSString stringWithFormat:@"当前价  %@",model.nowPri];
+    NSDictionary *dic = self.localData[indexPath.section];
+    cell.buyLabel.text = [NSString stringWithFormat:@"成本价  %@",dic[@"price"]];
+    cell.hasLabel.text = [NSString stringWithFormat:@"持  仓  %@",dic[@"num"]];
+    cell.cwLabel.text = [NSString stringWithFormat:@"最新市值  %0.2f",[dic[@"num"] doubleValue] * [model.nowPri doubleValue]];
+    
     return cell;
 }
 
@@ -239,22 +379,29 @@
 
 - (void)buyBtnCliked:(UIButton *)sender
 {
+    self.reload = YES;
+    
     BuysellViewController *vc = [[BuysellViewController alloc]init];
     vc.type = 1;
+    vc.model = self.dataSource[sender.tag - 1000];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)sellBtnCliked:(UIButton *)sender
 {
+    self.reload = YES;
     BuysellViewController *vc = [[BuysellViewController alloc]init];
     vc.type = 0;
+    vc.model = self.dataSource[sender.tag - 2000];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)hqBtnCliked:(UIButton *)sender
 {
+    self.reload = YES;
     GPXQViewController *vc = [[GPXQViewController alloc]init];
     vc.type = 1;
+    vc.model = self.dataSource[sender.tag - 3000];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

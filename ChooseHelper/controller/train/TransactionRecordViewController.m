@@ -11,7 +11,7 @@
 
 @interface TransactionRecordViewController ()<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
 @property(nonatomic,strong)UITableView *tableView;
-
+@property(nonatomic,strong)NSMutableArray *dataSource;
 @end
 
 @implementation TransactionRecordViewController
@@ -38,6 +38,28 @@
         make.right.mas_equalTo(self.view.mas_right).with.offset(0);
         
     }];
+    
+    [self readData];
+}
+
+- (void)readData
+{
+    NSArray *pathArray = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path = [pathArray objectAtIndex:0];
+    //获取文件的完整路径
+    NSString *filePatch = [path stringByAppendingPathComponent:@"Data.plist"];//没有会自动创建
+    
+    NSMutableArray *sandBoxDataArray = [[NSMutableArray alloc]initWithContentsOfFile:filePatch];
+    if (sandBoxDataArray == nil) {
+         sandBoxDataArray = [[NSMutableArray alloc]init];
+    }
+    
+    self.dataSource = [[NSMutableArray alloc]init];
+    
+    [self.dataSource addObjectsFromArray:sandBoxDataArray];
+    [self.tableView reloadData];
+    
+    
 }
 
 #pragma mark - UITableViewDelegate
@@ -51,7 +73,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 12;
+    return self.dataSource.count;
 }
 
 
@@ -67,7 +89,10 @@
     //设置cell没有选中效果
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    if (indexPath.row % 2 == 0) {
+    NSDictionary *dic = self.dataSource[indexPath.row];
+    
+    
+    if ([dic[@"type"] intValue] == 1) {
         
         cell.flagImage.image = kGetImage(@"cell_flag_buy");
         cell.flagName.text = @"买入";
@@ -79,6 +104,11 @@
         cell.flagName.text = @"卖出";
         cell.flagName.textColor = [UIColor colorWithHexString:@"#0000FF" alpha:1];
     }
+    
+    cell.nameLabel.text = dic[@"name"];
+    cell.timeLabel.text = dic[@"time"];
+    cell.priceLabel.text = dic[@"price"];
+    cell.numLabel.text = dic[@"num"];
 
    
     return cell;
