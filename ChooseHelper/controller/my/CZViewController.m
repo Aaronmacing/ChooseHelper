@@ -8,8 +8,6 @@
 
 #import "CZViewController.h"
 #import <StoreKit/StoreKit.h>
-#import <RMStore.h>
-
 
 @interface CZViewController ()<SKProductsRequestDelegate,SKPaymentTransactionObserver>
 @property(nonatomic,assign)NSInteger selectTag;
