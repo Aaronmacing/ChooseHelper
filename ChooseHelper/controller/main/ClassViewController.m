@@ -44,7 +44,7 @@
           if (i == 0) {
               btn.selected = YES;
               self.leftSelect = 0;
-            
+              [self leftBtnCliked:btn];
           }
       }
     self.tableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
@@ -64,17 +64,12 @@
        make.right.mas_equalTo(self.view.mas_right).with.offset(0);
        
    }];
-
-    NSString * dataPath = [[NSBundle mainBundle] pathForResource:@"jzsp" ofType:@"json"];
-    NSString *jsonStr = [[NSString alloc] initWithContentsOfFile:dataPath encoding:NSUTF8StringEncoding error:nil];
-    NSArray * arr = [NSArray yy_modelArrayWithClass:[KsModel class] json:jsonStr];
-    _rArr = arr;
-    [self.tableView reloadData];
     
 }
 
 - (void)leftBtnCliked:(UIButton *)sender
 {
+    
     if (sender.tag - 10 == self.leftSelect) {
         
     }
@@ -85,6 +80,13 @@
         btn.selected = NO;
         self.leftSelect = sender.tag - 10;
     }
+    
+    NSString * dataPath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"jzsp%ld",sender.tag - 10] ofType:@"json"];
+    NSString *jsonStr = [[NSString alloc] initWithContentsOfFile:dataPath encoding:NSUTF8StringEncoding error:nil];
+    NSArray * arr = [NSArray yy_modelArrayWithClass:[KsModel class] json:jsonStr];
+    _rArr = arr;
+    [self.tableView reloadData];
+
 }
 
 - (void)czBtnCliked:(UIButton *)sender
@@ -148,11 +150,11 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     KsModel * model = _rArr[indexPath.row];
+    [model setValue:[NSNumber numberWithInteger:indexPath.row] forKey:@"tag"];
     PlayViewController *vc = [[PlayViewController alloc]init];
     vc.vidModel = model;
     [self.navigationController pushViewController:vc animated:YES];
 }
-
 
 
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView

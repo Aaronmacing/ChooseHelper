@@ -99,7 +99,7 @@
    }];
     
 
-    NSString * dataPath = [[NSBundle mainBundle] pathForResource:@"jzsp" ofType:@"json"];
+    NSString * dataPath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"jzsp%ld",_vidModel.tag] ofType:@"json"];
     NSString *jsonStr = [[NSString alloc] initWithContentsOfFile:dataPath encoding:NSUTF8StringEncoding error:nil];
     NSArray * arr = [NSArray yy_modelArrayWithClass:[KsModel class] json:jsonStr];
     _rArr = arr;

@@ -24,6 +24,8 @@
  @property (strong,nonatomic)UIScrollView *scrollview; //滚动视图控件对象
  @property (strong,nonatomic)UIPageControl *pagecontrol;//分页控制控件对象
 @property(nonatomic,strong)UITableView *tableView;
+
+
 @end
 
 @implementation MainViewController
@@ -50,42 +52,6 @@
         
     }];
    
-   UIImageView * ssview = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"搜索框"]];
-   [self.view addSubview:ssview];
-   
-   UIImageView * fdjview = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"搜索icon"]];
-   [ssview addSubview:fdjview];
-   
-   UILabel * ms = [[UILabel alloc] init];
-   ms.text = @"股票代码/名称";
-   ms.textColor = Uni_RGB(191, 191, 191);
-   ms.font = [UIFont systemFontOfSize:13];
-   [ssview addSubview:ms];
-   
-   UIButton * ssBrn = [UIButton buttonWithType:UIButtonTypeCustom];
-   [ssBrn addTarget:self action:@selector(searchClick) forControlEvents:UIControlEventTouchUpInside];
-   [ssview addSubview:ssBrn];
-
-
-   [ssview mas_makeConstraints:^(MASConstraintMaker *make) {
-      make.centerX.equalTo(self.view);
-      make.top.equalTo(self.view).offset(50);
-   }];
-   
-   [fdjview mas_makeConstraints:^(MASConstraintMaker *make) {
-      make.left.equalTo(ssview).offset(10);
-      make.centerY.equalTo(ssview);
-   }];
-   
-   [ms mas_makeConstraints:^(MASConstraintMaker *make) {
-      make.left.equalTo(ssview).offset(36);
-      make.centerY.equalTo(ssview);
-   }];
-   
-   [ssBrn mas_makeConstraints:^(MASConstraintMaker *make) {
-      make.edges.equalTo(ssview);
-   }];
-    
  
       //创建5个imageView对象并加载图片
       CGFloat x = 0;
@@ -224,24 +190,19 @@
       make.center.equalTo(self.tableView);
    }];
    
-   [[StockRequetServer sharedStockRequetServer] getNewsByType:@"caijing" success:^(NSArray * _Nonnull newsList) {
-      self->_rArr = newsList;
-      
-      if (self->_rArr.count > 0) {
-         self->_nd.hidden = YES;
-      }else{
-         self->_nd.hidden = NO;
-      }
-      [self.tableView reloadData];
-      
-   } failure:^(NSString * _Nonnull msg) {
-      [MBManager showBriefAlert:msg inView:self.view];
-   }];
-    
-}
-
-- (void)searchClick{
-   
+//   [[StockRequetServer sharedStockRequetServer] getNewsByType:@"caijing" success:^(NSArray * _Nonnull newsList) {
+//      self->_rArr = newsList;
+//
+//      if (self->_rArr.count > 0) {
+//         self->_nd.hidden = YES;
+//      }else{
+//         self->_nd.hidden = NO;
+//      }
+//      [self.tableView reloadData];
+//
+//   } failure:^(NSString * _Nonnull msg) {
+//      [MBManager showBriefAlert:msg inView:self.view];
+//   }];
    
 }
 
@@ -308,8 +269,6 @@
    MessageViewController *vc = [[MessageViewController alloc]init];
    [self.navigationController pushViewController:vc animated:YES];
 }
-
-
 
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
 {
