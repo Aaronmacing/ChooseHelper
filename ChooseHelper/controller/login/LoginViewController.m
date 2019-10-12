@@ -209,14 +209,13 @@
            [[UserRequestServer sharedUserRequestServer] loginWithAccount:self.account.account password:self.account.password success:^(Account * _Nonnull account) {
                
             [self dismissWaiting];
-            [self.autoLoginIV removeFromSuperview];
             StockTabbarController *vc =  [[StockTabbarController alloc] init];
             vc.modalPresentationStyle = 0;
           
             [self presentViewController:vc animated:NO completion:nil];
 
            } failure:^(NSString * _Nonnull msg) {
-               [self.autoLoginIV removeFromSuperview];
+              
                [self dismissWaitingWithShowToast:msg];
            }];
        }
@@ -228,10 +227,17 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
     self.navigationController.navigationBarHidden = YES;
     
 }
+
+- (void)viewDidDisappear:(BOOL)animated{
+ 
+    [super viewDidDisappear:animated];
+    [self.autoLoginIV removeFromSuperview];
+
+}
+    
 
 
 - (void)tap
@@ -245,7 +251,6 @@
          [[UserRequestServer sharedUserRequestServer] loginWithAccount:account password:pwd success:^(Account * _Nonnull account) {
              
           [self dismissWaiting];
-          [self.autoLoginIV removeFromSuperview];
           StockTabbarController *vc =  [[StockTabbarController alloc] init];
           vc.modalPresentationStyle = 0;
         
