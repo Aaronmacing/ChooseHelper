@@ -529,7 +529,15 @@
           market = USA;
       }
     vc.market = market;
+    self.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    
+    [super viewWillDisappear:animated];
+    self.hidesBottomBarWhenPushed = YES;
+    
 }
 
 

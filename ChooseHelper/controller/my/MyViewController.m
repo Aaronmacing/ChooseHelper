@@ -188,6 +188,7 @@
 - (void)goToCZ
 {
     CZViewController *vc = [[CZViewController alloc]init];
+    self.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }
 - (void)logOutBtn
@@ -368,25 +369,33 @@
           
             weakSelf.nameLb.text = name;
         };
+        self.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
     else if (indexPath.row == 2) {
         
         ChangesecretViewController *vc = [[ChangesecretViewController alloc]init];
+         self.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
     else if (indexPath.row == 3) {
         
         AboutViewController *vc = [[AboutViewController alloc]init];
+         self.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
     else if(indexPath.row == 4)
     {
         VersionViewController *vc = [[VersionViewController alloc]init];
+         self.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
-    
-    
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+ 
+    [super viewWillDisappear:animated];
+    self.hidesBottomBarWhenPushed = NO;
     
 }
 
