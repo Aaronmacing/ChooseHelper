@@ -10,15 +10,21 @@
 
 @implementation ZXTableViewCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
+- (void)setDataVO:(DataList *)dataVO{
+    
+    _dataVO = dataVO;
+    
+    self.nameLabel.text = _dataVO.name;
+    self.numLabel.text = _dataVO.symbol;
+    self.prcizeLabel.text = _dataVO.trade;
+    NSString *changeP = _dataVO.changepercent;
+    if ([changeP containsString:@"-"]) {
+
+         self.zfLabel.textColor = [UIColor greenColor];
+     }else{
+
+         self.zfLabel.textColor = [UIColor redColor];
+     }
+    self.zfLabel.text = [NSString stringWithFormat:@"%@%%",changeP];
 }
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-
 @end

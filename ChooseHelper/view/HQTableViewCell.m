@@ -10,15 +10,22 @@
 
 @implementation HQTableViewCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
+- (void)setDataVO:(DataList *)dataVO{
+    
+    _dataVO = dataVO;
+    
+    self.nameLabel.text = _dataVO.name;
+    self.numLabel.text = _dataVO.symbol;
+    self.priceLabel.text = _dataVO.trade;
+    NSString *changeP = _dataVO.changepercent;
+    if ([changeP containsString:@"-"]) {
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+         self.zfLabel.textColor = [UIColor greenColor];
+     }else{
 
-    // Configure the view for the selected state
+         self.zfLabel.textColor = [UIColor redColor];
+     }
+    self.zfLabel.text = [NSString stringWithFormat:@"%@%%",changeP];
 }
 
 @end

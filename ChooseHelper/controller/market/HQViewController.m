@@ -9,10 +9,34 @@
 #import "HQViewController.h"
 #import "HQTableViewCell.h"
 #import "ZFPMViewController.h"
-
+#import "StockRequetServer.h"
+//#import "MacVC.h"
+#import <MJRefresh.h>
 @interface HQViewController ()<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
 @property(nonatomic,assign)NSInteger leftSelect;
 @property(nonatomic,strong)UITableView *tableView;
+
+@property (nonatomic,strong) NSMutableArray *dataSource;
+
+@property (nonatomic, assign) NSInteger page;
+
+@property (nonatomic, assign) NSInteger type;
+
+@property (nonatomic,strong) UILabel *noDataLb;
+
+
+/// 指数labels
+@property (nonatomic,strong) NSMutableArray <UILabel *>*indexLbs;
+
+/// 涨跌额labels
+@property (nonatomic,strong) NSMutableArray <UILabel *>*changeAmountLbs;
+
+/// 涨跌幅度labels
+@property (nonatomic,strong) NSMutableArray <UILabel *>*changePercentageLbs;
+
+@property (nonatomic,strong) UIImageView *topLineIV;
+
+@property (nonatomic,strong) UIImageView *bottomLineIV;
 @end
 
 @implementation HQViewController
@@ -33,7 +57,9 @@
         make.top.mas_equalTo(self.view.mas_top);
     }];
     
-    
+    self.indexLbs = @[].mutableCopy;
+    self.changeAmountLbs = @[].mutableCopy;
+    self.changePercentageLbs = @[].mutableCopy;
     
     NSArray *array = @[@"沪深",@"港股",@"美股"];
     for (int i = 0; i < 3; i++) {
@@ -70,10 +96,10 @@
         }
     }
     
-    NSArray *array1 = @[@"g_a",@"g_b",@"g_c"];
-    NSArray *array2 = @[@"上证指数",@"深证成指",@"创业板指"];
+    NSArray *array1 = @[@"g_a",@"g_b"];
+    NSArray *array2 = @[@"上证指数",@"深证成指"];
     NSArray *array3= @[[UIColor colorWithHexString:@"#FF0000" alpha:1],[UIColor colorWithHexString:@"#33CC33" alpha:1],[UIColor colorWithHexString:@"#FF0000" alpha:1]];
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 2; i++) {
         
         UIImageView *imageView = [UIImageView new];
         imageView.image = kGetImage(array1[i]);
@@ -83,7 +109,7 @@
             make.top.mas_equalTo(top.mas_bottom).with.offset(14);
                 make.width.mas_equalTo(103);
                 make.height.mas_equalTo(80);
-                make.left.mas_equalTo(self.view.mas_left).with.offset(8 + ((Uni_kMainScreenWidth - 16 - 103 * 3) / 2 + 103) * i);
+            make.centerX.mas_equalTo(self.view).multipliedBy(i + 0.5);
             
         }];
         
@@ -112,6 +138,8 @@
             
         }];
         
+        [self.indexLbs addObject:label2];
+        
         UILabel *label3 = [Utils setLabelWithlines:0 textAlignment:NSTextAlignmentCenter font:[UIFont systemFontOfSize:10] text:@"10000.00" textColor:array3[i]];
         label3.tag = 20 + i;
         [imageView addSubview:label3];
@@ -124,6 +152,8 @@
             
         }];
         
+        [self.changeAmountLbs addObject:label3];
+        
         UILabel *label4 = [Utils setLabelWithlines:0 textAlignment:NSTextAlignmentCenter font:[UIFont systemFontOfSize:10] text:@"10000.00" textColor:array3[i]];
         label4.tag = 30 + i;
         [imageView addSubview:label4];
@@ -135,6 +165,8 @@
             make.top.mas_equalTo(label2.mas_bottom).with.offset(13);
             
         }];
+        
+        [self.changePercentageLbs addObject:label4];
     }
     
     NSArray *array4 = @[@"涨跌分布",@"涨幅榜"];
@@ -175,6 +207,14 @@
             
         }];
         
+        if (i == 0) {
+            
+            self.topLineIV = imageView1;
+        }else{
+         
+            self.bottomLineIV = imageView1;
+        }
+       
         if (i == 1) {
             
             UIButton *czBtn = [UIButton new];
@@ -381,11 +421,71 @@
    
    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
        make.top.mas_equalTo(top.mas_bottom).with.offset(282 + 10);
-       make.bottom.mas_equalTo(self.view.mas_bottom);
+       make.bottom.mas_equalTo(self.view.mas_bottom).offset(-self.tabBarController.tabBar.height);
        make.left.mas_equalTo(self.view.mas_left).with.offset(0);
        make.right.mas_equalTo(self.view.mas_right).with.offset(0);
        
    }];
+    
+    self.page = 1;
+    
+    self.type = 4;
+    
+    self.dataSource = @[].mutableCopy;
+ 
+    [self setHeaderRefresh];
+    [self setFooterRefresh];
+    
+    self.noDataLb = [[UILabel alloc] init];
+    self.noDataLb.font = [UIFont systemFontOfSize:20];
+    self.noDataLb.text = @"暂无数据";
+    self.noDataLb.textAlignment = NSTextAlignmentCenter;
+    [self.tableView addSubview:self.noDataLb];
+    
+    [self.noDataLb mas_makeConstraints:^(MASConstraintMaker *make) {
+       
+        make.center.mas_equalTo(self.tableView);
+        make.height.mas_equalTo(22);
+        make.width.mas_equalTo(250);
+    }];
+    
+//    
+//    MacVC *vc2 = [[MacVC alloc] initWithHeight:(self.bottomLineIV.maxY - self.topLineIV.y)];
+//    [self addChildViewController:vc2];
+//      
+//    vc2.view.frame = CGRectMake(0, 0, SCREEN_WIDTH,(self.bottomLineIV.maxY - self.topLineIV.y));
+//    [self.view addSubview:vc2.view];
+    
+    [self getIndex];
+}
+
+- (void)getIndex{
+    
+ 
+    [[StockRequetServer sharedStockRequetServer] getStockSingleByCode:@"" type:@0 stockMarket:Shanghai success:^(id stockSingle) {
+        
+        IndexVO *indexVO = (IndexVO *)stockSingle;
+        self.indexLbs[0].text = indexVO.nowpri;
+        self.changeAmountLbs[0].text = indexVO.increase;
+        self.changePercentageLbs[0].text = [NSString stringWithFormat:@"%@%%",indexVO.increPer];
+        
+    } failure:^(NSString *msg) {
+        
+         [self showToast:msg];
+    }];
+    
+    [[StockRequetServer sharedStockRequetServer] getStockSingleByCode:@"" type:@1 stockMarket:Shanghai success:^(id stockSingle) {
+           
+           IndexVO *indexVO = (IndexVO *)stockSingle;
+           self.indexLbs[1].text = indexVO.nowpri;
+           self.changeAmountLbs[1].text = indexVO.increase;
+           self.changePercentageLbs[1].text = [NSString stringWithFormat:@"%@%%",indexVO.increPer];
+           
+    } failure:^(NSString *msg) {
+           
+           [self showToast:msg];
+    }];
+    
     
 }
 
@@ -408,12 +508,27 @@
             make.height.mas_equalTo(2);
             make.bottom.mas_equalTo(sender.mas_bottom).with.offset(-6);
         }];
+        
+        [self.tableView.mj_header beginRefreshing];
     }
 }
 
 - (void)czBtnCliked:(UIButton *)sender
 {
     ZFPMViewController *vc = [[ZFPMViewController alloc]init];
+    vc.dataSource = self.dataSource;
+    StockMarket market = Shanghai;
+      if (self.leftSelect == 0) {
+          
+          market = Shanghai;
+      }else if (self.leftSelect == 1){
+       
+          market = HongKong;
+      }else{
+       
+          market = USA;
+      }
+    vc.market = market;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -461,7 +576,7 @@
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 5;
+    return self.dataSource.count;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -479,8 +594,12 @@
     }
     //设置cell没有选中效果
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
-   
+    
+    
+    if (self.dataSource && self.dataSource.count > 0) {
+        
+        cell.dataVO = self.dataSource[indexPath.row];
+    }
     return cell;
 }
 
@@ -497,6 +616,140 @@
 }
 
 
+/**
+ 下拉刷新
+ */
+- (void)setHeaderRefresh{
+ 
+    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRefresh)];
+    
+    header.lastUpdatedTimeLabel.hidden = YES;
+    
+    [header setTitle:@"下拉可以刷新..." forState:MJRefreshStateIdle];
+    [header setTitle:@"松开立即刷新..." forState:MJRefreshStatePulling];
+    [header setTitle:@"正在加载..." forState:MJRefreshStateRefreshing];
+    
+    self.tableView.mj_header = header;
+    
+   
+    [self.tableView.mj_header beginRefreshing];
+    
+}
+
+/**
+ 上拉加载
+ */
+- (void)setFooterRefresh{
+    
+    MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRefresh)];
+    footer.stateLabel.textColor = [UIColor clearColor];
+    footer.refreshingTitleHidden = YES;
+    footer.activityIndicatorViewStyle = 1;
+    footer.stateLabel.textColor = [UIColor whiteColor];;
+    [footer setTitle:@"上拉加载数据..." forState:MJRefreshStateIdle];
+    [footer setTitle:@"松开加载数据..." forState:MJRefreshStatePulling];
+    [footer setTitle:@"正在加载..." forState:MJRefreshStateRefreshing];
+
+    self.tableView.mj_footer = footer;
+}
+
+/**
+ 上拉加载结束
+ */
+- (void)footerRefresh{
+   
+    self.page ++;
+    //加载数据
+    [self loadTableDataFromServer];
+}
+- (void)headerRefresh{
+    
+    self.page = 1;
+    self.tableView.mj_footer.hidden = NO;
+    [self.dataSource removeAllObjects];
+    [self loadTableDataFromServer];
+}
+-(void)loadTableDataFromServer{
+    
+    StockMarket market = Shanghai;
+    if (self.leftSelect == 0) {
+        
+        market = Shanghai;
+    }else if (self.leftSelect == 1){
+     
+        market = HongKong;
+    }else{
+     
+        market = USA;
+    }
+    
+    [[StockRequetServer sharedStockRequetServer] getStockListByPage:self.page type:self.type stockMarket:market success:^(NSArray<DataList *> *stockList) {
+        
+        [self.tableView.mj_header endRefreshing];
+        [self.dataSource addObjectsFromArray:stockList];
+        
+        NSPredicate* predicate = [NSPredicate predicateWithFormat:@"!(changepercent contains '-')"];
+        NSPredicate* downPredicate = [NSPredicate predicateWithFormat:@"changepercent contains '-'"];
+        
+        NSArray <DataList *>*tempArr = [self.dataSource filteredArrayUsingPredicate:predicate];
+        NSArray <DataList *>*downList = [self.dataSource filteredArrayUsingPredicate:downPredicate];
+        NSArray *resultList = [tempArr sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+           
+            DataList *data1 = (DataList *)obj1;
+            DataList *data2 = (DataList *)obj2;
+            
+            return [@(data2.changepercent.doubleValue) compare:@(data1.changepercent.doubleValue)];
+            
+            
+        }];
+        
+        NSArray *downResultList = [downList sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+           
+            DataList *data1 = (DataList *)obj1;
+            DataList *data2 = (DataList *)obj2;
+            
+            return [@(data2.changepercent.doubleValue) compare:@(data1.changepercent.doubleValue)];
+            
+            
+        }];
+        
+        [self.dataSource removeAllObjects];
+        [self.dataSource addObjectsFromArray:resultList];
+        [self.dataSource addObjectsFromArray:downResultList];
+
+        if (self.dataSource && self.dataSource.count > 0) {
+            
+            self.noDataLb.hidden = YES;
+        }else{
+         
+            self.noDataLb.hidden = NO;
+        }
+        
+        [self.tableView reloadData];
+        
+    } failure:^(NSString *msg) {
+        
+        [self.tableView.mj_header endRefreshing];
+        [self.tableView.mj_footer endRefreshing];
+        [self showToast:msg];
+    }];
+}
+
+
+/**
+ *  显示提示消息
+ */
+- (void)showToast:(NSString *)msg{
+
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeText;
+    hud.detailsLabel.text = msg;
+    hud.margin = 10.f;
+    //hud.offset = CGP
+    hud.offset = CGPointMake(hud.offset.x, Uni_kMainScreenHeight * 0.333);
+    hud.removeFromSuperViewOnHide = YES;
+    [hud hideAnimated:YES afterDelay:3];
+}
 
 
 /*

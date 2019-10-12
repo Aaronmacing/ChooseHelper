@@ -91,6 +91,13 @@
 		6842918F235185A7009341A3 /* UIColor+AppColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 68429184235185A6009341A3 /* UIColor+AppColor.m */; };
 		68429190235185A7009341A3 /* UITextView+ZWPlaceHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 68429185235185A6009341A3 /* UITextView+ZWPlaceHolder.m */; };
 		68429191235185A7009341A3 /* UIImage+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 68429188235185A7009341A3 /* UIImage+Additions.m */; };
+		685DF1212351D1C500EA2C9B /* YKLineChartViewBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 685DF1142351D1C500EA2C9B /* YKLineChartViewBase.m */; };
+		685DF1222351D1C500EA2C9B /* YKLineDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 685DF1152351D1C500EA2C9B /* YKLineDataSet.m */; };
+		685DF1232351D1C500EA2C9B /* YKTimeLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 685DF1162351D1C500EA2C9B /* YKTimeLineView.m */; };
+		685DF1242351D1C500EA2C9B /* YKViewBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 685DF1172351D1C500EA2C9B /* YKViewBase.m */; };
+		685DF1252351D1C500EA2C9B /* YKLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 685DF1182351D1C500EA2C9B /* YKLineChartView.m */; };
+		685DF1262351D1C500EA2C9B /* YKLineEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 685DF11F2351D1C500EA2C9B /* YKLineEntity.m */; };
+		685DF1282351D1CE00EA2C9B /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 685DF1272351D1CE00EA2C9B /* data.plist */; };
 		E2FF3E7F19CE10E29FED0769 /* libPods-ChooseHelper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 61B45CCC1180C42F9FAD4D97 /* libPods-ChooseHelper.a */; };
 /* End PBXBuildFile section */
 
@@ -258,6 +265,20 @@
 		68429188235185A7009341A3 /* UIImage+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Additions.m"; sourceTree = "<group>"; };
 		6842918A235185A7009341A3 /* UITextView+ZWPlaceHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+ZWPlaceHolder.h"; sourceTree = "<group>"; };
 		6842918B235185A7009341A3 /* UIView+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Util.h"; sourceTree = "<group>"; };
+		685DF1142351D1C500EA2C9B /* YKLineChartViewBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKLineChartViewBase.m; sourceTree = "<group>"; };
+		685DF1152351D1C500EA2C9B /* YKLineDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKLineDataSet.m; sourceTree = "<group>"; };
+		685DF1162351D1C500EA2C9B /* YKTimeLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKTimeLineView.m; sourceTree = "<group>"; };
+		685DF1172351D1C500EA2C9B /* YKViewBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKViewBase.m; sourceTree = "<group>"; };
+		685DF1182351D1C500EA2C9B /* YKLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKLineChartView.m; sourceTree = "<group>"; };
+		685DF1192351D1C500EA2C9B /* YKLineEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKLineEntity.h; sourceTree = "<group>"; };
+		685DF11A2351D1C500EA2C9B /* YKTimeLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKTimeLineView.h; sourceTree = "<group>"; };
+		685DF11B2351D1C500EA2C9B /* YKLineDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKLineDataSet.h; sourceTree = "<group>"; };
+		685DF11C2351D1C500EA2C9B /* YKLineChartViewBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKLineChartViewBase.h; sourceTree = "<group>"; };
+		685DF11D2351D1C500EA2C9B /* YKViewBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKViewBase.h; sourceTree = "<group>"; };
+		685DF11E2351D1C500EA2C9B /* YKLineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKLineChart.h; sourceTree = "<group>"; };
+		685DF11F2351D1C500EA2C9B /* YKLineEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKLineEntity.m; sourceTree = "<group>"; };
+		685DF1202351D1C500EA2C9B /* YKLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKLineChartView.h; sourceTree = "<group>"; };
+		685DF1272351D1CE00EA2C9B /* data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = data.plist; sourceTree = "<group>"; };
 		93E20321FA901A21388A6E34 /* Pods-ChooseHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChooseHelper.release.xcconfig"; path = "Target Support Files/Pods-ChooseHelper/Pods-ChooseHelper.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -379,6 +400,7 @@
 		18A97B47234DBB06006BDBBC /* ChooseHelper */ = {
 			isa = PBXGroup;
 			children = (
+				685DF1122351D1BB00EA2C9B /* KLine */,
 				18A97B48234DBB06006BDBBC /* AppDelegate.h */,
 				18A97B49234DBB06006BDBBC /* AppDelegate.m */,
 				18A97B54234DBB07006BDBBC /* Assets.xcassets */,
@@ -634,6 +656,35 @@
 			path = BaseVC;
 			sourceTree = "<group>";
 		};
+		685DF1122351D1BB00EA2C9B /* KLine */ = {
+			isa = PBXGroup;
+			children = (
+				685DF1132351D1C500EA2C9B /* YKLineChartView */,
+			);
+			path = KLine;
+			sourceTree = "<group>";
+		};
+		685DF1132351D1C500EA2C9B /* YKLineChartView */ = {
+			isa = PBXGroup;
+			children = (
+				685DF1272351D1CE00EA2C9B /* data.plist */,
+				685DF1142351D1C500EA2C9B /* YKLineChartViewBase.m */,
+				685DF1152351D1C500EA2C9B /* YKLineDataSet.m */,
+				685DF1162351D1C500EA2C9B /* YKTimeLineView.m */,
+				685DF1172351D1C500EA2C9B /* YKViewBase.m */,
+				685DF1182351D1C500EA2C9B /* YKLineChartView.m */,
+				685DF1192351D1C500EA2C9B /* YKLineEntity.h */,
+				685DF11A2351D1C500EA2C9B /* YKTimeLineView.h */,
+				685DF11B2351D1C500EA2C9B /* YKLineDataSet.h */,
+				685DF11C2351D1C500EA2C9B /* YKLineChartViewBase.h */,
+				685DF11D2351D1C500EA2C9B /* YKViewBase.h */,
+				685DF11E2351D1C500EA2C9B /* YKLineChart.h */,
+				685DF11F2351D1C500EA2C9B /* YKLineEntity.m */,
+				685DF1202351D1C500EA2C9B /* YKLineChartView.h */,
+			);
+			path = YKLineChartView;
+			sourceTree = "<group>";
+		};
 		FBED688F0463C357A53479AB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -714,6 +765,7 @@
 				1870A00C234F70C2006CD559 /* XLYTableViewCell.xib in Resources */,
 				18A97B55234DBB07006BDBBC /* Assets.xcassets in Resources */,
 				18CDB6BE23501F0C00E955D8 /* SystemTradTableViewCell.xib in Resources */,
+				685DF1282351D1CE00EA2C9B /* data.plist in Resources */,
 				18BD068F2350C8CC00F89CA0 /* NewgpTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -769,6 +821,7 @@
 			files = (
 				18CDB6CB235057A900E955D8 /* HQTableViewCell.m in Sources */,
 				6842917823517813009341A3 /* IndexVO.m in Sources */,
+				685DF1262351D1C500EA2C9B /* YKLineEntity.m in Sources */,
 				18BD06312350A65F00F89CA0 /* ClassViewController.m in Sources */,
 				18A97B8A234DBB6D006BDBBC /* SingletonModel.m in Sources */,
 				6842915323517513009341A3 /* StockRequetServer.m in Sources */,
@@ -784,6 +837,8 @@
 				18A97B87234DBB6D006BDBBC /* BaseViewController.m in Sources */,
 				68429191235185A7009341A3 /* UIImage+Additions.m in Sources */,
 				18709FFB234F4CE7006CD559 /* AboutViewController.m in Sources */,
+				685DF1252351D1C500EA2C9B /* YKLineChartView.m in Sources */,
+				685DF1232351D1C500EA2C9B /* YKTimeLineView.m in Sources */,
 				18709FF8234F4CD1006CD559 /* ChangesecretViewController.m in Sources */,
 				18CDB6C123502E7500E955D8 /* HQViewController.m in Sources */,
 				6842916D235175BA009341A3 /* RequestResultVO.m in Sources */,
@@ -804,6 +859,7 @@
 				18709FF2234F2679006CD559 /* TrainViewController.m in Sources */,
 				18BD067E2350B62900F89CA0 /* ZQPlayerMaskView.m in Sources */,
 				18A97B4A234DBB06006BDBBC /* AppDelegate.m in Sources */,
+				685DF1242351D1C500EA2C9B /* YKViewBase.m in Sources */,
 				18A97B89234DBB6D006BDBBC /* Utils.m in Sources */,
 				68429164235175A5009341A3 /* Account.m in Sources */,
 				18709FEE234F2672006CD559 /* MyViewController.m in Sources */,
@@ -815,10 +871,12 @@
 				6842918023518569009341A3 /* CHBaseViewController.m in Sources */,
 				18BD06392350AB4500F89CA0 /* MessageViewController.m in Sources */,
 				18BD067C2350B62900F89CA0 /* ZQPlayer.m in Sources */,
+				685DF1222351D1C500EA2C9B /* YKLineDataSet.m in Sources */,
 				18709FEA234F2672006CD559 /* MainViewController.m in Sources */,
 				1870A00B234F70C2006CD559 /* XLYTableViewCell.m in Sources */,
 				18BD0629235086CF00F89CA0 /* SearchViewController.m in Sources */,
 				6842916F235175BA009341A3 /* StockListResultVO.m in Sources */,
+				685DF1212351D1C500EA2C9B /* YKLineChartViewBase.m in Sources */,
 				1870A004234F4D2B006CD559 /* VersionViewController.m in Sources */,
 				18A97B86234DBB6D006BDBBC /* YCAlertView.m in Sources */,
 				18709FED234F2672006CD559 /* MarketViewController.m in Sources */,

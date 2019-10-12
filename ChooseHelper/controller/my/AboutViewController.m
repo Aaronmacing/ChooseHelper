@@ -7,7 +7,8 @@
 //
 
 #import "AboutViewController.h"
-
+#import "UITextView+ZWPlaceHolder.h"
+#import "UserRequestServer.h"
 @interface AboutViewController ()<UITextViewDelegate>
 @property (nonatomic,strong)UITextView *otherField;
 @property (nonatomic, strong)UILabel *lb;
@@ -30,6 +31,8 @@
     tf.layer.masksToBounds = YES;
     tf.font = [UIFont systemFontOfSize:13];
     tf.textColor = [UIColor colorWithHexString:@"#0B70F4" alpha:1];
+    tf.zw_placeHolder = @"填写内容";
+    tf.zw_placeHolderColor = tf.textColor;
     [self.view addSubview:tf];
     [tf mas_makeConstraints:^(MASConstraintMaker *make) {
        
@@ -65,20 +68,25 @@
     }];
 }
 
-- (void)sureBtnCliked:(UIButton *)sender
-{
+- (void)sureBtnCliked:(UIButton *)sender{
+    
+    
+    [self showWaiting];
+    [[UserRequestServer sharedUserRequestServer] getUserInfoByAccount:self.account success:^(Account * _Nonnull account) {
+        
+        [self dismissWaitingWithShowToast:@"反馈成功"];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [self.navigationController popViewControllerAnimated:YES];
+        });
+        
+    } failure:^(NSString * _Nonnull msg) {
+        
+        [self showToast:msg];
+    }];
     
 }
-
-
-- (void)textViewDidBeginEditing:(UITextView *)textView
-{
-    if ([textView.text isEqualToString:@"请填写内容"]) {
-        
-        textView.text = @"";
-    }
-}
-
 
 /*
 #pragma mark - Navigation

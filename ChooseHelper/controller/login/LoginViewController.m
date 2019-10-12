@@ -24,6 +24,16 @@
 
 @implementation LoginViewController
 
+
+- (void)initNavigationBar{
+ 
+    [super initNavigationBar];
+    self.navigationView.hidden = YES;
+}
+
+- (void)clickLeft{
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.

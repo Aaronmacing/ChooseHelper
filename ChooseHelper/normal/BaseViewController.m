@@ -7,7 +7,7 @@
 //
 
 #import "BaseViewController.h"
-
+#import "AppMacro.h"
 @interface BaseViewController ()
 
 @end
@@ -86,6 +86,8 @@
     }];
     self.deleteBtn = clear;
     
+    self.account = [[AccountDao sharedAccountDao] queryLoginUser];
+    
 }
 
 - (void)backBtnCliked:(UIButton *)sender
@@ -97,6 +99,41 @@
 {
     
 }
+
+/**
+ *  显示等待
+ */
+-(void)showWaiting{
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+}
+
+/**
+ *  隐藏等待
+ */
+-(void)dismissWaiting{
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+}
+
+-(void)dismissWaitingWithShowToast:(NSString *)msg{
+    [self dismissWaiting];
+    [self showToast:msg];
+}
+
+/**
+ *  显示提示消息
+ */
+- (void)showToast:(NSString *)msg{
+
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeText;
+    hud.detailsLabel.text = msg;
+    hud.margin = 10.f;
+    //hud.offset = CGP
+    hud.offset = CGPointMake(hud.offset.x, Uni_kMainScreenHeight * 0.333);
+    hud.removeFromSuperViewOnHide = YES;
+    [hud hideAnimated:YES afterDelay:3];
+}
+
 
 /*
 #pragma mark - Navigation
