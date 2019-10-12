@@ -401,7 +401,7 @@
     self.reload = YES;
     GPXQViewController *vc = [[GPXQViewController alloc]init];
     vc.type = 1;
-    vc.model = self.dataSource[sender.tag - 3000];
+//    vc.model = self.dataSource[sender.tag - 3000];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
