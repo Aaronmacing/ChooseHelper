@@ -29,7 +29,7 @@
     
 
     self.view.backgroundColor = [UIColor whiteColor];
-    
+    self.backBtn.hidden = YES;
     UIView *viewb = [UIView new];
     viewb.backgroundColor = [UIColor blackColor];
     [self.view addSubview:viewb];

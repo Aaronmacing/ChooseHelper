@@ -23,6 +23,7 @@
     StockTabbarController *mainVC = [[StockTabbarController alloc] init];
 #endif
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:mainVC];
+    nav.navigationBar.hidden = YES;
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
