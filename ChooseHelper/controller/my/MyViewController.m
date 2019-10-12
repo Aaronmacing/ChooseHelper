@@ -20,13 +20,28 @@
 @property(nonatomic,strong)UITableView *tableView;
 @property(nonatomic,copy) NSArray *names;
 @property(nonatomic,copy) NSArray *images;
-
+@property(nonatomic,strong)UILabel *nowLabel;
 
 
 @property (nonatomic,strong)  UILabel *nameLb;
 @end
 
 @implementation MyViewController
+
+- (void)viewWillAppear:(BOOL)animated
+{
+     [super viewWillAppear:animated];
+      NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+        double canUse = [user doubleForKey:@"canUse"];
+        if (canUse == 0) {
+            
+            canUse = 10000;
+        }
+    
+    self.nowLabel.text = [NSString stringWithFormat:@"%0.2f",canUse];
+}
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -115,6 +130,7 @@
         make.top.mas_equalTo(self.nameLb.mas_bottom).with.offset(11);
         
     }];
+    self.nowLabel = label2;
     
     UIButton *czBtn = [UIButton new];
     [czBtn setBackgroundImage:kGetImage(@"to_cz") forState:UIControlStateNormal];
