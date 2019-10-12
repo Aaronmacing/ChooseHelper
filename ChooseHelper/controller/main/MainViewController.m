@@ -214,14 +214,23 @@
 - (void)rightUpBtnCliked:(UIButton *)sender
 {
    ClassViewController *vc = [[ClassViewController alloc]init];
+   self.hidesBottomBarWhenPushed = YES;
    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)rightDownBtnCliked:(UIButton *)sender
 {
    InformationViewController *vc = [[InformationViewController alloc]init];
+   self.hidesBottomBarWhenPushed = YES;
    [self.navigationController pushViewController:vc animated:YES];
-    
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+   
+   [super viewWillDisappear:animated];
+   
+   self.hidesBottomBarWhenPushed = NO;
+   
 }
 
 
@@ -267,6 +276,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
    
    MessageViewController *vc = [[MessageViewController alloc]init];
+   self.hidesBottomBarWhenPushed = YES;
    [self.navigationController pushViewController:vc animated:YES];
 }
 

@@ -48,7 +48,6 @@
         make.top.mas_equalTo(self.view.mas_top);
     }];
     
-    
     self.account = [[AccountDao sharedAccountDao] queryLoginUser];
     self.allDataSouce = @[].mutableCopy;
     self.subDataSource = @[].mutableCopy;
@@ -66,8 +65,8 @@
         
         if (vo.market.integerValue == Shanghai || vo.market.integerValue == Shenzhen) {
             
-            
-            
+              
+              
         }
     }
     
@@ -274,7 +273,16 @@
           market = USA;
       }
     vc.market = market;
+    self.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    
+    [super viewWillDisappear:animated];
+    
+    self.hidesBottomBarWhenPushed = NO;
+    
 }
 
 #pragma mark - UITableViewDataSource

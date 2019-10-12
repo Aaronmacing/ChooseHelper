@@ -303,6 +303,7 @@
 - (void)backBtnCliked:(UIButton *)sender
 {
     TransactionRecordViewController *vc = [[TransactionRecordViewController alloc]init];
+    self.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -383,6 +384,7 @@
     self.reload = YES;
     
     BuysellViewController *vc = [[BuysellViewController alloc]init];
+    self.hidesBottomBarWhenPushed = YES;
     vc.type = 1;
     vc.model = self.dataSource[sender.tag - 1000];
     [self.navigationController pushViewController:vc animated:YES];
@@ -392,6 +394,7 @@
 {
     self.reload = YES;
     BuysellViewController *vc = [[BuysellViewController alloc]init];
+    self.hidesBottomBarWhenPushed = YES;
     vc.type = 0;
     vc.model = self.dataSource[sender.tag - 2000];
     [self.navigationController pushViewController:vc animated:YES];
@@ -407,7 +410,15 @@
     DataSingle *model = model0.data;
     vc.code = model.gid;
     vc.market = Shanghai;
+    self.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
+}
+- (void)viewWillDisappear:(BOOL)animated{
+ 
+    [super viewWillDisappear:animated];
+     self.hidesBottomBarWhenPushed = NO;
+    
+    
 }
 
 

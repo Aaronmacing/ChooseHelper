@@ -203,14 +203,17 @@
 - (void)goToCZ
 {
     CZViewController *vc = [[CZViewController alloc]init];
+    self.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }
 - (void)logOutBtn
 {
     
-       Account *account = [[AccountDao sharedAccountDao] queryLoginUser];
+       [self showWaiting];
+      Account *account = [[AccountDao sharedAccountDao] queryLoginUser];
       [[UserRequestServer sharedUserRequestServer] loginOutWithUUID:account.uuid success:^{
-                 
+                
+              [self dismissWaiting];
              account.password = @"";
              [[AccountDao sharedAccountDao] insertOrUpdateData:account];
              //[TextFavDao sharedTextFavDao].dbQueue = nil;
@@ -218,7 +221,7 @@
                  
         } failure:^(NSString * _Nonnull msg) {
                  
-            [MBProgressHUD showMessage:msg];
+            [self dismissWaitingWithShowToast:msg];
                  
       }];
 }
@@ -383,25 +386,33 @@
           
             weakSelf.nameLb.text = name;
         };
+        self.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
     else if (indexPath.row == 2) {
         
         ChangesecretViewController *vc = [[ChangesecretViewController alloc]init];
+         self.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
     else if (indexPath.row == 3) {
         
         AboutViewController *vc = [[AboutViewController alloc]init];
+         self.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
     else if(indexPath.row == 4)
     {
         VersionViewController *vc = [[VersionViewController alloc]init];
+         self.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
-    
-    
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+ 
+    [super viewWillDisappear:animated];
+    self.hidesBottomBarWhenPushed = NO;
     
 }
 

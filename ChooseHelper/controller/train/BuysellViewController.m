@@ -9,8 +9,8 @@
 #import "BuysellViewController.h"
 #import "SystemTradTableViewCell.h"
 #import "CZViewController.h"
-
-@interface BuysellViewController ()<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
+#import "YKLineChart.h"
+@interface BuysellViewController ()<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate,YKLineChartViewDelegate>
 @property(nonatomic,assign)NSInteger cbtnSelect;
 @property(nonatomic,strong)UITableView *tableView;
 @property(nonatomic,strong)NSString *filePatch;
@@ -24,6 +24,8 @@
 @property(nonatomic,strong)NSMutableDictionary *nowData;
 @property(nonatomic,strong)UILabel *btmLabel;
 @property(nonatomic,strong)NSMutableArray *dataSource;
+
+@property (nonatomic,strong) YKLineChartView *klineView;
 
 @end
 
@@ -223,7 +225,69 @@
      UIImageView *imageView = [UIImageView new];
      imageView.contentMode = UIViewContentModeCenter;
      imageView.backgroundColor = [UIColor whiteColor];
+     imageView.userInteractionEnabled = YES;
      [self.view addSubview:imageView];
+     
+     
+      self.klineView = [[YKLineChartView alloc] init];
+       [imageView addSubview:self.klineView];
+       self.klineView.delegate = self;
+       [self.klineView mas_makeConstraints:^(MASConstraintMaker *make) {
+          
+            make.top.left.bottom.right.mas_equalTo(imageView);
+           
+       }];
+       
+       NSString * path =[[NSBundle mainBundle]pathForResource:@"data2.plist" ofType:nil];
+       NSArray * sourceArray = [[NSDictionary dictionaryWithContentsOfFile:path] objectForKey:[NSString stringWithFormat:@"data%u",(arc4random_uniform(2) + 1)]];
+       NSMutableArray * stockData = [NSMutableArray array];
+          for (NSDictionary * dic in sourceArray) {
+              
+              YKLineEntity * entity = [[YKLineEntity alloc]init];
+              entity.high = [dic[@"high_px"] doubleValue];
+              entity.open = [dic[@"open_px"] doubleValue];
+              
+              entity.low = [dic[@"low_px"] doubleValue];
+              
+              entity.close = [dic[@"close_px"] doubleValue];
+              
+              entity.date = @"";
+              entity.ma5 = [dic[@"avg5"] doubleValue];
+              entity.ma10 = [dic[@"avg10"] doubleValue];
+              entity.ma20 = [dic[@"avg20"] doubleValue];
+              entity.volume = [dic[@"total_volume_trade"] doubleValue];
+              [stockData addObject:entity];
+              //YTimeLineEntity * entity = [[YTimeLineEntity alloc]init];
+          }
+          [stockData addObjectsFromArray:stockData];
+          YKLineDataSet * dataset = [[YKLineDataSet alloc]init];
+          dataset.data = stockData;
+          dataset.highlightLineColor = [UIColor colorWithRed:60/255.0 green:76/255.0 blue:109/255.0 alpha:1.0];
+          dataset.highlightLineWidth = 0.7;
+          dataset.candleRiseColor = [UIColor colorWithRed:233/255.0 green:47/255.0 blue:68/255.0 alpha:1.0];
+          dataset.candleFallColor = [UIColor colorWithRed:33/255.0 green:179/255.0 blue:77/255.0 alpha:1.0];
+          dataset.avgLineWidth = 1.f;
+          dataset.avgMA10Color = [UIColor colorWithRed:252/255.0 green:85/255.0 blue:198/255.0 alpha:1.0];
+          dataset.avgMA5Color = [UIColor colorWithRed:67/255.0 green:85/255.0 blue:109/255.0 alpha:1.0];
+          dataset.avgMA20Color = [UIColor colorWithRed:216/255.0 green:192/255.0 blue:44/255.0 alpha:1.0];
+          dataset.candleTopBottmLineWidth = 1;
+          
+          [self.klineView setupChartOffsetWithLeft:50 top:10 right:10 bottom:10];
+          self.klineView.gridBackgroundColor = [UIColor whiteColor];
+          self.klineView.borderColor = [UIColor colorWithRed:203/255.0 green:215/255.0 blue:224/255.0 alpha:1.0];
+          self.klineView.borderWidth = .5;
+          self.klineView.candleWidth = 8;
+          self.klineView.candleMaxWidth = 30;
+          self.klineView.candleMinWidth = 1;
+          self.klineView.uperChartHeightScale = 0.7;
+          self.klineView.xAxisHeitht = 25;
+          self.klineView.delegate = self;
+          self.klineView.highlightLineShowEnabled = YES;
+          self.klineView.zoomEnabled = YES;
+          self.klineView.scrollEnabled = YES;
+          [self.klineView setupData:dataset];
+     
+     
      
      [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
          make.top.mas_equalTo(top.mas_bottom).with.offset(10);
@@ -686,7 +750,19 @@
 {
     return kGetImage(@"no_image");
 }
+-(void)chartValueSelected:(YKViewBase *)chartView entry:(id)entry entryIndex:(NSInteger)entryIndex
+{
+    
+}
 
+- (void)chartValueNothingSelected:(YKViewBase *)chartView
+{
+}
+
+- (void)chartKlineScrollLeft:(YKViewBase *)chartView
+{
+    
+}
 /*
 #pragma mark - Navigation
 

@@ -48,7 +48,7 @@
 
 - (void)configUI{
     
-     MainViewController *mainVC = [[MainViewController alloc] init];
+        MainViewController *mainVC = [[MainViewController alloc] init];
         [self setChildVC:mainVC name:@"" image:@"" selectedImage:@"" navVc:[UINavigationController class]];
         
         MarketViewController *mkVC = [[MarketViewController alloc] init];

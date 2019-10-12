@@ -7,7 +7,8 @@
 //
 
 #import "VersionViewController.h"
-
+#import "UIView+Util.h"
+#import "AppMacro.h"
 @interface VersionViewController ()
 
 @end
@@ -40,7 +41,32 @@
             make.top.mas_equalTo(imageView.mas_bottom).with.offset(20);
         
     }];
+    
+    [imageView addTarget:self action:@selector(check)];
 }
+
+- (void)check{
+    
+    [self showToast:@"已是最新"];
+}
+
+
+/**
+ *  显示提示消息
+ */
+- (void)showToast:(NSString *)msg{
+
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeText;
+    hud.detailsLabel.text = msg;
+    hud.margin = 10.f;
+    //hud.offset = CGP
+    hud.offset = CGPointMake(hud.offset.x, SCREEN_HEIGHT * 0.3333);
+    hud.removeFromSuperViewOnHide = YES;
+    [hud hideAnimated:YES afterDelay:3];
+}
+
+
 
 /*
 #pragma mark - Navigation
