@@ -13,9 +13,13 @@
 #import "TrainViewController.h"
 #import "MyViewController.h"
 #import "RootDao.h"
+#import "AccountDao.h"
+#import "UserRequestServer.h"
 @interface StockTabbarController ()<UITabBarControllerDelegate>
 
 @property (nonatomic,strong) UIImageView *bkIV;
+
+@property (nonatomic,strong) Account *account;
 
 @end
 
@@ -26,33 +30,53 @@
     
     [[[RootDao alloc] init] createOrUpdateTable];
     
-    MainViewController *mainVC = [[MainViewController alloc] init];
-    [self setChildVC:mainVC name:@"" image:@"" selectedImage:@"" navVc:[UINavigationController class]];
+    self.account = [[AccountDao sharedAccountDao] queryLoginUser];
     
-    MarketViewController *mkVC = [[MarketViewController alloc] init];
-    [self setChildVC:mkVC name:@"" image:@"" selectedImage:@"" navVc:[UINavigationController class]];
+    [[UserRequestServer sharedUserRequestServer] getUserInfoByAccount:self.account success:^(Account *account) {
+        
+        self.account.name = account.name;
+        [[AccountDao sharedAccountDao] insertOrUpdateData:self.account];
+        
+    } failure:^(NSString *msg) {
+        
+       
+        
+    }];
     
-    TrainViewController *trVC = [[TrainViewController alloc]init];
-    [self setChildVC:trVC name:@"" image:@"" selectedImage:@"" navVc:[UINavigationController class]];
     
-    MyViewController *followVC = [[MyViewController alloc] init];
-    [self setChildVC:followVC name:@"" image:@"" selectedImage:@"" navVc:[UINavigationController class]];
+   [self configUI];
     
+}
 
-    self.tabBar.translucent = NO;
-    self.bkIV = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"btm_1"]];
+- (void)configUI{
     
-    self.bkIV.frame = CGRectMake(0, 0, self.tabBar.frame.size.width, self.tabBar.frame.size.height);
-    self.bkIV.contentMode = UIViewContentModeScaleToFill;
-//    self.tabBar.barTintColor = [UIColor colorWithHexString:@"#FED6B5" alpha:1];
-    [[self tabBar] addSubview:self.bkIV];
-    
-    
-//    [self addObserver:self forKeyPath:@"selectedIndex" options:NSKeyValueObservingOptionNew context:nil];
-    self.delegate = self;
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goToOtherPage1) name:@"jump1" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goToOtherPage2) name:@"jump2" object:nil];
+     MainViewController *mainVC = [[MainViewController alloc] init];
+        [self setChildVC:mainVC name:@"" image:@"" selectedImage:@"" navVc:[UINavigationController class]];
+        
+        MarketViewController *mkVC = [[MarketViewController alloc] init];
+        [self setChildVC:mkVC name:@"" image:@"" selectedImage:@"" navVc:[UINavigationController class]];
+        
+        TrainViewController *trVC = [[TrainViewController alloc]init];
+        [self setChildVC:trVC name:@"" image:@"" selectedImage:@"" navVc:[UINavigationController class]];
+        
+        MyViewController *followVC = [[MyViewController alloc] init];
+        [self setChildVC:followVC name:@"" image:@"" selectedImage:@"" navVc:[UINavigationController class]];
+        
+
+        self.tabBar.translucent = NO;
+        self.bkIV = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"btm_1"]];
+        
+        self.bkIV.frame = CGRectMake(0, 0, self.tabBar.frame.size.width, self.tabBar.frame.size.height);
+        self.bkIV.contentMode = UIViewContentModeScaleToFill;
+    //    self.tabBar.barTintColor = [UIColor colorWithHexString:@"#FED6B5" alpha:1];
+        [[self tabBar] addSubview:self.bkIV];
+        
+        
+    //    [self addObserver:self forKeyPath:@"selectedIndex" options:NSKeyValueObservingOptionNew context:nil];
+        self.delegate = self;
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goToOtherPage1) name:@"jump1" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goToOtherPage2) name:@"jump2" object:nil];
     
 }
 

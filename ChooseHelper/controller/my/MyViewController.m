@@ -163,20 +163,26 @@
         make.top.mas_equalTo(self.tableView.mas_bottom).with.offset(46);
         
     }];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+ 
+    [super viewWillAppear:animated];
     
     self.account = [[AccountDao sharedAccountDao] queryLoginUser];
+       
+   if ([[SDImageCache sharedImageCache] imageFromCacheForKey:self.account.account]) {
+          
+          UIImage *image = [[SDImageCache sharedImageCache] imageFromCacheForKey:self.account.account];
+          [self.headerBtn setBackgroundImage:image forState:UIControlStateNormal];
+          
+   }
+       
+   if ([NSString isNotBlankString:self.account.name]) {
+          
+       self.nameLb.text = self.account.name;
+   }
     
-    if ([[SDImageCache sharedImageCache] imageFromCacheForKey:self.account.account]) {
-           
-           UIImage *image = [[SDImageCache sharedImageCache] imageFromCacheForKey:self.account.account];
-           [self.headerBtn setBackgroundImage:image forState:UIControlStateNormal];
-           
-    }
-    
-    if ([NSString isNotBlankString:self.account.name]) {
-           
-        self.nameLb.text = self.account.name;
-    }
 }
 
 - (void)goToCZ
