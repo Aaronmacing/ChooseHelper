@@ -38,7 +38,7 @@
 {
     self = [super init];
     if (self) {
-        _model = [[StockSingleResultVO alloc]init];
+//        _model = [[StockSingleResultVO alloc]init];
     }
     return self;
 }
