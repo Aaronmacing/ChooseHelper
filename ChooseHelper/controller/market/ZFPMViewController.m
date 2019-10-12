@@ -13,8 +13,6 @@
 @property(nonatomic,assign)NSInteger leftSelect;
 @property(nonatomic,strong)UITableView *tableView;
 
-@property (nonatomic,strong) UILabel *noDataLb;
-
 @property (nonatomic,assign) BOOL isSelected;
 
 @end
@@ -49,35 +47,11 @@
            
        }];
     
-      self.noDataLb = [[UILabel alloc] init];
-      self.noDataLb.font = [UIFont systemFontOfSize:20];
-      self.noDataLb.text = @"暂无数据";
-      self.noDataLb.textAlignment = NSTextAlignmentCenter;
-      [self.tableView addSubview:self.noDataLb];
-      
-      [self.noDataLb mas_makeConstraints:^(MASConstraintMaker *make) {
-         
-          make.center.mas_equalTo(self.tableView);
-          make.height.mas_equalTo(22);
-          make.width.mas_equalTo(250);
-      }];
-    
-        if (self.dataSource && self.dataSource.count > 0) {
-            
-            self.noDataLb.hidden = YES;
-        }else{
-         
-            self.noDataLb.hidden = NO;
-        }
     
     self.isSelected = NO;
     [self.tableView reloadData];
     
 }
-
-
-
-
 
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

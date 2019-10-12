@@ -19,7 +19,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+<<<<<<< HEAD
+=======
     
+>>>>>>> bcd86a20cb7cfa93a290dbd341a1f7ce9eb79b87
     [[[RootDao alloc] init] createOrUpdateTable];
 #if 1
     LoginViewController *mainVC = [[LoginViewController alloc] init];

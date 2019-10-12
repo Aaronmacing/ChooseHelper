@@ -14,24 +14,69 @@
 #import "NormalStockVO.h"
 @interface ZXViewController ()<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>{
     NSArray * _lisArr;
-    UILabel *_nd;
+
 }
 @property(nonatomic,assign)NSInteger leftSelect;
 @property(nonatomic,strong)UITableView *tableView;
-
-@property (nonatomic,strong) NSArray *dataList;
 
 @property (nonatomic,assign) StockMarket market;
 
 @property (nonatomic,strong) Account *account;
 
 @property (nonatomic,strong) NSMutableArray *allDataSouce;
-
-@property (nonatomic,strong) NSMutableArray *subDataSource;
+@property (nonatomic,strong) NSMutableArray *subDataSource1;
+@property (nonatomic,strong) NSMutableArray *subDataSource2;
+@property (nonatomic,strong) NSMutableArray *subDataSource3;
 
 @end
 
 @implementation ZXViewController
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+
+    self.allDataSouce = @[].mutableCopy;
+    self.subDataSource1 = @[].mutableCopy;
+    self.subDataSource2 = @[].mutableCopy;
+    self.subDataSource3 = @[].mutableCopy;
+    
+    self.account = [[AccountDao sharedAccountDao] queryLoginUser];
+    NSMutableArray *list = @[].mutableCopy;
+    
+    if (!Uni_isEmptyString(self.account.stockComps)) {
+        [list addObjectsFromArray:[self.account.stockComps componentsSeparatedByString:@","]];
+    }
+    
+    if (list.count > 0) {
+
+        [list enumerateObjectsUsingBlock:^(NSString * codeStr, NSUInteger idx, BOOL * _Nonnull stop) {
+            
+            NSArray * arr = [codeStr componentsSeparatedByString:@"-"];
+            NSString * code = arr[0];
+            NSString * mark = arr[1];
+            
+            [[StockRequetServer sharedStockRequetServer] getStockSingleByCode:code type:nil stockMarket:mark.integerValue success:^(id  _Nonnull stockSingle) {
+                StockSingleResultVO * vo = (StockSingleResultVO *)stockSingle;
+                [vo.data  setValue:mark forKey:@"market"];
+                [self.allDataSouce addObject:vo.data];
+                
+                if (mark.integerValue == Shenzhen) {
+                    [self.subDataSource1 addObject:vo.data];
+                    
+                }else if (mark.integerValue == HongKong){
+                    [self.subDataSource2 addObject:vo.data];
+                    
+                }else{
+                    [self.subDataSource3 addObject:vo.data];
+                }
+                
+            } failure:^(NSString * _Nonnull msg) {
+                [MBManager showBriefAlert:msg inView:self.view];
+            }];
+        }];
+        
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -107,8 +152,6 @@
     }
     
     
-    
-    
    self.tableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStyleGrouped];
    self.tableView.backgroundColor = [UIColor whiteColor];
    self.tableView.delegate = self;
@@ -127,24 +170,10 @@
        
    }];
     
-    
-    _nd = [[UILabel alloc] init];
-    _nd.text = @"暂无数据";
-    _nd.textColor = Uni_RGB(36, 46, 73);
-    _nd.font = [UIFont systemFontOfSize:22];
-    [self.tableView addSubview:_nd];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getData:) name:@"data" object:nil];
+
+
 }
 
-- (void)getData:(NSNotification *)notif{
-    
-    
-    self.dataList = (NSArray *)notif.object;
-    
-    
-    
-}
 
 - (void)leftBtnCliked:(UIButton *)sender
 {
@@ -171,35 +200,25 @@
     if (sender.tag - 10 == 0) {
         reqTag = 3;
         self.market = Shanghai;
+        _lisArr = [NSArray arrayWithArray:self.allDataSouce];
+        
     }else if (sender.tag - 10 == 1){
         reqTag = 0;
         self.market = Shenzhen;
+        _lisArr = [NSArray arrayWithArray:self.subDataSource1];
+        
     }else if (sender.tag - 10 == 2){
         reqTag = 2;
         self.market = HongKong;
+        _lisArr = [NSArray arrayWithArray:self.subDataSource2];
+
     }else {
         reqTag = 1;
         self.market = USA;
+        _lisArr = [NSArray arrayWithArray:self.subDataSource3];
     }
-    
-    
-    
-    [MBManager showWaitingWithTitle:@"加载中"];
-    [[StockRequetServer sharedStockRequetServer] getStockListByPage:1 type:2 stockMarket:reqTag success:^(NSArray<StockListResultVO *> * _Nonnull stockList) {
-        self->_lisArr = stockList;
-        [self.tableView reloadData];
-        
-        if (self->_lisArr.count > 0) {
-            self->_nd.hidden = YES;
-        }else{
-            self->_nd.hidden = NO;
-        }
-        [MBManager hideAlert];
-    } failure:^(NSString * _Nonnull msg) {
-        [MBManager hideAlert];
-        [MBManager showBriefAlert:msg inView:self.view];
-    }];
-    
+
+    [self.tableView reloadData];
 }
 
 - (void)czBtnCliked:(UIButton *)sender
@@ -259,22 +278,69 @@
 
 - (void)addBtnCliked:(UIButton *)sender
 {
-    ZFPMViewController *vc = [[ZFPMViewController alloc]init];
-    vc.dataSource = self.dataList;
-    StockMarket market = self.market;
-      if (self.leftSelect == 0) {
-          
-          market = Shanghai;
-      }else if (self.leftSelect == 1){
+    
+    [[StockRequetServer sharedStockRequetServer] getStockListByPage:1 type:4 stockMarket:self.market success:^(NSArray<DataList *> *stockList) {
+        
+        NSPredicate* predicate = [NSPredicate predicateWithFormat:@"!(changepercent contains '-')"];
+        NSPredicate* downPredicate = [NSPredicate predicateWithFormat:@"changepercent contains '-'"];
+        
+        NSArray <DataList *>*tempArr = [stockList filteredArrayUsingPredicate:predicate];
+        NSArray <DataList *>*downList = [stockList filteredArrayUsingPredicate:downPredicate];
+        NSArray *resultList = [tempArr sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+            
+            DataList *data1 = (DataList *)obj1;
+            DataList *data2 = (DataList *)obj2;
+            
+            return [@(data2.changepercent.doubleValue) compare:@(data1.changepercent.doubleValue)];
+            
+            
+        }];
+        
+        NSArray *downResultList = [downList sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+            
+            DataList *data1 = (DataList *)obj1;
+            DataList *data2 = (DataList *)obj2;
+            
+            return [@(data2.changepercent.doubleValue) compare:@(data1.changepercent.doubleValue)];
+            
+            
+        }];
+        
+        NSMutableArray *dataList = @[].mutableCopy;
        
-          market = HongKong;
-      }else{
-       
+<<<<<<< HEAD
+        [dataList addObjectsFromArray:resultList];
+        [dataList addObjectsFromArray:downResultList];
+        
+        ZFPMViewController *vc = [[ZFPMViewController alloc]init];
+        vc.dataSource = dataList;
+        StockMarket market = self.market;
+        if (self.leftSelect == 0) {
+            
+            market = Shanghai;
+        }else if (self.leftSelect == 1){
+            
+            market = HongKong;
+        }else{
+            
+            market = USA;
+        }
+        vc.market = market;
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    } failure:^(NSString *msg) {
+
+        [MBManager showBriefAlert:msg inView:self.view];
+    }];
+    
+    
+=======
           market = USA;
       }
     vc.market = market;
     self.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
+>>>>>>> bcd86a20cb7cfa93a290dbd341a1f7ce9eb79b87
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -309,7 +375,7 @@
     
     DataList * model = _lisArr[indexPath.row];
     [cell setDataVO:model];
-   
+
     return cell;
 }
 
@@ -317,8 +383,6 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-
-
 
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
 {

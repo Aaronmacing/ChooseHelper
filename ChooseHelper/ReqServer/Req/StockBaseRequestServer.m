@@ -8,9 +8,15 @@
 
 #import "StockBaseRequestServer.h"
 #import "NSString+StringUtil.h"
-static NSString * const app_key = @"e8adfff2a29a969487712f63c63d1d46";
-static NSString * const app_news_key = @"245dfc05504debd38afed834d735b57d";
-static NSString * const app_exchange_key = @"9095c859aaa51743c12161ec9bf0ad66";
+//static NSString * const app_key = @"e8adfff2a29a969487712f63c63d1d46";
+//static NSString * const app_news_key = @"245dfc05504debd38afed834d735b57d";
+//static NSString * const app_exchange_key = @"9095c859aaa51743c12161ec9bf0ad66";
+
+static NSString * const app_key = @"6699cad40f8dbf030b9af626695b8271";
+static NSString * const app_news_key = @"b940337cd9d3c6d0db68300f7907da75";
+static NSString * const app_exchange_key = @"e157232e0b433175a01806b7e3e7a4c5";
+
+
 @implementation StockBaseRequestServer
 
 - (instancetype)init{

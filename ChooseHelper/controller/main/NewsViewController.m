@@ -15,7 +15,6 @@
 
 @interface NewsViewController ()<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate> //实现滚动视图协议
 {
-    UILabel * _nd;
     NSArray * _rArr;
 }
 @property(nonatomic,strong)UITableView *tableView;
@@ -49,24 +48,9 @@
           }];
     
     
-    _nd = [[UILabel alloc] init];
-    _nd.text = @"暂无数据";
-    _nd.textColor = Uni_RGB(36, 46, 73);
-    _nd.font = [UIFont systemFontOfSize:22];
-    [self.tableView addSubview:_nd];
-    
-    [_nd mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(self.tableView);
-    }];
-
     [[StockRequetServer sharedStockRequetServer] getNewsByType:@"caijing" success:^(NSArray * _Nonnull newsList) {
         self->_rArr = newsList;
-
-        if (self->_rArr.count > 0) {
-            self->_nd.hidden = YES;
-        }else{
-            self->_nd.hidden = NO;
-        }
+     
         [self.tableView reloadData];
         
     } failure:^(NSString * _Nonnull msg) {

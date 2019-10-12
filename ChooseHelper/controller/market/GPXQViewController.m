@@ -10,6 +10,8 @@
 #import "BuysellViewController.h"
 #import "StockRequetServer.h"
 #import "YKLineChart.h"
+#import "AccountDao.h"
+
 @interface GPXQViewController ()<YKLineChartViewDelegate>
 @property(nonatomic,assign)NSInteger leftSelect;
 
@@ -19,10 +21,8 @@
 
 @property (nonatomic,strong) UILabel *priceLb;
 
-
 /// 涨跌额 涨跌幅
 @property (nonatomic,strong) UILabel *changeLb;
-
 
 /// 值 labels
 @property (nonatomic,strong) NSMutableArray <UILabel *>*valueLbs;
@@ -30,7 +30,6 @@
 @property (nonatomic,strong) YKLineChartView *klineView;
 
 @property (nonatomic,strong) StockSingleResultVO *model;
-
 
 @end
 
@@ -279,7 +278,45 @@
 
 - (void)cpBtnClied:(UIButton *)sender
 {
+    UIButton * btn = (UIButton *)sender;
+    btn.selected =! btn.selected;
+    NSMutableArray *list = @[].mutableCopy;
+
+    if (!Uni_isEmptyString(self.account.stockComps)) {
+        [list addObjectsFromArray:[self.account.stockComps componentsSeparatedByString:@","]];
+    }
+
+    if (btn.selected) {
+        
+        NSMutableSet *set = [[NSMutableSet alloc] initWithArray:list];
+        [set addObject:[NSString stringWithFormat:@"%@-%ld",_code,self.market]];
+        NSArray *resultList = [set allObjects];
+        self.account.stockComps = [resultList componentsJoinedByString:@","];
+        [[AccountDao sharedAccountDao] insertOrUpdateData:self.account];
+        [MBManager showBriefAlert:@"已添加" inView:self.view];
+        
+    }else{
+        
+        
+        for (int i = 0; i < list.count; i++) {
+            NSString * str = list[i];
+            if ([str isEqualToString:[NSString stringWithFormat:@"%@-%ld",_code,self.market]]) {
+                [list removeObject:str];
+            }
+        }
+        
+        if (list.count > 0) {
+            self.account.stockComps = [list componentsJoinedByString:@","];
+        }else{
+            self.account.stockComps = @"";
+        }
     
+        
+        [[AccountDao sharedAccountDao] insertOrUpdateData:self.account];
+        
+        [MBManager showBriefAlert:@"已删除" inView:self.view];
+    }
+
 }
 
 - (void)dpBtnCliked:(UIButton *)sender
