@@ -22,9 +22,6 @@
 
 @property (nonatomic, assign) NSInteger type;
 
-@property (nonatomic,strong) UILabel *noDataLb;
-
-
 /// 指数labels
 @property (nonatomic,strong) NSMutableArray <UILabel *>*indexLbs;
 
@@ -436,18 +433,6 @@
     [self setHeaderRefresh];
     [self setFooterRefresh];
     
-    self.noDataLb = [[UILabel alloc] init];
-    self.noDataLb.font = [UIFont systemFontOfSize:20];
-    self.noDataLb.text = @"暂无数据";
-    self.noDataLb.textAlignment = NSTextAlignmentCenter;
-    [self.tableView addSubview:self.noDataLb];
-    
-    [self.noDataLb mas_makeConstraints:^(MASConstraintMaker *make) {
-       
-        make.center.mas_equalTo(self.tableView);
-        make.height.mas_equalTo(22);
-        make.width.mas_equalTo(250);
-    }];
     
 //    
 //    MacVC *vc2 = [[MacVC alloc] initWithHeight:(self.bottomLineIV.maxY - self.topLineIV.y)];
@@ -719,14 +704,6 @@
 
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"data" object:self.dataSource];
-        
-        if (self.dataSource && self.dataSource.count > 0) {
-            
-            self.noDataLb.hidden = YES;
-        }else{
-         
-            self.noDataLb.hidden = NO;
-        }
         
         [self.tableView reloadData];
         

@@ -18,7 +18,6 @@
 @interface MainViewController ()<UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate> //实现滚动视图协议
 {
    NSArray * _rArr;
-   UILabel * _nd;
 
 }
  @property (strong,nonatomic)UIScrollView *scrollview; //滚动视图控件对象
@@ -179,17 +178,7 @@
            make.right.mas_equalTo(self.view.mas_right).with.offset(0);
            
        }];
-   
-   _nd = [[UILabel alloc] init];
-   _nd.text = @"暂无数据";
-   _nd.textColor = [UIColor whiteColor];
-   _nd.font = [UIFont systemFontOfSize:22];
-   [self.tableView addSubview:_nd];
-   
-   [_nd mas_makeConstraints:^(MASConstraintMaker *make) {
-      make.center.equalTo(self.tableView);
-   }];
-   
+
 //   [[StockRequetServer sharedStockRequetServer] getNewsByType:@"caijing" success:^(NSArray * _Nonnull newsList) {
 //      self->_rArr = newsList;
 //

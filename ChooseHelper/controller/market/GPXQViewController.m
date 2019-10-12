@@ -10,6 +10,8 @@
 #import "BuysellViewController.h"
 #import "StockRequetServer.h"
 #import "YKLineChart.h"
+#import "AccountDao.h"
+
 @interface GPXQViewController ()<YKLineChartViewDelegate>
 @property(nonatomic,assign)NSInteger leftSelect;
 
@@ -19,10 +21,8 @@
 
 @property (nonatomic,strong) UILabel *priceLb;
 
-
 /// 涨跌额 涨跌幅
 @property (nonatomic,strong) UILabel *changeLb;
-
 
 /// 值 labels
 @property (nonatomic,strong) NSMutableArray <UILabel *>*valueLbs;
@@ -31,6 +31,7 @@
 
 @property (nonatomic,strong) StockSingleResultVO *model;
 
+@property (strong,nonatomic) Account *accccount;
 
 @end
 
@@ -280,7 +281,35 @@
 
 - (void)cpBtnClied:(UIButton *)sender
 {
+    UIButton * btn = (UIButton *)sender;
+    btn.selected =! btn.selected;
     
+    self.account = [[AccountDao sharedAccountDao] queryLoginUser];
+    
+    NSMutableArray *list = @[].mutableCopy;
+
+    [list addObjectsFromArray:[self.account.stockComps componentsSeparatedByString:@","]];
+    
+    if (btn.selected) {
+        [list addObject:[NSString stringWithFormat:@"%@-%ld",_code,self.market]];
+        
+        self.account.stockComps = [list componentsJoinedByString:@","];
+        
+        [[AccountDao sharedAccountDao] insertOrUpdateData:self.account];
+        
+        [MBManager showBriefAlert:@"已添加" inView:self.view];
+        
+    }else{
+        
+        [list removeObject:[NSString stringWithFormat:@"%@-%ld",_code,self.market]];
+        
+        self.account.stockComps = [list componentsJoinedByString:@","];
+        
+        [[AccountDao sharedAccountDao] insertOrUpdateData:self.account];
+        
+        [MBManager showBriefAlert:@"已删除" inView:self.view];
+    }
+
 }
 
 - (void)dpBtnCliked:(UIButton *)sender
