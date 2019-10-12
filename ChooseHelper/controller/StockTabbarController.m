@@ -27,16 +27,16 @@
     [[[RootDao alloc] init] createOrUpdateTable];
     
     MainViewController *mainVC = [[MainViewController alloc] init];
-    [self setChildVC:mainVC name:@"" image:@"" selectedImage:@""];
+    [self setChildVC:mainVC name:@"" image:@"" selectedImage:@"" navVc:[UINavigationController class]];
     
     MarketViewController *mkVC = [[MarketViewController alloc] init];
-    [self setChildVC:mkVC name:@"" image:@"" selectedImage:@""];
+    [self setChildVC:mkVC name:@"" image:@"" selectedImage:@"" navVc:[UINavigationController class]];
     
     TrainViewController *trVC = [[TrainViewController alloc]init];
-    [self setChildVC:trVC name:@"" image:@"" selectedImage:@""];
+    [self setChildVC:trVC name:@"" image:@"" selectedImage:@"" navVc:[UINavigationController class]];
     
     MyViewController *followVC = [[MyViewController alloc] init];
-    [self setChildVC:followVC name:@"" image:@"" selectedImage:@""];
+    [self setChildVC:followVC name:@"" image:@"" selectedImage:@"" navVc:[UINavigationController class]];
     
 
     self.tabBar.translucent = NO;
@@ -88,7 +88,7 @@
 }
 
 
-- (void)setChildVC:(UIViewController *)childVC name:(NSString *)name image:(NSString *)image selectedImage:(NSString *)selectedImage{
+- (void)setChildVC:(UIViewController *)childVC name:(NSString *)name image:(NSString *)image selectedImage:(NSString *)selectedImage navVc:(Class)navVc{
     
     
     childVC.tabBarItem.imageInsets = UIEdgeInsetsMake(0, 0, 0, 0);
@@ -96,7 +96,9 @@
     childVC.tabBarItem.selectedImage = [[UIImage imageNamed:selectedImage] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     childVC.tabBarItem.title = name;
     childVC.title = name;
-    [self addChildViewController:childVC];
+    UINavigationController* nav = [[navVc alloc] initWithRootViewController:childVC];
+    childVC.navigationController.navigationBarHidden = YES;
+    [self addChildViewController:nav];
 }
 
 
