@@ -104,7 +104,7 @@
 		685DF1242351D1C500EA2C9B /* YKViewBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 685DF1172351D1C500EA2C9B /* YKViewBase.m */; };
 		685DF1252351D1C500EA2C9B /* YKLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 685DF1182351D1C500EA2C9B /* YKLineChartView.m */; };
 		685DF1262351D1C500EA2C9B /* YKLineEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 685DF11F2351D1C500EA2C9B /* YKLineEntity.m */; };
-		685DF1282351D1CE00EA2C9B /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 685DF1272351D1CE00EA2C9B /* data.plist */; };
+		685DF1282351D1CE00EA2C9B /* data2.plist in Resources */ = {isa = PBXBuildFile; fileRef = 685DF1272351D1CE00EA2C9B /* data2.plist */; };
 		685DF3012351FD9100EA2C9B /* NormalStockVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 685DF3002351FD9100EA2C9B /* NormalStockVO.m */; };
 		E2FF3E7F19CE10E29FED0769 /* libPods-ChooseHelper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 61B45CCC1180C42F9FAD4D97 /* libPods-ChooseHelper.a */; };
 /* End PBXBuildFile section */
@@ -296,7 +296,7 @@
 		685DF11E2351D1C500EA2C9B /* YKLineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKLineChart.h; sourceTree = "<group>"; };
 		685DF11F2351D1C500EA2C9B /* YKLineEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKLineEntity.m; sourceTree = "<group>"; };
 		685DF1202351D1C500EA2C9B /* YKLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKLineChartView.h; sourceTree = "<group>"; };
-		685DF1272351D1CE00EA2C9B /* data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = data.plist; sourceTree = "<group>"; };
+		685DF1272351D1CE00EA2C9B /* data2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = data2.plist; sourceTree = "<group>"; };
 		685DF2FF2351FD9100EA2C9B /* NormalStockVO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NormalStockVO.h; sourceTree = "<group>"; };
 		685DF3002351FD9100EA2C9B /* NormalStockVO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NormalStockVO.m; sourceTree = "<group>"; };
 		93E20321FA901A21388A6E34 /* Pods-ChooseHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChooseHelper.release.xcconfig"; path = "Target Support Files/Pods-ChooseHelper/Pods-ChooseHelper.release.xcconfig"; sourceTree = "<group>"; };
@@ -699,7 +699,7 @@
 		685DF1132351D1C500EA2C9B /* YKLineChartView */ = {
 			isa = PBXGroup;
 			children = (
-				685DF1272351D1CE00EA2C9B /* data.plist */,
+				685DF1272351D1CE00EA2C9B /* data2.plist */,
 				685DF1142351D1C500EA2C9B /* YKLineChartViewBase.m */,
 				685DF1152351D1C500EA2C9B /* YKLineDataSet.m */,
 				685DF1162351D1C500EA2C9B /* YKTimeLineView.m */,
@@ -801,7 +801,7 @@
 				18A97B55234DBB07006BDBBC /* Assets.xcassets in Resources */,
 				1860371F2351DA5F00565B03 /* jzsp2.json in Resources */,
 				18CDB6BE23501F0C00E955D8 /* SystemTradTableViewCell.xib in Resources */,
-				685DF1282351D1CE00EA2C9B /* data.plist in Resources */,
+				685DF1282351D1CE00EA2C9B /* data2.plist in Resources */,
 				18BD068F2350C8CC00F89CA0 /* NewgpTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

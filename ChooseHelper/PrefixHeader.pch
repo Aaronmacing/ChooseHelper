@@ -30,6 +30,27 @@
 #import "MBManager.h"
 
 
+#ifdef __OBJC__
+
+#import "Masonry.h"
+#import "ZYWLineModel.h"
+#import "UIBezierPath+Draw.h"
+#import "UIColor+YW.h"
+#import "UIView+Extension.h"
+#import "ZYWBaseChartView.h"
+#import "ZYWCandleModel.h"
+#define DEVICE_WIDTH ([UIScreen mainScreen].bounds.size.width - 30)
+#define DEVICE_HEIGHT DEVICE_WIDTH * 195/343
+
+#define widthradio DEVICE_WIDTH/375
+#define heightradio DEVICE_HEIGHT/667
+
+#define RoseColor  [UIColor colorWithHexString:@"f05b72"]
+#define DropColor  [UIColor colorWithHexString:@"7fb80e"]
+
+#define ContentOffSet @"contentOffset"
+
+#endif
 
 
 #endif /* PrefixHeader_pch */

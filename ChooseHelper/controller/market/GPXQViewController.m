@@ -149,7 +149,7 @@
         
     }];
     
-    NSString * path =[[NSBundle mainBundle]pathForResource:@"data.plist" ofType:nil];
+    NSString * path =[[NSBundle mainBundle]pathForResource:@"data2.plist" ofType:nil];
     NSArray * sourceArray = [[NSDictionary dictionaryWithContentsOfFile:path] objectForKey:[NSString stringWithFormat:@"data%u",(arc4random_uniform(2) + 1)]];
     NSMutableArray * stockData = [NSMutableArray array];
        for (NSDictionary * dic in sourceArray) {
