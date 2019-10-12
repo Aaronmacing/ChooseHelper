@@ -231,8 +231,8 @@
     
     self.navigationController.navigationBarHidden = YES;
     NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
-    NSString *a = [user stringForKey:@"account"];
-    NSString *b = [user stringForKey:@"secret"];
+    NSString *a = @"aaaa";//[user stringForKey:@"account"];
+    NSString *b = @"111111";//[user stringForKey:@"secret"];
     UITextField *tf1 = [self.view viewWithTag:20];
     UITextField *tf2 = [self.view viewWithTag:21];
     tf1.text = a;
