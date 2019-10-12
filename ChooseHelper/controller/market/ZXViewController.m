@@ -106,6 +106,8 @@
     
 }
 
+
+
 - (void)leftBtnCliked:(UIButton *)sender
 {
     if (sender.tag - 10 == self.leftSelect) {
