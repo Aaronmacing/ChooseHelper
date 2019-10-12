@@ -26,12 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-<<<<<<< HEAD
 
-    
-=======
-        
->>>>>>> bcd86a20cb7cfa93a290dbd341a1f7ce9eb79b87
     self.account = [[AccountDao sharedAccountDao] queryLoginUser];
     
     [[UserRequestServer sharedUserRequestServer] getUserInfoByAccount:self.account success:^(Account *account) {
