@@ -16,7 +16,6 @@
 
 @interface PlayViewController ()<ZQPlayerDelegate,UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>{
     
-    NSArray * _rArr;
 }
 
 
@@ -46,8 +45,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    self.title = _vidModel.title;
+
+    self.navigationItem.title = _vidModel.title;
     
     self.backImageView.image = kGetImage(@"p_bg1");
     [self.backImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -98,15 +97,12 @@
        
    }];
     
-
-    NSString * dataPath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"jzsp%ld",_vidModel.tag] ofType:@"json"];
-    NSString *jsonStr = [[NSString alloc] initWithContentsOfFile:dataPath encoding:NSUTF8StringEncoding error:nil];
-    NSArray * arr = [NSArray yy_modelArrayWithClass:[KsModel class] json:jsonStr];
-    _rArr = arr;
-    [self.tableView reloadData];
-    
 }
 
+-(void)setRArr:(NSArray *)rArr{
+    _rArr = rArr;
+    [self.tableView reloadData];
+}
 
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

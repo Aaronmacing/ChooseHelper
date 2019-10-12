@@ -9,8 +9,13 @@
 #import "ZXViewController.h"
 #import "ZXTableViewCell.h"
 #import "ZFPMViewController.h"
+#import "StockRequetServer.h"
+#import "StockListResultVO.h"
 
-@interface ZXViewController ()<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
+@interface ZXViewController ()<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>{
+    NSArray * _lisArr;
+    UILabel *_nd;
+}
 @property(nonatomic,assign)NSInteger leftSelect;
 @property(nonatomic,strong)UITableView *tableView;
 
@@ -67,6 +72,7 @@
                 make.bottom.mas_equalTo(btn.mas_bottom).with.offset(-6);
             }];
             
+            [self leftBtnCliked:btn];
         }
     }
     
@@ -91,6 +97,13 @@
        
    }];
     
+    
+    _nd = [[UILabel alloc] init];
+    _nd.text = @"暂无数据";
+    _nd.textColor = Uni_RGB(36, 46, 73);
+    _nd.font = [UIFont systemFontOfSize:22];
+    [self.tableView addSubview:_nd];
+    
 }
 
 - (void)leftBtnCliked:(UIButton *)sender
@@ -113,6 +126,34 @@
             make.bottom.mas_equalTo(sender.mas_bottom).with.offset(-6);
         }];
     }
+    
+    NSInteger reqTag;
+    if (sender.tag - 10 == 0) {
+        reqTag = 3;
+    }else if (sender.tag - 10 == 1){
+        reqTag = 0;
+    }else if (sender.tag - 10 == 2){
+        reqTag = 2;
+    }else {
+        reqTag = 1;
+    }
+    
+    [MBManager showWaitingWithTitle:@"加载中"];
+    [[StockRequetServer sharedStockRequetServer] getStockListByPage:1 type:2 stockMarket:reqTag success:^(NSArray<StockListResultVO *> * _Nonnull stockList) {
+        self->_lisArr = stockList;
+        [self.tableView reloadData];
+        
+        if (self->_lisArr.count > 0) {
+            self->_nd.hidden = YES;
+        }else{
+            self->_nd.hidden = NO;
+        }
+        [MBManager hideAlert];
+    } failure:^(NSString * _Nonnull msg) {
+        [MBManager hideAlert];
+        [MBManager showBriefAlert:msg inView:self.view];
+    }];
+    
 }
 
 - (void)czBtnCliked:(UIButton *)sender
@@ -179,7 +220,7 @@
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 5;
+    return _lisArr.count;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -197,7 +238,9 @@
     }
     //设置cell没有选中效果
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
+    
+    DataList * model = _lisArr[indexPath.row];
+    [cell setDataVO:model];
    
     return cell;
 }

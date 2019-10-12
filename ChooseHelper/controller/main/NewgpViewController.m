@@ -48,6 +48,12 @@
           }];
     
     
+    _nd = [[UILabel alloc] init];
+    _nd.text = @"暂无数据";
+    _nd.textColor = Uni_RGB(36, 46, 73);
+    _nd.font = [UIFont systemFontOfSize:22];
+    [self.tableView addSubview:_nd];
+    
     [MBManager showWaitingWithTitle:@"加载中"];
     [[StockRequetServer sharedStockRequetServer] getStockListByPage:1 type:2 stockMarket:HongKong success:^(NSArray<StockListResultVO *> * _Nonnull stockList) {
         self->_lisArr = stockList;

@@ -892,11 +892,11 @@
 				18709FF2234F2679006CD559 /* TrainViewController.m in Sources */,
 				18BD067E2350B62900F89CA0 /* ZQPlayerMaskView.m in Sources */,
 				18A97B4A234DBB06006BDBBC /* AppDelegate.m in Sources */,
-<<<<<<< HEAD
+
 				186037132351B96B00565B03 /* KsModel.m in Sources */,
-=======
+
 				685DF1242351D1C500EA2C9B /* YKViewBase.m in Sources */,
->>>>>>> 5618eea13c187d48b77a00b5fb0d3464d20884d6
+
 				18A97B89234DBB6D006BDBBC /* Utils.m in Sources */,
 				68429164235175A5009341A3 /* Account.m in Sources */,
 				18709FEE234F2672006CD559 /* MyViewController.m in Sources */,

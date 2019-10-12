@@ -15,7 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString *video;
 @property (nonatomic,copy) NSString *title;
 @property (nonatomic,copy) NSString *time;
-@property (nonatomic,strong) NSNumber * tag;
 
 @end
 

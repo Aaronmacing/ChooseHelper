@@ -150,9 +150,9 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     KsModel * model = _rArr[indexPath.row];
-    [model setValue:[NSNumber numberWithInteger:indexPath.row] forKey:@"tag"];
     PlayViewController *vc = [[PlayViewController alloc]init];
     vc.vidModel = model;
+    vc.rArr = _rArr;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

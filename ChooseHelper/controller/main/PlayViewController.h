@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PlayViewController : BaseViewController
 @property (nonatomic, strong) KsModel * vidModel;
+@property (nonatomic, strong) NSArray * rArr;
 
 @end
 
