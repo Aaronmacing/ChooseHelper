@@ -105,6 +105,7 @@
 		685DF1252351D1C500EA2C9B /* YKLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 685DF1182351D1C500EA2C9B /* YKLineChartView.m */; };
 		685DF1262351D1C500EA2C9B /* YKLineEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 685DF11F2351D1C500EA2C9B /* YKLineEntity.m */; };
 		685DF1282351D1CE00EA2C9B /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 685DF1272351D1CE00EA2C9B /* data.plist */; };
+		685DF3012351FD9100EA2C9B /* NormalStockVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 685DF3002351FD9100EA2C9B /* NormalStockVO.m */; };
 		E2FF3E7F19CE10E29FED0769 /* libPods-ChooseHelper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 61B45CCC1180C42F9FAD4D97 /* libPods-ChooseHelper.a */; };
 /* End PBXBuildFile section */
 
@@ -296,6 +297,8 @@
 		685DF11F2351D1C500EA2C9B /* YKLineEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKLineEntity.m; sourceTree = "<group>"; };
 		685DF1202351D1C500EA2C9B /* YKLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKLineChartView.h; sourceTree = "<group>"; };
 		685DF1272351D1CE00EA2C9B /* data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = data.plist; sourceTree = "<group>"; };
+		685DF2FF2351FD9100EA2C9B /* NormalStockVO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NormalStockVO.h; sourceTree = "<group>"; };
+		685DF3002351FD9100EA2C9B /* NormalStockVO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NormalStockVO.m; sourceTree = "<group>"; };
 		93E20321FA901A21388A6E34 /* Pods-ChooseHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChooseHelper.release.xcconfig"; path = "Target Support Files/Pods-ChooseHelper/Pods-ChooseHelper.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -584,6 +587,8 @@
 				68429166235175BA009341A3 /* StockRequestResultVO.m */,
 				6842916B235175BA009341A3 /* StockSingleResultVO.h */,
 				6842916C235175BA009341A3 /* StockSingleResultVO.m */,
+				685DF2FF2351FD9100EA2C9B /* NormalStockVO.h */,
+				685DF3002351FD9100EA2C9B /* NormalStockVO.m */,
 			);
 			path = VO;
 			sourceTree = "<group>";
@@ -892,11 +897,9 @@
 				18709FF2234F2679006CD559 /* TrainViewController.m in Sources */,
 				18BD067E2350B62900F89CA0 /* ZQPlayerMaskView.m in Sources */,
 				18A97B4A234DBB06006BDBBC /* AppDelegate.m in Sources */,
-
+				685DF3012351FD9100EA2C9B /* NormalStockVO.m in Sources */,
 				186037132351B96B00565B03 /* KsModel.m in Sources */,
-
 				685DF1242351D1C500EA2C9B /* YKViewBase.m in Sources */,
-
 				18A97B89234DBB6D006BDBBC /* Utils.m in Sources */,
 				68429164235175A5009341A3 /* Account.m in Sources */,
 				18709FEE234F2672006CD559 /* MyViewController.m in Sources */,

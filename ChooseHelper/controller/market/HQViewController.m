@@ -717,6 +717,9 @@
         [self.dataSource addObjectsFromArray:resultList];
         [self.dataSource addObjectsFromArray:downResultList];
 
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"data" object:self.dataSource];
+        
         if (self.dataSource && self.dataSource.count > 0) {
             
             self.noDataLb.hidden = YES;
