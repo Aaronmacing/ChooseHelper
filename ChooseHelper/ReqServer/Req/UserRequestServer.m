@@ -24,18 +24,16 @@ SingletonM(UserRequestServer)
         
         Account *currentAC = [[Account alloc] init];
         currentAC.account = account;
-        currentAC.name = currentAC.account;
        
         if ([[AccountDao sharedAccountDao] queryAccountByAccount:account]) {
 
             currentAC = [[AccountDao sharedAccountDao] queryAccountByAccount:account];
-           
         }
-        currentAC.uuid = returnData.uuid;
-        currentAC.password = password;
-        [[AccountDao sharedAccountDao] insertOrUpdateData:currentAC];
+          currentAC.uuid = returnData.uuid;
+          currentAC.password = password;
+          [[AccountDao sharedAccountDao] insertOrUpdateData:currentAC];
         
-        success(currentAC);
+           success(currentAC);
     } andFailure:^(NSString *msg) {
         
         failure(msg);
