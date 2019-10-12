@@ -54,6 +54,8 @@
     }];
     [self.view bringSubviewToFront:self.backBtn];
     
+    self.backBtn.hidden = YES;
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goToOtherPage1) name:@"jump1" object:nil];
     
 }

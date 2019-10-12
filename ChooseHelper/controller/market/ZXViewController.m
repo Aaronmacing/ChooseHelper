@@ -14,6 +14,7 @@
 #import "NormalStockVO.h"
 @interface ZXViewController ()<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>{
     NSArray * _lisArr;
+
 }
 @property(nonatomic,assign)NSInteger leftSelect;
 @property(nonatomic,strong)UITableView *tableView;
@@ -33,8 +34,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
-    
+
     self.allDataSouce = @[].mutableCopy;
     self.subDataSource1 = @[].mutableCopy;
     self.subDataSource2 = @[].mutableCopy;
@@ -42,22 +42,25 @@
     
     self.account = [[AccountDao sharedAccountDao] queryLoginUser];
     NSMutableArray *list = @[].mutableCopy;
-    [list addObjectsFromArray:[self.account.stockComps componentsSeparatedByString:@","]];
+    
+    if (!Uni_isEmptyString(self.account.stockComps)) {
+        [list addObjectsFromArray:[self.account.stockComps componentsSeparatedByString:@","]];
+    }
     
     if (list.count > 0) {
-        
+
         [list enumerateObjectsUsingBlock:^(NSString * codeStr, NSUInteger idx, BOOL * _Nonnull stop) {
             
-            NSRange bs = [codeStr rangeOfString:@"-"];
-            NSString * code = [codeStr substringToIndex:bs.location];
-            NSString * mark = [codeStr substringFromIndex:bs.location+1];
+            NSArray * arr = [codeStr componentsSeparatedByString:@"-"];
+            NSString * code = arr[0];
+            NSString * mark = arr[1];
             
             [[StockRequetServer sharedStockRequetServer] getStockSingleByCode:code type:nil stockMarket:mark.integerValue success:^(id  _Nonnull stockSingle) {
                 StockSingleResultVO * vo = (StockSingleResultVO *)stockSingle;
                 [vo.data  setValue:mark forKey:@"market"];
                 [self.allDataSouce addObject:vo.data];
                 
-                if (mark.integerValue == Shanghai || mark.integerValue == Shenzhen) {
+                if (mark.integerValue == Shenzhen) {
                     [self.subDataSource1 addObject:vo.data];
                     
                 }else if (mark.integerValue == HongKong){

@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "StockTabbarController.h"
 #import "LoginViewController.h"
+#import "RootDao.h"
 @interface AppDelegate ()
 
 @end
@@ -17,6 +18,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    [[[RootDao alloc] init] createOrUpdateTable];
 #if 1
     LoginViewController *mainVC = [[LoginViewController alloc] init];
 #else

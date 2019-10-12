@@ -12,7 +12,6 @@
 #import "MarketViewController.h"
 #import "TrainViewController.h"
 #import "MyViewController.h"
-#import "RootDao.h"
 #import "AccountDao.h"
 #import "UserRequestServer.h"
 @interface StockTabbarController ()<UITabBarControllerDelegate>
@@ -27,8 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [[[RootDao alloc] init] createOrUpdateTable];
+
     
     self.account = [[AccountDao sharedAccountDao] queryLoginUser];
     

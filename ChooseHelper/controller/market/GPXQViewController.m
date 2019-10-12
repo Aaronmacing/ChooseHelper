@@ -31,8 +31,6 @@
 
 @property (nonatomic,strong) StockSingleResultVO *model;
 
-@property (strong,nonatomic) Account *accccount;
-
 @end
 
 @implementation GPXQViewController
@@ -283,27 +281,37 @@
 {
     UIButton * btn = (UIButton *)sender;
     btn.selected =! btn.selected;
-    
-    self.account = [[AccountDao sharedAccountDao] queryLoginUser];
-    
     NSMutableArray *list = @[].mutableCopy;
 
-    [list addObjectsFromArray:[self.account.stockComps componentsSeparatedByString:@","]];
-    
+    if (!Uni_isEmptyString(self.account.stockComps)) {
+        [list addObjectsFromArray:[self.account.stockComps componentsSeparatedByString:@","]];
+    }
+
     if (btn.selected) {
-        [list addObject:[NSString stringWithFormat:@"%@-%ld",_code,self.market]];
         
-        self.account.stockComps = [list componentsJoinedByString:@","];
-        
+        NSMutableSet *set = [[NSMutableSet alloc] initWithArray:list];
+        [set addObject:[NSString stringWithFormat:@"%@-%ld",_code,self.market]];
+        NSArray *resultList = [set allObjects];
+        self.account.stockComps = [resultList componentsJoinedByString:@","];
         [[AccountDao sharedAccountDao] insertOrUpdateData:self.account];
-        
         [MBManager showBriefAlert:@"已添加" inView:self.view];
         
     }else{
         
-        [list removeObject:[NSString stringWithFormat:@"%@-%ld",_code,self.market]];
         
-        self.account.stockComps = [list componentsJoinedByString:@","];
+        for (int i = 0; i < list.count; i++) {
+            NSString * str = list[i];
+            if ([str isEqualToString:[NSString stringWithFormat:@"%@-%ld",_code,self.market]]) {
+                [list removeObject:str];
+            }
+        }
+        
+        if (list.count > 0) {
+            self.account.stockComps = [list componentsJoinedByString:@","];
+        }else{
+            self.account.stockComps = @"";
+        }
+    
         
         [[AccountDao sharedAccountDao] insertOrUpdateData:self.account];
         
