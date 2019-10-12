@@ -9,8 +9,11 @@
 #import "ClassViewController.h"
 #import "ClassTableViewCell.h"
 #import "PlayViewController.h"
+#import "KsModel.h"
 
-@interface ClassViewController ()<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
+@interface ClassViewController ()<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>{
+    NSArray * _rArr;
+}
 @property(nonatomic,assign)NSInteger leftSelect;
 @property(nonatomic,strong)UITableView *tableView;
 
@@ -61,6 +64,12 @@
        make.right.mas_equalTo(self.view.mas_right).with.offset(0);
        
    }];
+
+    NSString * dataPath = [[NSBundle mainBundle] pathForResource:@"jzsp" ofType:@"json"];
+    NSString *jsonStr = [[NSString alloc] initWithContentsOfFile:dataPath encoding:NSUTF8StringEncoding error:nil];
+    NSArray * arr = [NSArray yy_modelArrayWithClass:[KsModel class] json:jsonStr];
+    _rArr = arr;
+    [self.tableView reloadData];
     
 }
 
@@ -74,7 +83,6 @@
         sender.selected = YES;
         UIButton *btn = [self.view viewWithTag:10 + self.leftSelect];
         btn.selected = NO;
-        
         self.leftSelect = sender.tag - 10;
     }
 }
@@ -110,7 +118,7 @@
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 5;
+    return _rArr.count;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -129,14 +137,19 @@
     //设置cell没有选中效果
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
-   
+    KsModel * model = _rArr[indexPath.row];
+    cell.nameLabel.text = model.title;
+    cell.timeLabel.text = model.time;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    KsModel * model = _rArr[indexPath.row];
     PlayViewController *vc = [[PlayViewController alloc]init];
+    vc.vidModel = model;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

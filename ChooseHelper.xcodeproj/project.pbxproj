@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1860370D2351B4DB00565B03 /* MBProgressHUD+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = 186037092351B4DB00565B03 /* MBProgressHUD+Add.m */; };
+		1860370E2351B4DB00565B03 /* MBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1860370A2351B4DB00565B03 /* MBManager.m */; };
+		186037102351B8A600565B03 /* jzsp.json in Resources */ = {isa = PBXBuildFile; fileRef = 1860370F2351B8A500565B03 /* jzsp.json */; };
+		186037132351B96B00565B03 /* KsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 186037122351B96B00565B03 /* KsModel.m */; };
 		18709FEA234F2672006CD559 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18709FDD234F2671006CD559 /* MainViewController.m */; };
 		18709FEB234F2672006CD559 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18709FE0234F2671006CD559 /* LoginViewController.m */; };
 		18709FEC234F2672006CD559 /* SignViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18709FE1234F2671006CD559 /* SignViewController.m */; };
@@ -95,6 +99,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		186037092351B4DB00565B03 /* MBProgressHUD+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Add.m"; sourceTree = "<group>"; };
+		1860370A2351B4DB00565B03 /* MBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBManager.m; sourceTree = "<group>"; };
+		1860370B2351B4DB00565B03 /* MBProgressHUD+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Add.h"; sourceTree = "<group>"; };
+		1860370C2351B4DB00565B03 /* MBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBManager.h; sourceTree = "<group>"; };
+		1860370F2351B8A500565B03 /* jzsp.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = jzsp.json; sourceTree = "<group>"; };
+		186037112351B96B00565B03 /* KsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KsModel.h; sourceTree = "<group>"; };
+		186037122351B96B00565B03 /* KsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KsModel.m; sourceTree = "<group>"; };
 		18709FDD234F2671006CD559 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 3; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		18709FDE234F2671006CD559 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		18709FE0234F2671006CD559 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -273,6 +284,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		186037082351B4DB00565B03 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				1860370C2351B4DB00565B03 /* MBManager.h */,
+				1860370A2351B4DB00565B03 /* MBManager.m */,
+				186037092351B4DB00565B03 /* MBProgressHUD+Add.m */,
+				1860370B2351B4DB00565B03 /* MBProgressHUD+Add.h */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
 		18709FDC234F2671006CD559 /* main */ = {
 			isa = PBXGroup;
 			children = (
@@ -397,6 +419,7 @@
 				6842913823517242009341A3 /* ReqServer */,
 				6842917323517687009341A3 /* Utils */,
 				18A97B8D234DBB76006BDBBC /* view */,
+				186037082351B4DB00565B03 /* MBProgressHUD */,
 			);
 			path = ChooseHelper;
 			sourceTree = "<group>";
@@ -514,6 +537,9 @@
 		68429139235172BA009341A3 /* DataBase */ = {
 			isa = PBXGroup;
 			children = (
+				1860370F2351B8A500565B03 /* jzsp.json */,
+				186037112351B96B00565B03 /* KsModel.h */,
+				186037122351B96B00565B03 /* KsModel.m */,
 				6842915523517581009341A3 /* Dao */,
 				6842915423517579009341A3 /* Bean */,
 			);
@@ -714,6 +740,7 @@
 				1870A00C234F70C2006CD559 /* XLYTableViewCell.xib in Resources */,
 				18A97B55234DBB07006BDBBC /* Assets.xcassets in Resources */,
 				18CDB6BE23501F0C00E955D8 /* SystemTradTableViewCell.xib in Resources */,
+				186037102351B8A600565B03 /* jzsp.json in Resources */,
 				18BD068F2350C8CC00F89CA0 /* NewgpTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -782,6 +809,7 @@
 				68429190235185A7009341A3 /* UITextView+ZWPlaceHolder.m in Sources */,
 				18CDB6D02350616100E955D8 /* ZXTableViewCell.m in Sources */,
 				18A97B87234DBB6D006BDBBC /* BaseViewController.m in Sources */,
+				1860370E2351B4DB00565B03 /* MBManager.m in Sources */,
 				68429191235185A7009341A3 /* UIImage+Additions.m in Sources */,
 				18709FFB234F4CE7006CD559 /* AboutViewController.m in Sources */,
 				18709FF8234F4CD1006CD559 /* ChangesecretViewController.m in Sources */,
@@ -798,12 +826,14 @@
 				18BD06812350C1B800F89CA0 /* InformationViewController.m in Sources */,
 				18BD06842350C21700F89CA0 /* NewsViewController.m in Sources */,
 				18A97BDB234DC729006BDBBC /* StockTabbarController.m in Sources */,
+				1860370D2351B4DB00565B03 /* MBProgressHUD+Add.m in Sources */,
 				6842916123517596009341A3 /* RootDao.m in Sources */,
 				18A97B8B234DBB6D006BDBBC /* UIColor+TT.m in Sources */,
 				1870A007234F54EE006CD559 /* CZViewController.m in Sources */,
 				18709FF2234F2679006CD559 /* TrainViewController.m in Sources */,
 				18BD067E2350B62900F89CA0 /* ZQPlayerMaskView.m in Sources */,
 				18A97B4A234DBB06006BDBBC /* AppDelegate.m in Sources */,
+				186037132351B96B00565B03 /* KsModel.m in Sources */,
 				18A97B89234DBB6D006BDBBC /* Utils.m in Sources */,
 				68429164235175A5009341A3 /* Account.m in Sources */,
 				18709FEE234F2672006CD559 /* MyViewController.m in Sources */,

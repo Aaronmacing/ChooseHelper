@@ -10,7 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class KsModel;
+
 @interface PlayViewController : BaseViewController
+@property (nonatomic, strong) KsModel * vidModel;
 
 @end
 

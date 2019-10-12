@@ -11,9 +11,16 @@
 #import "ClassViewController.h"
 #import "MessageViewController.h"
 #import "InformationViewController.h"
-
+#import "StockRequetServer.h"
+#import "StockNewsModel.h"
+#import "UIImageView+WebCache.h"
 
 @interface MainViewController ()<UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate> //实现滚动视图协议
+{
+   NSArray * _rArr;
+   UILabel * _nd;
+
+}
  @property (strong,nonatomic)UIScrollView *scrollview; //滚动视图控件对象
  @property (strong,nonatomic)UIPageControl *pagecontrol;//分页控制控件对象
 @property(nonatomic,strong)UITableView *tableView;
@@ -26,6 +33,7 @@
     // Do any additional setup after loading the view.
     
     self.view.backgroundColor = [UIColor colorWithHexString:@"#041833" alpha:1];
+   
 
    
     //创建ScrollView并初始化
@@ -41,6 +49,42 @@
         make.height.mas_equalTo(160);
         
     }];
+   
+   UIImageView * ssview = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"搜索框"]];
+   [self.view addSubview:ssview];
+   
+   UIImageView * fdjview = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"搜索icon"]];
+   [ssview addSubview:fdjview];
+   
+   UILabel * ms = [[UILabel alloc] init];
+   ms.text = @"股票代码/名称";
+   ms.textColor = Uni_RGB(191, 191, 191);
+   ms.font = [UIFont systemFontOfSize:13];
+   [ssview addSubview:ms];
+   
+   UIButton * ssBrn = [UIButton buttonWithType:UIButtonTypeCustom];
+   [ssBrn addTarget:self action:@selector(searchClick) forControlEvents:UIControlEventTouchUpInside];
+   [ssview addSubview:ssBrn];
+
+
+   [ssview mas_makeConstraints:^(MASConstraintMaker *make) {
+      make.centerX.equalTo(self.view);
+      make.top.equalTo(self.view).offset(50);
+   }];
+   
+   [fdjview mas_makeConstraints:^(MASConstraintMaker *make) {
+      make.left.equalTo(ssview).offset(10);
+      make.centerY.equalTo(ssview);
+   }];
+   
+   [ms mas_makeConstraints:^(MASConstraintMaker *make) {
+      make.left.equalTo(ssview).offset(36);
+      make.centerY.equalTo(ssview);
+   }];
+   
+   [ssBrn mas_makeConstraints:^(MASConstraintMaker *make) {
+      make.edges.equalTo(ssview);
+   }];
     
  
       //创建5个imageView对象并加载图片
@@ -169,10 +213,38 @@
            make.right.mas_equalTo(self.view.mas_right).with.offset(0);
            
        }];
+   
+   _nd = [[UILabel alloc] init];
+   _nd.text = @"暂无数据";
+   _nd.textColor = [UIColor whiteColor];
+   _nd.font = [UIFont systemFontOfSize:22];
+   [self.tableView addSubview:_nd];
+   
+   [_nd mas_makeConstraints:^(MASConstraintMaker *make) {
+      make.center.equalTo(self.tableView);
+   }];
+   
+   [[StockRequetServer sharedStockRequetServer] getNewsByType:@"caijing" success:^(NSArray * _Nonnull newsList) {
+      self->_rArr = newsList;
+      
+      if (self->_rArr.count > 0) {
+         self->_nd.hidden = YES;
+      }else{
+         self->_nd.hidden = NO;
+      }
+      [self.tableView reloadData];
+      
+   } failure:^(NSString * _Nonnull msg) {
+      [MBManager showBriefAlert:msg inView:self.view];
+   }];
     
 }
 
-       
+- (void)searchClick{
+   
+   
+}
+
 - (void)leftBtnCliked:(UIButton *)sender
 {
    [[NSNotificationCenter defaultCenter] postNotificationName:@"jump2" object:nil];
@@ -201,7 +273,7 @@
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 5;
+    return _rArr.count;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -219,7 +291,12 @@
     }
     //设置cell没有选中效果
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
+   
+   NewsInfoModel * model = _rArr[indexPath.row];
+   cell.titleLabel.text = model.title;
+   cell.timeLabel.text = model.date;
+   cell.numLabel.text = @"";
+   [cell.rimageView sd_setImageWithURL:[NSURL URLWithString:model.thumbnail_pic_s] placeholderImage:[UIImage imageNamed:@"zy_lbpic"]];
    
     return cell;
 }

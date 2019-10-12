@@ -12,8 +12,12 @@
 #import "ZQPlayerMaskView.h"
 #import "AppDelegate.h"
 #import "ClassTableViewCell.h"
+#import "KsModel.h"
 
-@interface PlayViewController ()<ZQPlayerDelegate,UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
+@interface PlayViewController ()<ZQPlayerDelegate,UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>{
+    
+    NSArray * _rArr;
+}
 
 
 /** 视频播放器*/
@@ -43,6 +47,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.title = _vidModel.title;
     
     self.backImageView.image = kGetImage(@"p_bg1");
     [self.backImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -63,10 +68,10 @@
     [self.view addSubview:_playerMaskView];
     
     // 网络视频
-    NSString *videoUrl = @"http://static.tripbe.com/videofiles/20121214/9533522808.f4v.mp4";
+//    NSString *videoUrl = @"http://static.tripbe.com/videofiles/20121214/9533522808.f4v.mp4";
     // 本地视频
     // NSString *videoUrl = [[NSBundle mainBundle] pathForResource:@"video" ofType:@"mp4"];
-    [_playerMaskView playWithVideoUrl:videoUrl];
+    [_playerMaskView playWithVideoUrl:_vidModel.video];
     
     [_playerMaskView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.view.mas_centerX);
@@ -92,6 +97,13 @@
        make.right.mas_equalTo(self.view.mas_right).with.offset(0);
        
    }];
+    
+
+    NSString * dataPath = [[NSBundle mainBundle] pathForResource:@"jzsp" ofType:@"json"];
+    NSString *jsonStr = [[NSString alloc] initWithContentsOfFile:dataPath encoding:NSUTF8StringEncoding error:nil];
+    NSArray * arr = [NSArray yy_modelArrayWithClass:[KsModel class] json:jsonStr];
+    _rArr = arr;
+    [self.tableView reloadData];
     
 }
 
@@ -141,7 +153,7 @@
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 5;
+    return _rArr.count;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -160,15 +172,20 @@
     //设置cell没有选中效果
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
-   
+    KsModel * model = _rArr[indexPath.row];
+    cell.nameLabel.text = model.title;
+    cell.timeLabel.text = model.time;
+
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    PlayViewController *vc = [[PlayViewController alloc]init];
-    [self.navigationController pushViewController:vc animated:YES];
+    
+    KsModel * model = _rArr[indexPath.row];
+    self.title = model.title;
+    [_playerMaskView playWithVideoUrl:model.video];
 }
 
 #pragma mark - 屏幕旋转

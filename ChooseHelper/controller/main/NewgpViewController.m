@@ -8,8 +8,15 @@
 
 #import "NewgpViewController.h"
 #import "NewgpTableViewCell.h"
+#import "StockRequetServer.h"
+#import "StockListResultVO.h"
 
 @interface NewgpViewController ()<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate> //实现滚动视图协议
+{
+    NSArray * _lisArr;
+    UILabel *_nd;
+
+}
 @property(nonatomic,strong)UITableView *tableView;
 
 @end
@@ -39,6 +46,23 @@
               make.right.mas_equalTo(self.view.mas_right).with.offset(0);
               
           }];
+    
+    
+    [MBManager showWaitingWithTitle:@"加载中"];
+    [[StockRequetServer sharedStockRequetServer] getStockListByPage:1 type:2 stockMarket:HongKong success:^(NSArray<StockListResultVO *> * _Nonnull stockList) {
+        self->_lisArr = stockList;
+        [self.tableView reloadData];
+        
+        if (self->_lisArr.count > 0) {
+            self->_nd.hidden = YES;
+        }else{
+            self->_nd.hidden = NO;
+        }
+        [MBManager hideAlert];
+    } failure:^(NSString * _Nonnull msg) {
+        [MBManager hideAlert];
+        [MBManager showBriefAlert:msg inView:self.view];
+    }];
 }
 
 #pragma mark - UITableViewDelegate
@@ -74,7 +98,7 @@
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 5;
+    return _lisArr.count;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -91,8 +115,9 @@
         cell = [[NewgpTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
     }
     //设置cell没有选中效果
-
-
+    
+    DataList * model = _lisArr[indexPath.row];
+    [cell setDataVO:model];
    
     return cell;
 }
