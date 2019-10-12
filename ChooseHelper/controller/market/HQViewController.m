@@ -10,7 +10,6 @@
 #import "HQTableViewCell.h"
 #import "ZFPMViewController.h"
 #import "StockRequetServer.h"
-#import "MacVC.h"
 #import <MJRefresh.h>
 @interface HQViewController ()<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
 @property(nonatomic,assign)NSInteger leftSelect;
@@ -448,13 +447,6 @@
         make.height.mas_equalTo(22);
         make.width.mas_equalTo(250);
     }];
-    
-    
-    MacVC *vc2 = [[MacVC alloc] initWithHeight:(self.bottomLineIV.maxY - self.topLineIV.y)];
-    [self addChildViewController:vc2];
-      
-    vc2.view.frame = CGRectMake(0, 0, SCREEN_WIDTH,(self.bottomLineIV.maxY - self.topLineIV.y));
-    [self.view addSubview:vc2.view];
     
     [self getIndex];
 }

@@ -209,9 +209,11 @@
 - (void)logOutBtn
 {
     
-       Account *account = [[AccountDao sharedAccountDao] queryLoginUser];
+       [self showWaiting];
+      Account *account = [[AccountDao sharedAccountDao] queryLoginUser];
       [[UserRequestServer sharedUserRequestServer] loginOutWithUUID:account.uuid success:^{
-                 
+                
+              [self dismissWaiting];
              account.password = @"";
              [[AccountDao sharedAccountDao] insertOrUpdateData:account];
              //[TextFavDao sharedTextFavDao].dbQueue = nil;
@@ -219,7 +221,7 @@
                  
         } failure:^(NSString * _Nonnull msg) {
                  
-            [MBProgressHUD showMessage:msg];
+            [self dismissWaitingWithShowToast:msg];
                  
       }];
 }

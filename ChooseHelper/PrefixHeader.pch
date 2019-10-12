@@ -28,7 +28,5 @@
 #import <YYModel/YYModel.h>
 #import <MJRefresh/MJRefresh.h>
 #import "MBManager.h"
-#endif
-
 
 #endif /* PrefixHeader_pch */
