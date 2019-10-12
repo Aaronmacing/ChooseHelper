@@ -11,12 +11,21 @@
 #import "ClassViewController.h"
 #import "MessageViewController.h"
 #import "InformationViewController.h"
-
+#import "StockRequetServer.h"
+#import "StockNewsModel.h"
+#import "UIImageView+WebCache.h"
 
 @interface MainViewController ()<UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate> //实现滚动视图协议
+{
+   NSArray * _rArr;
+   UILabel * _nd;
+
+}
  @property (strong,nonatomic)UIScrollView *scrollview; //滚动视图控件对象
  @property (strong,nonatomic)UIPageControl *pagecontrol;//分页控制控件对象
 @property(nonatomic,strong)UITableView *tableView;
+
+
 @end
 
 @implementation MainViewController
@@ -26,6 +35,7 @@
     // Do any additional setup after loading the view.
     
     self.view.backgroundColor = [UIColor colorWithHexString:@"#041833" alpha:1];
+   
 
    
     //创建ScrollView并初始化
@@ -41,7 +51,7 @@
         make.height.mas_equalTo(160);
         
     }];
-    
+   
  
       //创建5个imageView对象并加载图片
       CGFloat x = 0;
@@ -169,10 +179,33 @@
            make.right.mas_equalTo(self.view.mas_right).with.offset(0);
            
        }];
-    
+   
+   _nd = [[UILabel alloc] init];
+   _nd.text = @"暂无数据";
+   _nd.textColor = [UIColor whiteColor];
+   _nd.font = [UIFont systemFontOfSize:22];
+   [self.tableView addSubview:_nd];
+   
+   [_nd mas_makeConstraints:^(MASConstraintMaker *make) {
+      make.center.equalTo(self.tableView);
+   }];
+   
+//   [[StockRequetServer sharedStockRequetServer] getNewsByType:@"caijing" success:^(NSArray * _Nonnull newsList) {
+//      self->_rArr = newsList;
+//
+//      if (self->_rArr.count > 0) {
+//         self->_nd.hidden = YES;
+//      }else{
+//         self->_nd.hidden = NO;
+//      }
+//      [self.tableView reloadData];
+//
+//   } failure:^(NSString * _Nonnull msg) {
+//      [MBManager showBriefAlert:msg inView:self.view];
+//   }];
+   
 }
 
-       
 - (void)leftBtnCliked:(UIButton *)sender
 {
    [[NSNotificationCenter defaultCenter] postNotificationName:@"jump2" object:nil];
@@ -201,7 +234,7 @@
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 5;
+    return _rArr.count;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -219,7 +252,12 @@
     }
     //设置cell没有选中效果
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
+   
+   NewsInfoModel * model = _rArr[indexPath.row];
+   cell.titleLabel.text = model.title;
+   cell.timeLabel.text = model.date;
+   cell.numLabel.text = @"";
+   [cell.rimageView sd_setImageWithURL:[NSURL URLWithString:model.thumbnail_pic_s] placeholderImage:[UIImage imageNamed:@"zy_lbpic"]];
    
     return cell;
 }
@@ -231,8 +269,6 @@
    MessageViewController *vc = [[MessageViewController alloc]init];
    [self.navigationController pushViewController:vc animated:YES];
 }
-
-
 
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
 {

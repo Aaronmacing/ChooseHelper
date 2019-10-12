@@ -15,10 +15,16 @@
     // Initialization code
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+- (void)setDataVO:(DataList *)dataVO{
+    
+    _dataVO = dataVO;
 
-    // Configure the view for the selected state
+    self.timeLabel.text = _dataVO.ticktime;
+    self.nameLabel.text = _dataVO.name;
+    self.priceLabel.text = _dataVO.trade;
+    self.totalLabel.text = _dataVO.amount;
+    self.weekLabel.text = @"";
+    self.numLabel.text = _dataVO.volume;
+    
 }
-
 @end

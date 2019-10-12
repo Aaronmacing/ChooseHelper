@@ -9,8 +9,15 @@
 #import "ImportViewController.h"
 #import "MainTableViewCell.h"
 #import "MessageViewController.h"
+#import "StockRequetServer.h"
+#import "StockNewsModel.h"
+#import "UIImageView+WebCache.h"
 
 @interface ImportViewController ()<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate> //实现滚动视图协议
+{
+    UILabel * _nd;
+    NSArray * _rArr;
+}
 @property(nonatomic,strong)UITableView *tableView;
 
 @end
@@ -40,6 +47,30 @@
               make.right.mas_equalTo(self.view.mas_right).with.offset(0);
               
           }];
+    
+    _nd = [[UILabel alloc] init];
+    _nd.text = @"暂无数据";
+    _nd.textColor = Uni_RGB(36, 46, 73);
+    _nd.font = [UIFont systemFontOfSize:22];
+    [self.tableView addSubview:_nd];
+    
+    [_nd mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(self.tableView);
+    }];
+    
+    [[StockRequetServer sharedStockRequetServer] getNewsByType:@"top" success:^(NSArray * _Nonnull newsList) {
+        self->_rArr = newsList;
+        
+        if (self->_rArr.count > 0) {
+            self->_nd.hidden = YES;
+        }else{
+            self->_nd.hidden = NO;
+        }
+        [self.tableView reloadData];
+        
+    } failure:^(NSString * _Nonnull msg) {
+        [MBManager showBriefAlert:msg inView:self.view];
+    }];
 }
 
 #pragma mark - UITableViewDelegate
@@ -50,7 +81,7 @@
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return 5;
+    return _rArr.count;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -71,7 +102,12 @@
     cell.titleLabel.textColor = [UIColor colorWithHexString:@"#242E49" alpha:1];
     cell.timeLabel.textColor = [UIColor colorWithHexString:@"#636363" alpha:1];
     cell.numLabel.textColor = [UIColor colorWithHexString:@"#636363" alpha:1];
-
+    
+    NewsInfoModel * model = _rArr[indexPath.row];
+    cell.titleLabel.text = model.title;
+    cell.timeLabel.text = model.date;
+    cell.numLabel.text = @"";
+    [cell.rimageView sd_setImageWithURL:[NSURL URLWithString:model.thumbnail_pic_s] placeholderImage:[UIImage imageNamed:@"zy_lbpic"]];
    
     return cell;
 }
@@ -80,8 +116,11 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
    
-   MessageViewController *vc = [[MessageViewController alloc]init];
-   [self.navigationController pushViewController:vc animated:YES];
+    NewsInfoModel * model = _rArr[indexPath.row];
+    
+    MessageViewController *vc = [[MessageViewController alloc]init];
+    vc.loadingUrl = model.url;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 

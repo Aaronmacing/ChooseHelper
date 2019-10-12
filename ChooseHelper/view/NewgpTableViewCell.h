@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "StockListResultVO.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -17,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *totalLabel;
 @property (weak, nonatomic) IBOutlet UILabel *weekLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numLabel;
+
+@property (nonatomic, strong) DataList * dataVO;
 
 @end
 
