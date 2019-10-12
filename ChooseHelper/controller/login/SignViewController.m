@@ -34,7 +34,7 @@
         
     }];
     
-    UILabel *label = [Utils setLabelWithlines:0 textAlignment:NSTextAlignmentCenter font:[UIFont systemFontOfSize:17] text:@"股 参 谋" textColor:[UIColor whiteColor]];
+    UILabel *label = [Utils setLabelWithlines:0 textAlignment:NSTextAlignmentCenter font:[UIFont systemFontOfSize:17] text:@"金牛配资" textColor:[UIColor whiteColor]];
     [self.view addSubview:label];
     [label mas_makeConstraints:^(MASConstraintMaker *make) {
         
@@ -152,7 +152,7 @@
     UITextField *tf2 = [self.view viewWithTag:21];
     UITextField *tf3 = [self.view viewWithTag:22];
     
-    //if (tf1.text.length >= 4 && tf1.text.length <= 16 && tf2.text.length >= 6 && tf2.text.length <= 16 && [tf2.text isEqualToString:tf3.text]) {
+    if (tf1.text.length >= 4 && tf1.text.length <= 16 && tf2.text.length >= 6 && tf2.text.length <= 16 && [tf2.text isEqualToString:tf3.text]) {
         
         if ([NSString isBlankString:tf1.text]) {
                [self showToast:@"请输入用户名"];
@@ -184,11 +184,11 @@
            }
         
         
-//    }
-//    else
-//    {
-//        [MBProgressHUD showError:@"数据不正确,请重新输入!"];
-//    }
+    }
+    else
+    {
+        [MBProgressHUD showError:@"数据不正确,请重新输入!"];
+    }
 }
 
 /*

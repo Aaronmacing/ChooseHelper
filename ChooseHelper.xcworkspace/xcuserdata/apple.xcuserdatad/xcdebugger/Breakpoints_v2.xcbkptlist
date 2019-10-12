@@ -5,29 +5,34 @@
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            uuid = "71D16A2A-D959-49F5-A720-DAE4A3C5F24D"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            scope = "0"
-            stopOnStyle = "0">
+            filePath = "ChooseHelper/&#x767b;&#x5f55;&#x6ce8;&#x518c;/NSDictionary+NilSafe.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "+gl_dictionaryWithObjects:forKeys:count:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1A390AE2-26EE-4B3F-A0BB-A19541E1185D"
+            uuid = "A12D9B1E-9B67-432C-A2F7-B33E50DDC4B1"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ChooseHelper/controller/my/CZViewController.m"
-            timestampString = "0"
+            filePath = "ChooseHelper/&#x767b;&#x5f55;&#x6ce8;&#x518c;/NSDictionary+NilSafe.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "197"
-            endingLineNumber = "197"
-            landmarkName = "-productsRequest:didReceiveResponse:"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "-gl_initWithObjects:forKeys:count:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

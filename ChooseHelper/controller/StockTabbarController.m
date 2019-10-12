@@ -27,9 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [[[RootDao alloc] init] createOrUpdateTable];
-    
+        
     self.account = [[AccountDao sharedAccountDao] queryLoginUser];
     
     [[UserRequestServer sharedUserRequestServer] getUserInfoByAccount:self.account success:^(Account *account) {

@@ -215,7 +215,8 @@
         }
         
     } failure:^(NSString *msg) {
-        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [MBProgressHUD showError:msg];
     }];
     
 }
