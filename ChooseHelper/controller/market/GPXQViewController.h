@@ -7,13 +7,17 @@
 //
 
 #import "BaseViewController.h"
-#import "StockSingleResultVO.h"
-
+#import "StockRequetServer.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface GPXQViewController : BaseViewController
 @property(nonatomic,assign)NSInteger type;
-@property(nonatomic,strong)StockSingleResultVO *model;
+
+/// 股票代码
+@property (nonatomic,copy) NSString *code;
+
+/// 股票市场
+@property (nonatomic,assign) StockMarket market;
 @end
 
 NS_ASSUME_NONNULL_END

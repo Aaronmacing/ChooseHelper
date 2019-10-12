@@ -27,7 +27,7 @@ SingletonH(StockRequetServer)
 - (void)getStockListByPage:(NSInteger)page
                            type:(NSInteger)type
                     stockMarket:(StockMarket)stockMarket
-                     success:(void (^)(NSArray <StockListResultVO *>*stockList))success
+                     success:(void (^)(NSArray <DataList *>*stockList))success
                      failure:(void (^)(NSString *msg))failure;
 //type    0代表上证指数，1代表深证指数
 - (void)getStockSingleByCode:(NSString *)code

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "StockListResultVO.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HQTableViewCell : UITableViewCell
@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *numLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *zfLabel;
+
+@property (nonatomic,strong) DataList *dataVO;
 
 @end
 

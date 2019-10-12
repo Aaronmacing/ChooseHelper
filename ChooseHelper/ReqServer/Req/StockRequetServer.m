@@ -15,7 +15,7 @@ SingletonM(StockRequetServer)
 - (void)getStockListByPage:(NSInteger)page
                         type:(NSInteger)type
                  stockMarket:(StockMarket)stockMarket
-                     success:(void (^)(NSArray<StockListResultVO *> * _Nonnull))success
+                     success:(void (^)(NSArray<DataList *> * _Nonnull))success
                      failure:(void (^)(NSString * _Nonnull))failure{
     
     

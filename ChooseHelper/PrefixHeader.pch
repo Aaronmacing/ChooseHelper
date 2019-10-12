@@ -23,8 +23,12 @@
 #import "YCAlertView.h"
 #import "ZHightView.h"
 #import "SingletonModel.h"
+#import "UIView+Util.h"
 #import <SDWebImage/SDWebImageManager.h>
 #import <YYModel/YYModel.h>
 #import <MJRefresh/MJRefresh.h>
+
+
+
 
 #endif /* PrefixHeader_pch */
