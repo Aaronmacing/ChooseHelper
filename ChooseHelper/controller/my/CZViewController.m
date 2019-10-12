@@ -133,7 +133,7 @@
         make.top.mas_equalTo(label2.mas_bottom).with.offset(27);
 
     }];
-    [self restoreProduct];
+//    [self restoreProduct];
 
 }
 
