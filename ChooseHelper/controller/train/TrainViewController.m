@@ -401,7 +401,11 @@
     self.reload = YES;
     GPXQViewController *vc = [[GPXQViewController alloc]init];
     vc.type = 1;
-//    vc.model = self.dataSource[sender.tag - 3000];
+    
+    StockSingleResultVO *model0 = self.dataSource[sender.tag - 3000];
+    DataSingle *model = model0.data;
+    vc.code = model.gid;
+    vc.market = Shanghai;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

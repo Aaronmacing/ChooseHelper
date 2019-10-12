@@ -29,6 +29,8 @@
 
 @property (nonatomic,strong) YKLineChartView *klineView;
 
+@property (nonatomic,strong) StockSingleResultVO *model;
+
 
 @end
 
@@ -38,7 +40,7 @@
 {
     self = [super init];
     if (self) {
-//        _model = [[StockSingleResultVO alloc]init];
+        _model = [[StockSingleResultVO alloc]init];
     }
     return self;
 }
@@ -256,6 +258,8 @@
        
         StockSingleResultVO *vo = (StockSingleResultVO *)stockSingle;
         
+        self.model = vo;
+        
         self.nameLb.text = vo.data.name;
         self.codeLb.text = vo.data.gid;
         self.priceLb.text = vo.data.nowPri;
@@ -282,14 +286,16 @@
 - (void)dpBtnCliked:(UIButton *)sender
 {
     BuysellViewController *vc = [[BuysellViewController alloc]init];
-    vc.type = 0;
+    vc.type = 1;
+    vc.model = self.model;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)apBtnCliked:(UIButton *)sender
 {
     BuysellViewController *vc = [[BuysellViewController alloc]init];
-    vc.type = 1;
+    vc.type = 0;
+    vc.model = self.model;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
