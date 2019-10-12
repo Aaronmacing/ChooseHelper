@@ -13,15 +13,72 @@
 @interface BuysellViewController ()<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
 @property(nonatomic,assign)NSInteger cbtnSelect;
 @property(nonatomic,strong)UITableView *tableView;
+@property(nonatomic,strong)NSString *filePatch;
+@property(nonatomic,copy)NSArray *array1;
+@property(nonatomic,copy)NSArray *array2;
+@property(nonatomic,copy)NSArray *array3;
+@property(nonatomic,copy)NSArray *array4;
+@property(nonatomic,copy)NSArray *array5;
+@property(nonatomic,copy)NSArray *array6;
+@property(nonatomic,assign)NSInteger nowNum;
+@property(nonatomic,strong)NSMutableDictionary *nowData;
+
+@property(nonatomic,strong)NSMutableArray *dataSource;
+
 @end
 
 @implementation BuysellViewController
+
+- (instancetype)init
+{
+     self = [super init];
+     if (self) {
+          _model = [[StockSingleResultVO alloc]init];
+     }
+     return self;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+     [super viewWillAppear:animated];
+     NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+     self.yuer = [user doubleForKey:@"canUse"];
+     if (self.yuer == 0) {
+         
+         self.yuer = 10000;
+     }
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.titleLabel.text = @"浦发银行-600000.SH";
+     
+     DataSingle *model1 = self.model.data;
+     
+     if (self.type == 0) {
+          
+          self.titleLabel.text = [NSString stringWithFormat:@"卖出"];
+     }
+     else
+     {
+          self.titleLabel.text = [NSString stringWithFormat:@"买入"];
+     }
+     
+     
+     
+     
+     self.array1 = @[@"卖5",@"卖4",@"卖3",@"卖2",@"卖1"];
+     self.array2 = @[model1.sellFivePri,model1.sellFourPri,model1.sellThreePri,model1.sellTwoPri,model1.sellOnePri];
+     self.array3 = @[model1.sellFive,model1.sellFour,model1.sellThree,model1.sellTwo,model1.sellOne];
+     
+     self.array4 = @[@"买1",@"买2",@"买3",@"买4",@"买5"];
+     self.array5 = @[model1.buyOnePri,model1.buyTwoPri,model1.buyThreePri,model1.buyFourPri,model1.buyFivePri];
+     self.array6 = @[model1.buyOne,model1.buyTwo,model1.buyThree,model1.buyFour,model1.buyFive];
+     
+     
+     
     
     self.view.backgroundColor = [UIColor blackColor];
     
@@ -37,7 +94,7 @@
         
     }];
     
-    UILabel *nameLabel = [Utils setLabelWithlines:0 textAlignment:NSTextAlignmentCenter font:[UIFont boldSystemFontOfSize:15] text:@"浦发银行-600000 SH" textColor:[UIColor colorWithHexString:@"#0B70F4" alpha:1]];
+    UILabel *nameLabel = [Utils setLabelWithlines:0 textAlignment:NSTextAlignmentCenter font:[UIFont boldSystemFontOfSize:15] text:[NSString stringWithFormat:@"%@-%@",model1.name,[model1.gid uppercaseString]] textColor:[UIColor colorWithHexString:@"#0B70F4" alpha:1]];
     nameLabel.layer.cornerRadius = 8;
     nameLabel.clipsToBounds = YES;
     nameLabel.layer.borderWidth = 1;
@@ -53,7 +110,7 @@
     
     for (int i = 0; i < 2; i++) {
         
-        UILabel *label = [Utils setLabelWithlines:0 textAlignment:NSTextAlignmentCenter font:[UIFont boldSystemFontOfSize:15] text:@"11.37" textColor:[UIColor colorWithHexString:@"#0B70F4" alpha:1]];
+        UILabel *label = [Utils setLabelWithlines:0 textAlignment:NSTextAlignmentCenter font:[UIFont boldSystemFontOfSize:15] text:@"0" textColor:[UIColor colorWithHexString:@"#0B70F4" alpha:1]];
         label.tag = 10 + i;
         label.layer.cornerRadius = 6;
         label.clipsToBounds = YES;
@@ -176,7 +233,7 @@
      }];
      
      
-     UILabel *mLabel = [Utils setLabelWithlines:0 textAlignment:NSTextAlignmentCenter font:[UIFont boldSystemFontOfSize:12] text:@"账户余额：100,000" textColor:[UIColor whiteColor]];
+     UILabel *mLabel = [Utils setLabelWithlines:0 textAlignment:NSTextAlignmentCenter font:[UIFont boldSystemFontOfSize:12] text:[NSString stringWithFormat:@"账户余额:%0.2f",self.yuer] textColor:[UIColor whiteColor]];
      [self.view addSubview:mLabel];
      [mLabel mas_makeConstraints:^(MASConstraintMaker *make) {
          make.top.mas_equalTo(imageView.mas_bottom).with.offset(44);
@@ -202,20 +259,64 @@
      }];
      
      
-     UIButton *back = [UIButton new];
-     [back setImage:kGetImage(@"refreSh") forState:UIControlStateNormal];
-     [back addTarget:self action:@selector(refreShBtnCliked:) forControlEvents:UIControlEventTouchUpInside];
-     [self.view addSubview:back];
-     [back mas_makeConstraints:^(MASConstraintMaker *make) {
-         
-         make.top.mas_equalTo(self.view.mas_top).with.offset( HEIGHT_STATUSBAR);
-         make.width.mas_equalTo(44);
-         make.height.mas_equalTo(44);
-         make.right.mas_equalTo(self.view.mas_right);
-         
-     }];
+     UILabel *label = [self.view viewWithTag:10];
+     if (self.type == 1) {
+      
+          label.text = model1.buyOnePri;
+     }
+     else
+     {
+          label.text = model1.sellFivePri;
+     }
+     
+//     UIButton *back = [UIButton new];
+//     [back setImage:kGetImage(@"refreSh") forState:UIControlStateNormal];
+//     [back addTarget:self action:@selector(refreShBtnCliked:) forControlEvents:UIControlEventTouchUpInside];
+//     [self.view addSubview:back];
+//     [back mas_makeConstraints:^(MASConstraintMaker *make) {
+//
+//         make.top.mas_equalTo(self.view.mas_top).with.offset( HEIGHT_STATUSBAR);
+//         make.width.mas_equalTo(44);
+//         make.height.mas_equalTo(44);
+//         make.right.mas_equalTo(self.view.mas_right);
+//
+//     }];
         
+     self.cbtnSelect = 10;
+     
+     [self readData];
+     
 }
+
+- (void)readData
+{
+    NSArray *pathArray = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path = [pathArray objectAtIndex:0];
+    //获取文件的完整路径
+    self.filePatch = [path stringByAppendingPathComponent:@"info.plist"];//没有会自动创建
+    
+    NSMutableArray *sandBoxDataArray = [[NSMutableArray alloc]initWithContentsOfFile:self.filePatch];
+     
+     self.dataSource = [[NSMutableArray alloc]init];
+     [self.dataSource addObjectsFromArray:sandBoxDataArray];
+     
+     for (int i = 0; i < 5; i++) {
+          NSMutableDictionary *dic = sandBoxDataArray[i];
+          NSString *the = dic[@"id"];
+          DataSingle *model1 = self.model.data;
+          if ([the isEqualToString:model1.gid]) {
+               
+               self.nowData = [[NSMutableDictionary alloc]initWithDictionary:dic];
+               self.nowNum = i;
+               break;
+               
+          }
+          
+     }
+}
+
+
+
 
 - (void)refreShBtnCliked:(UIButton *)sender
 {
@@ -228,11 +329,24 @@
     
     if (sender.tag - 20 == 0) {
     
-        label.text = [NSString stringWithFormat:@"%f",[label.text doubleValue] - 0.01];
+        if([label.text doubleValue] <= 0.01)
+        {
+        }
+         else
+         {
+              label.text = [NSString stringWithFormat:@"%0.2f",[label.text doubleValue] - 0.01];
+         }
     }
     else
     {
-        label.text = [NSString stringWithFormat:@"%0.0f",[label.text doubleValue] - 1];
+         if([label.text doubleValue] <= 0)
+         {
+              
+         }
+         else
+         {
+              label.text = [NSString stringWithFormat:@"%0.0f",[label.text doubleValue] - 1];
+         }
     }
     
 }
@@ -241,9 +355,9 @@
 {
     UILabel *label = [self.view viewWithTag:sender.tag - 20];
     
-    if (sender.tag - 20 == 0) {
+    if (sender.tag - 30 == 0) {
     
-        label.text = [NSString stringWithFormat:@"%f",[label.text doubleValue] + 0.01];
+        label.text = [NSString stringWithFormat:@"%0.2f",[label.text doubleValue] + 0.01];
     }
     else
     {
@@ -261,21 +375,220 @@
     {
         sender.selected = !sender.selected;
         
-        if (_cbtnSelect != 0) {
+        if (_cbtnSelect < 10) {
             
-            UIButton *btn = [self.view viewWithTag:self.cbtnSelect];
+            UIButton *btn = [self.view viewWithTag:self.cbtnSelect + 40];
             btn.selected = NO;
+             
+             
+             
         }
         
         
     }
-    self.cbtnSelect = sender.tag;
+    self.cbtnSelect = sender.tag - 40;
 }
 
 - (void)buyAndSellBtnCliked:(UIButton *)sender
 {
-    
+     UILabel *label1 = [self.view viewWithTag:10];
+     UILabel *label2 = [self.view viewWithTag:11];
+      DataSingle *model1 = self.model.data;
+     if (self.type == 0) {
+          
+          if (self.cbtnSelect >= 10) {
+               
+               if ([self.nowData[@"num"] intValue] <= [label2.text intValue] ) {
+                    
+                    [MBProgressHUD showError:@"没有足够的股票!"];
+               }
+               else
+               {
+                    if ([label1.text doubleValue] > [model1.sellFivePri doubleValue] ) {
+                         
+                         [MBProgressHUD showError:@"出售价格过高!"];
+                    }
+                    else
+                    {
+                         //出售中
+                         NSString *now = [NSString stringWithFormat:@"%d",[self.nowData[@"num"]  intValue] - [label2.text intValue]];
+                         
+                         [self.nowData setObject:now forKey:@"num"];
+                         
+                         
+                         double yuer = self.yuer + [label2.text intValue] * [label1.text doubleValue];
+                         
+                         NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+                         [user setDouble:yuer forKey:@"canUse"];
+                         [user synchronize];
+                         
+                         
+                         [self.dataSource replaceObjectAtIndex:self.nowNum withObject:self.nowData];
+                         [self.dataSource writeToFile:self.filePatch atomically:YES];
+                         
+                         [self saveMessgeWithNum:[label2.text intValue] price:[label1.text doubleValue]];
+                         
+                    }
+               }
+          }
+          else
+          {
+               if ([self.nowData[@"num"] intValue] <= 0 ) {
+                    
+                    [MBProgressHUD showError:@"没有足够的股票!"];
+               }
+               else
+               {
+                    if ([label1.text doubleValue] > [model1.sellFivePri doubleValue] ) {
+                         
+                         [MBProgressHUD showError:@"出售价格过高!"];
+                    }
+                    else
+                    {
+                         int total = [self.nowData[@"num"]  intValue] -  ([self.nowData[@"num"]  intValue]) / (1 + self.cbtnSelect);
+                         
+                         //出售中
+                         NSString *now = [NSString stringWithFormat:@"%d",total];
+                         
+                         [self.nowData setObject:now forKey:@"num"];
+                         
+                         
+               
+                         double add = self.yuer +  total * [label1.text doubleValue];
+                         
+                         NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+                         [user setDouble:add forKey:@"canUse"];
+                         [user synchronize];
+                         
+                         [self.dataSource replaceObjectAtIndex:self.nowNum withObject:self.nowData];
+                         [self.dataSource writeToFile:self.filePatch atomically:YES];
+                         
+                         
+                         [self saveMessgeWithNum:total price:[label1.text doubleValue]];
+                    }
+               }
+          }
+     }
+     else
+     {
+          if (self.cbtnSelect >= 10) {
+               
+               if ([label2.text intValue] * [label1.text doubleValue] > self.yuer ) {
+                    
+                    [MBProgressHUD showError:@"没有足够的资金!"];
+               }
+               else
+               {
+                    if ([label1.text doubleValue] < [model1.buyOnePri doubleValue] ) {
+                         
+                         [MBProgressHUD showError:@"购买价格过低!"];
+                    }
+                    else
+                    {
+                         //买入后
+                         NSString *now = [NSString stringWithFormat:@"%d",[self.nowData[@"num"]  intValue] + [label2.text intValue]];
+                         
+                         [self.nowData setObject:now forKey:@"num"];
+                         
+                         //余额
+                         double add = self.yuer -  [label2.text intValue] * [label1.text doubleValue];
+                         
+                         NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+                         [user setDouble:add forKey:@"canUse"];
+                         [user synchronize];
+                         
+                         [self.dataSource replaceObjectAtIndex:self.nowNum withObject:self.nowData];
+                         [self.dataSource writeToFile:self.filePatch atomically:YES];
+                         
+                         
+                         [self saveMessgeWithNum:[label2.text intValue] price:[label1.text doubleValue]];
+                         
+                    }
+               }
+          }
+          else
+          {
+
+                    if ([label1.text doubleValue] < [model1.buyOnePri doubleValue] ) {
+                         
+                         [MBProgressHUD showError:@"购买价格过低!"];
+                    }
+                    else
+                    {
+                         
+                         
+                         //买的入量
+                         int total = self.yuer / [label1.text doubleValue] / (1 + self.cbtnSelect);
+                         
+                         //出售中
+                         NSString *now = [NSString stringWithFormat:@"%d",[self.nowData[@"num"]  intValue] +  total];
+                         
+                         [self.nowData setObject:now forKey:@"num"];
+                         [self.nowData setObject:label1.text forKey:@"price"];
+                         
+
+                         double add = self.yuer - total * [label1.text doubleValue];
+                         
+                         NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+                         [user setDouble:add forKey:@"canUse"];
+                         [user synchronize];
+                         
+                         [self.dataSource replaceObjectAtIndex:self.nowNum withObject:self.nowData];
+                         [self.dataSource writeToFile:self.filePatch atomically:YES];
+                         
+                         [self saveMessgeWithNum:total price:[label1.text doubleValue]];
+                    }
+               
+          }
+     }
 }
+
+
+- (void)saveMessgeWithNum:(int)num price:(double)price
+{
+     NSArray *pathArray = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+     NSString *path = [pathArray objectAtIndex:0];
+     //获取文件的完整路径
+     NSString *filePatch = [path stringByAppendingPathComponent:@"Data.plist"];//没有会自动创建
+     
+     NSMutableArray *sandBoxDataArray = [[NSMutableArray alloc]initWithContentsOfFile:filePatch];
+     if (sandBoxDataArray == nil) {
+          sandBoxDataArray = [[NSMutableArray alloc]init];
+     }
+     
+     NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+     
+     DataSingle *model1 = self.model.data;
+     
+     
+     [dic setObject:[NSString stringWithFormat:@"%@-%@",model1.name,[model1.gid uppercaseString]] forKey:@"name"];
+     [dic setObject:[NSString stringWithFormat:@"%d",num] forKey:@"num"];
+     [dic setObject:[NSString stringWithFormat:@"%0.2f",price] forKey:@"price"];
+     [dic setObject:@(self.type) forKey:@"type"];
+     
+     [dic setObject:[self stringFromDate:[NSDate date]] forKey:@"time"];
+     
+     
+     [sandBoxDataArray insertObject:dic atIndex:0];
+     [sandBoxDataArray writeToFile:filePatch atomically:YES];
+     
+     [self.navigationController popViewControllerAnimated:YES];
+     
+}
+
+
+ - (NSString*)stringFromDate:(NSDate*)date
+
+{
+     NSDateFormatter*dateFormatter=[[NSDateFormatter alloc]init];
+     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+
+   NSString *currentDateString=[dateFormatter stringFromDate:date];
+
+     return currentDateString;
+
+}
+
 
 
 - (void)czBtnCliked:(UIButton *)sender
@@ -343,6 +656,19 @@
     //设置cell没有选中效果
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
+     if (indexPath.section == 0) {
+          
+          cell.firstLabel.text = self.array1[indexPath.row];
+          cell.secondLabel.text = self.array2[indexPath.row];
+          cell.thirdLabel.text = self.array3[indexPath.row];
+     }
+     else
+     {
+          cell.firstLabel.text = self.array4[indexPath.row];
+          cell.secondLabel.text = self.array5[indexPath.row];
+          cell.thirdLabel.text = self.array6[indexPath.row];
+     }
+     
    
     return cell;
 }
