@@ -387,7 +387,6 @@
 				18A97B56234DBB07006BDBBC /* LaunchScreen.storyboard */,
 				18A97B5A234DBB07006BDBBC /* main.m */,
 				18A97B9A234DBB9E006BDBBC /* PrefixHeader.pch */,
-				18A97BBF234DC356006BDBBC /* 登录注册 */,
 				6842917123517634009341A3 /* Category */,
 				684291722351767D009341A3 /* Const */,
 				18A97BD8234DC729006BDBBC /* controller */,
@@ -456,13 +455,6 @@
 				18BD068D2350C8CC00F89CA0 /* NewgpTableViewCell.xib */,
 			);
 			path = view;
-			sourceTree = "<group>";
-		};
-		18A97BBF234DC356006BDBBC /* 登录注册 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "登录注册";
 			sourceTree = "<group>";
 		};
 		18A97BD8234DC729006BDBBC /* controller */ = {

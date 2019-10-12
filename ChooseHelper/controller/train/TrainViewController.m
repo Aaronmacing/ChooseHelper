@@ -11,11 +11,14 @@
 #import "BuysellViewController.h"
 #import "GPXQViewController.h"
 #import "TransactionRecordViewController.h"
+#import "StockRequetServer.h"
 
 @interface TrainViewController ()<UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetSource,DZNEmptyDataSetDelegate>
 
 @property(nonatomic,strong)NSMutableArray *dataSource;
-@property (nonatomic,strong)UITableView *tableView;
+@property(nonatomic,strong)UITableView *tableView;
+@property(nonatomic,assign)NSInteger total;
+@property(nonatomic,copy)NSArray *idArray;
 @end
 
 @implementation TrainViewController
@@ -25,6 +28,9 @@
     // Do any additional setup after loading the view.
     
     self.titleLabel.text = @"模拟交易中心";
+    
+    self.total = 100000;
+    self.idArray = @[@"sh600000",@"sh600004",@"sh600006",@"sh600007",@"sh600008"];
     
     [self.backBtn setImage:kGetImage(@"jy_btn") forState:UIControlStateNormal];
     [self.backBtn mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -146,7 +152,25 @@
     
     [self.view bringSubviewToFront:self.backBtn];
     
+    [self initDataSource];
+    
 }
+
+- (void)initDataSource
+{
+    
+    
+    [[StockRequetServer sharedStockRequetServer] getStockSingleByCode:@"sh600000" type:@(0) stockMarket:Shanghai success:^(id stockSingle) {
+        
+        NSLog(@"%@",stockSingle);
+        
+    } failure:^(NSString *msg) {
+        
+    }];
+    
+}
+
+
 
 - (void)backBtnCliked:(UIButton *)sender
 {
@@ -207,8 +231,6 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-
-
 
 - (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
 {
