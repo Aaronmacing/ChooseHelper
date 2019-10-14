@@ -95,25 +95,10 @@
     
     self.account = [[AccountDao sharedAccountDao] queryLoginUser];
     self.allDataSouce = @[].mutableCopy;
-    self.subDataSource = @[].mutableCopy;
     NSArray <NSString *>*favStocks = [self.account.stockComps componentsSeparatedByString:@","];
     
     
-    for (NSString * str in favStocks) {
-        
-        NSArray *codeMarket = [str componentsSeparatedByString:@"-"];
-        
-        NormalStockVO *vo = [[NormalStockVO alloc] init];
-        
-        vo.code = codeMarket[0];
-        vo.market = codeMarket[1];
-        
-        if (vo.market.integerValue == Shanghai || vo.market.integerValue == Shenzhen) {
-            
-              
-              
-        }
-    }
+
     
     NSArray *array = @[@"全部",@"沪深",@"港股",@"美股"];
     for (int i = 0; i < 4; i++) {
@@ -308,7 +293,7 @@
         
         NSMutableArray *dataList = @[].mutableCopy;
        
-<<<<<<< HEAD
+
         [dataList addObjectsFromArray:resultList];
         [dataList addObjectsFromArray:downResultList];
         
@@ -326,6 +311,7 @@
             market = USA;
         }
         vc.market = market;
+        self.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
         
     } failure:^(NSString *msg) {
@@ -333,14 +319,10 @@
         [MBManager showBriefAlert:msg inView:self.view];
     }];
     
+
     
-=======
-          market = USA;
-      }
-    vc.market = market;
-    self.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
->>>>>>> bcd86a20cb7cfa93a290dbd341a1f7ce9eb79b87
+    
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated{

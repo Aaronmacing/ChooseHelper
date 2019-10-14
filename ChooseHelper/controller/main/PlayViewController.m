@@ -63,7 +63,7 @@
     _playerMaskView = [[ZQPlayerMaskView alloc] init];
     _playerMaskView.delegate = self;
     _playerMaskView.isWiFi = YES; // 是否允许自动加载，
-    _playerMaskView.titleLab.text = @"";
+    _playerMaskView.titleLab.text = self.vidModel.title;
     [self.view addSubview:_playerMaskView];
     
     // 网络视频
@@ -180,7 +180,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     KsModel * model = _rArr[indexPath.row];
-    self.title = model.title;
+    self.playerMaskView.titleLab.text = model.title;
     NSString *videoUrl = [[NSBundle mainBundle] pathForResource:model.video ofType:@"mp4"];
     [_playerMaskView playWithVideoUrl:videoUrl];
 }
