@@ -93,12 +93,15 @@
         make.top.mas_equalTo(self.view.mas_top);
     }];
     
+<<<<<<< HEAD
     self.account = [[AccountDao sharedAccountDao] queryLoginUser];
     self.allDataSouce = @[].mutableCopy;
     NSArray <NSString *>*favStocks = [self.account.stockComps componentsSeparatedByString:@","];
     
     
 
+=======
+>>>>>>> 347006a4b336ba0a6092efbc6458fe0f76015d21
     
     NSArray *array = @[@"全部",@"沪深",@"港股",@"美股"];
     for (int i = 0; i < 4; i++) {
@@ -293,7 +296,10 @@
         
         NSMutableArray *dataList = @[].mutableCopy;
        
+<<<<<<< HEAD
 
+=======
+>>>>>>> 347006a4b336ba0a6092efbc6458fe0f76015d21
         [dataList addObjectsFromArray:resultList];
         [dataList addObjectsFromArray:downResultList];
         
@@ -318,10 +324,13 @@
 
         [MBManager showBriefAlert:msg inView:self.view];
     }];
+<<<<<<< HEAD
     
 
     
     
+=======
+>>>>>>> 347006a4b336ba0a6092efbc6458fe0f76015d21
 
 }
 
